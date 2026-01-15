@@ -11,7 +11,10 @@ const Hero = () => {
     const sectionRef = useRef(null);
     const mockupRef = useRef(null);
     const progressRef = useRef(0);
-    const [mockupProgress, setMockupProgress] = useState(0);
+    // Optimization: Remove granular state updates to prevent re-renders on every scroll frame
+    // const [mockupProgress, setMockupProgress] = useState(0); 
+    const [sidebarExpanded, setSidebarExpanded] = useState(false);
+    const [showTaglines, setShowTaglines] = useState(false);
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
@@ -30,7 +33,6 @@ const Hero = () => {
 
             const { top, height } = sectionRef.current.getBoundingClientRect();
             // Start animation when section hits top of viewport
-            const start = 0;
             const windowHeight = window.innerHeight;
             // Scroll distance is the full height minus viewport (sticky behavior)
             const end = height - windowHeight;
@@ -43,7 +45,21 @@ const Hero = () => {
 
             // Update DOM directly to enable CSS calculations (Fast)
             mockupRef.current.style.setProperty('--scroll', progress);
-            setMockupProgress(progress);
+
+            // Optimization: Only trigger React updates when crossing thresholds
+            // Threshold 1: Sidebar Expansion (at 0.5)
+            const shouldExpand = progress > 0.5;
+            setSidebarExpanded(prev => {
+                if (prev !== shouldExpand) return shouldExpand;
+                return prev;
+            });
+
+            // Threshold 2: Taglines Appearance (at 0.9)
+            const shouldShowWrapper = progress > 0.9;
+            setShowTaglines(prev => {
+                if (prev !== shouldShowWrapper) return shouldShowWrapper;
+                return prev;
+            });
         };
 
         const onScroll = () => {
@@ -269,7 +285,6 @@ const Hero = () => {
                                         Actually we want: relative until it hits, then absolute?
                                         Let's stick to the previous transforms but using Calc.
                                      */
-                                    position: relative;
                                     z-index: 10;
                                     
                                     /* 
@@ -286,8 +301,8 @@ const Hero = () => {
                                         calc(var(--scroll) * 850px)
                                     );
                                     
-                                    /* Add a tiny transition to smooth out scroll steps just like UseSpring did */
-                                    transition: width 0.15s linear, transform 0.15s linear;
+                                    /* Removed transition to ensure direct 1:1 scroll tracking without lag */
+                                    /* transition: width 0.15s linear, transform 0.15s linear; */
                                     
                                     /* HACK: Position Absolute switch */
                                     /* In pure CSS variable world, usually we keep it fixed or sticky. 
@@ -307,15 +322,15 @@ const Hero = () => {
                                 }
                             `}</style>
 
-                            <div className={`relative w-full flex items-center justify-center transition-all duration-300 ${isDesktop && mockupProgress > 0.9 ? 'gap-8' : ''}`}>
+                            <div className={`relative w-full flex items-center justify-center transition-all duration-300 ${isDesktop && showTaglines ? 'gap-8' : ''}`}>
 
                                 {/* Left Tagline */}
                                 <div
                                     className="hidden lg:block transition-all duration-500 ease-out"
                                     style={{
-                                        opacity: isDesktop && mockupProgress > 0.9 ? 1 : 0,
-                                        transform: isDesktop && mockupProgress > 0.9 ? 'translateX(0px)' : 'translateX(20px)',
-                                        width: isDesktop && mockupProgress > 0.9 ? '450px' : '0px',
+                                        opacity: isDesktop && showTaglines ? 1 : 0,
+                                        transform: isDesktop && showTaglines ? 'translateX(0px)' : 'translateX(20px)',
+                                        width: isDesktop && showTaglines ? '450px' : '0px',
                                         pointerEvents: 'none' // Prevent interaction when hidden
                                     }}
                                 >
@@ -338,13 +353,16 @@ const Hero = () => {
                                     className="relative w-full shrink-0"
                                 >
                                     <div className="w-full relative z-10">
-                                        <ProductMockup progress={mockupProgress} />
+                                        <ProductMockup progress={sidebarExpanded ? 1 : 0} />
                                     </div>
 
                                     {/* Brand Watermark - Revealed behind mockup */}
                                     <motion.div
                                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[-5] hidden lg:block pointer-events-none select-none"
-                                        style={{ opacity: Math.max(0, Math.min(0.1, (mockupProgress - 0.5) * 2)) }}
+                                        style={{
+                                            // Optimization: Use CSS Calc instead of JS interpolation
+                                            opacity: 'clamp(0, (var(--scroll) - 0.5) * 2, 0.1)'
+                                        }}
                                     >
                                         <svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'rotate(-12deg)' }}>
                                             <text x="300" y="300" textAnchor="middle" dominantBaseline="middle" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="120" fill="transparent" stroke="currentColor" strokeWidth="2" className="text-slate-900">
@@ -366,9 +384,9 @@ const Hero = () => {
                                 <div
                                     className="hidden lg:block transition-all duration-500 ease-out"
                                     style={{
-                                        opacity: isDesktop && mockupProgress > 0.9 ? 1 : 0,
-                                        transform: isDesktop && mockupProgress > 0.9 ? 'translateX(0px)' : 'translateX(-20px)',
-                                        width: isDesktop && mockupProgress > 0.9 ? '250px' : '0px',
+                                        opacity: isDesktop && showTaglines ? 1 : 0,
+                                        transform: isDesktop && showTaglines ? 'translateX(0px)' : 'translateX(-20px)',
+                                        width: isDesktop && showTaglines ? '250px' : '0px',
                                         pointerEvents: 'none'
                                     }}
                                 >
