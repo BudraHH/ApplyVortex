@@ -189,22 +189,24 @@ const ContactSection = () => {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                             <div className="space-y-1.5 md:space-y-2">
                                                 <Label className="text-[9px] md:text-[10px] font-extrabold uppercase text-slate-400 tracking-[0.15em] ml-1">Identity</Label>
-                                                <Input placeholder="Your Name" required className="h-10 md:h-12 border-slate-200 rounded-xl" />
+                                                <Input placeholder="Your Name" required />
                                             </div>
                                             <div className="space-y-1.5 md:space-y-2">
                                                 <Label className="text-[9px] md:text-[10px] font-extrabold uppercase text-slate-400 tracking-[0.15em] ml-1">Communication</Label>
-                                                <Input type="email" placeholder="Email Address" required className="h-10 md:h-12 border-slate-200 rounded-xl" />
+                                                <Input type="email" placeholder="Email Address" required />
                                             </div>
                                         </div>
 
                                         <div className="space-y-1.5 md:space-y-2">
                                             <Label className="text-[9px] md:text-[10px] font-extrabold uppercase text-slate-400 tracking-[0.15em] ml-1">Subject Matter</Label>
-                                            <Input placeholder="What can we help you with?" required className="h-10 md:h-12 border-slate-200 rounded-xl" />
+                                            <Input placeholder="What can we help you with?" required />
                                         </div>
 
                                         <div className="space-y-1.5 md:space-y-2 flex-1">
                                             <Label className="text-[9px] md:text-[10px] font-extrabold uppercase text-slate-400 tracking-[0.15em] ml-1">Payload Details</Label>
-                                            <Textarea placeholder="Describe the situation in detail..." required className="h-full min-h-[100px] md:min-h-[120px] border-slate-200 rounded-xl resize-none p-3 md:p-4 text-sm md:text-base" />
+                                            <Textarea placeholder="Describe the situation in detail..." required 
+                                            className="min-h-[120px]"
+                                            />
                                         </div>
 
                                         <div className="pt-2 md:pt-4">

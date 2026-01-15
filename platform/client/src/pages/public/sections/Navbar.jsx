@@ -57,6 +57,18 @@ const Navbar = () => {
         return () => observer.disconnect();
     }, [location.pathname]);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
     const scrollToSection = (sectionId) => {
         setIsMobileMenuOpen(false);
 
@@ -266,7 +278,7 @@ const Navbar = () => {
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'border-b border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-sm'
             : 'bg-transparent'}`}>
-            <div className="container mx-auto flex h-16 xl:h-20 items-center px-4 sm:px-6 lg:px-8 relative">
+            <div className="container mx-auto flex h-16 xl:h-20 flex flex-row justify-between items-center px-4 sm:px-6 lg:px-8 relative z-50">
                 {/* Logo Section */}
                 <Link to="/" className="flex items-center gap-2.5 group" onClick={(e) => {
                     if (location.pathname === '/') {
@@ -361,8 +373,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile/Tablet Menu Controls */}
-                <div className="flex lg:hidden items-center gap-3">
-                    <ThemeToggle />
+                <div className="flex lg:hidden items-center ">
                     <Button
                         variant="ghost"
                         size="icon"
@@ -377,64 +388,83 @@ const Navbar = () => {
             {/* Mobile/Tablet Menu */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0, y: -20 }}
-                        animate={{ opacity: 1, height: 'auto', y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -20 }}
-                        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-                        className="lg:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-hidden shadow-2xl"
-                    >
-                        <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                {navLinks.map((link, index) => {
-                                    const active = isLinkActive(link);
-                                    return (
-                                        <motion.button
-                                            key={link.name}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: index * 0.05 }}
-                                            onClick={() => handleNavClick(link)}
-                                            className={`flex items-center justify-between p-4 rounded-xl font-semibold transition-all group ${active
-                                                ? 'bg-brand-50 text-brand-600'
-                                                : 'bg-slate-50 hover:bg-brand-50 text-slate-700 hover:text-brand-600'
-                                                }`}
+                    <>
+                        <motion.div
+                            key="backdrop"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="lg:hidden fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            key="menu"
+                            initial={{ opacity: 0, height: 0, y: -20 }}
+                            animate={{ opacity: 1, height: 'auto', y: 0 }}
+                            exit={{ opacity: 0, height: 0, y: -20 }}
+                            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+                            className="lg:hidden absolute top-full left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-hidden shadow-2xl"
+                        >
+                            <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {navLinks.map((link, index) => {
+                                        const active = isLinkActive(link);
+                                        return (
+                                            <>
+                                            {link.name === 'About' && (
+                                                <div className="w-full h-[0.5px] bg-brand-200"/>
+                                            )}
+                                            <motion.button
+                                                key={link.name}
+                                                initial={{ opacity: 0, x: -10 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: index * 0.05 }}
+                                                onClick={() => handleNavClick(link)}
+                                                className={`flex items-center justify-between p-4 rounded-md font-semibold transition-all group ${active
+                                                    ? 'bg-brand-50 text-brand-600'
+                                                    : 'bg-slate-50 hover:bg-brand-50 text-slate-700 hover:text-brand-600'
+                                                    }`}
+                                            >
+                                                {link.name}
+                                                <ArrowRight className={`h-4 w-4 transition-all ${active
+                                                    ? 'opacity-100 translate-x-0'
+                                                    : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
+                                                    }`} />
+                                            </motion.button>
+                                            </>
+                                        );
+                                    })}
+                                </div>
+
+                                <div className="h-px bg-slate-100 w-full" />
+
+                                <div className="flex flex-col gap-3">
+                                    <Link to={ROUTES.LOGIN} onClick={() => setIsMobileMenuOpen(false)}>
+                                        <Button
+                                            variant="primary"
+                                            size="lg"
+                                            className="w-full"
                                         >
-                                            {link.name}
-                                            <ArrowRight className={`h-4 w-4 transition-all ${active
-                                                ? 'opacity-100 translate-x-0'
-                                                : 'opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'
-                                                }`} />
-                                        </motion.button>
-                                    );
-                                })}
+                                            Sign In
+                                        </Button>
+                                    </Link>
+                                    <Link to={ROUTES.SIGNUP} onClick={() => setIsMobileMenuOpen(false)}>
+                                        <Button
+                                       variant="outline"
+                                       size="lg"
+                                       className="w-full"
+                                       >
+                                            Create Free Account
+                                        </Button>
+                                    </Link>
+                                </div>
+
+                                <p className="text-center text-xs text-slate-400 font-medium">
+                                    Join 5,000+ applicants automating their search today.
+                                </p>
                             </div>
-
-                            <div className="h-px bg-slate-100 w-full" />
-
-                            <div className="flex flex-col gap-3">
-                                <Link to={ROUTES.LOGIN} onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button
-                                        variant="outline"
-                                        className="w-full h-12 rounded-xl text-slate-600 hover:bg-slate-50 border-slate-200 font-bold"
-                                    >
-                                        Sign In
-                                    </Button>
-                                </Link>
-                                <Link to={ROUTES.SIGNUP} onClick={() => setIsMobileMenuOpen(false)}>
-                                    <Button
-                                        className="w-full h-12 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold shadow-lg shadow-brand-600/20"
-                                    >
-                                        Create Free Account
-                                    </Button>
-                                </Link>
-                            </div>
-
-                            <p className="text-center text-xs text-slate-400 font-medium">
-                                Join 5,000+ applicants automating their search today.
-                            </p>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </nav>

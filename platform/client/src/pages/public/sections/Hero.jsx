@@ -114,7 +114,7 @@ const Hero = () => {
             </div>
 
             <div className="relative lg:sticky top-0 min-h-screen flex items-center pt-8 md:pt-16 lg:pt-0">
-                <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 relative z-10">
+                <div className="lg:container mx-auto w-full max-w-[1600px] px-4 md:px-8 lg:px-12 relative z-10">
                     <div className="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-8 w-full">
 
                         {/* Left Column: Text Content */}

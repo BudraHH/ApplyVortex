@@ -235,8 +235,7 @@ export default function ForgotPasswordPage() {
                                     type="email"
                                     placeholder="name@example.com"
                                     error={errors.email}
-                                    className="h-12 bg-slate-50 border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all"
-                                    {...register('email', {
+                                  {...register('email', {
                                         required: 'Email is required',
                                         pattern: {
                                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,

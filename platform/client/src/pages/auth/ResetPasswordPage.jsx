@@ -247,7 +247,7 @@ export default function ResetPasswordPage() {
                                         type={showPassword ? 'text' : 'password'}
                                         placeholder="Min. 8 characters"
                                         error={errors.password}
-                                        className="h-12 pr-12"
+                                        className="pr-12"
                                         {...register('password', {
                                             required: 'Password is required',
                                             minLength: { value: 8, message: 'Min 8 chars' },
@@ -298,7 +298,7 @@ export default function ResetPasswordPage() {
                                         type={showConfirmPassword ? 'text' : 'password'}
                                         placeholder="Re-enter password"
                                         error={errors.confirmPassword || (!isPasswordMatch && confirmPassword)}
-                                        className="h-12 pr-12"
+                                        className="pr-12"
                                         {...register('confirmPassword', {
                                             required: 'Please confirm password',
                                             validate: (value) => value === password || 'Passwords do not match',

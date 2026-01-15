@@ -232,7 +232,6 @@ export default function SignupPage() {
                                     type="text"
                                     placeholder="John Doe"
                                     error={errors.name}
-                                    className="h-12 bg-slate-50  border-slate-200    focus:border-brand-500  focus:ring-2 focus:ring-brand-500/20  transition-all"
                                     {...register('name', { required: 'Name is required' })}
                                     onChange={(e) => {
                                         const val = toTitleCase(e.target.value);
@@ -250,7 +249,6 @@ export default function SignupPage() {
                                     type="email"
                                     placeholder="name@example.com"
                                     error={errors.email}
-                                    className="h-12 bg-slate-50  border-slate-200    focus:border-brand-500  focus:ring-2 focus:ring-brand-500/20  transition-all"
                                     {...register('email', {
                                         required: 'Email is required',
                                         pattern: {
@@ -270,7 +268,6 @@ export default function SignupPage() {
                                         type={showPassword ? 'text' : 'password'}
                                         placeholder="Min. 8 characters"
                                         error={errors.password}
-                                        className="h-12 bg-slate-50 border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all pr-4"
                                         {...register('password', { required: 'Password is required', minLength: { value: 8, message: 'Min 8 chars' } })}
                                     />
                                     <button
@@ -300,7 +297,6 @@ export default function SignupPage() {
                                         type={showConfirmPassword ? 'text' : 'password'}
                                         placeholder="Re-enter password"
                                         error={errors.confirmPassword || (!isPasswordMatch && confirmPassword)}
-                                        className="h-12 bg-slate-50 border-slate-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 transition-all pr-4"
                                         {...register('confirmPassword', {
                                             required: 'Confirm password',
                                             validate: (value) => value === password || 'Passwords do not match',
