@@ -63,5 +63,5 @@ Thumbs.db
 .docs/
 
 # Specific Directories
-# Ignoring the backend folder as requested (assuming applyvortex-docker/backend)
-applyvortex-docker/backend/
+# Ignoring the backend folder as requested
+platform/backend/

@@ -50,7 +50,7 @@ ApplyVortex is built as a modern monorepo using Docker for orchestration:
 
 ```bash
 applyvortex/
-├── applyvortex-docker/       # Core containerized services
+├── platform/               # Core containerized services
 │   ├── client/               # React Frontend
 │   ├── server/               # Python Backend API
 │   └── docker-compose.yml    # Orchestration config
@@ -76,15 +76,15 @@ applyvortex/
     ```
 
 2.  **Configure Environment**
-    Create a `.env` file in the `applyvortex-docker` directory:
+    Create a `.env` file in the `platform` directory:
     ```bash
-    cp applyvortex-docker/.env.example applyvortex-docker/.env
+    cp platform/.env.example platform/.env
     # Edit .env with your database credentials and API keys
     ```
 
 3.  **Launch the System**
     ```bash
-    cd applyvortex-docker
+    cd platform
     docker compose up --build
     ```
 
