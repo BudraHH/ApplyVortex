@@ -18,8 +18,8 @@ __pycache__/
 develop-eggs/
 eggs/
 .eggs/
-lib/
-lib64/
+# lib/  <-- Commented out because it blocks client/src/lib
+# lib64/
 parts/
 sdist/
 var/
