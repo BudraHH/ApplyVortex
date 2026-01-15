@@ -1,0 +1,34 @@
+from typing import Dict, Any, Optional
+
+from sqlalchemy import String, Boolean, JSON, Integer
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.models.base import Base
+from app.models.mixins import UUIDMixin, TimestampMixin
+
+
+class PortalConfig(Base, UUIDMixin, TimestampMixin):
+    """
+    Configuration blueprints for external job portals.
+    Stores dynamic selectors and headers to allow updating parsing logic
+    without redeploying code.
+    """
+    __tablename__ = "portal_configs"
+
+    domain: Mapped[str] = mapped_column(String, unique=True, index=True, nullable=False)
+    # e.g., "https://www.linkedin.com/jobs/search/?keywords={keywords}..."
+    search_url_template: Mapped[str] = mapped_column(String, nullable=True)
+    name: Mapped[str] = mapped_column(String, nullable=False)  # e.g., "LinkedIn", "Naukri"
+    
+    # Store selectors as a JSON blob
+    # Structure: { "job_card": "...", "title": "...", "company": "..." }
+    selectors: Mapped[Dict[str, Any]] = mapped_column(JSON, default={})
+    
+    # Custom headers/cookies required for this portal
+    headers: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSON, default={})
+    
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    version: Mapped[int] = mapped_column(Integer, default=1)
+
+    def __repr__(self) -> str:
+        return f"<PortalConfig(domain={self.domain}, active={self.is_active})>"

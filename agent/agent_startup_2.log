@@ -1,0 +1,23 @@
+nohup: ignoring input
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+00:37:33 | INFO | Using existing agent ID: 7035fc96...
+Initializing Headless Mode...
+00:37:33 | INFO | HTTP Request: GET http://localhost:11434/ "HTTP/1.1 200 OK"
+00:37:33 | INFO | HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+00:37:34 | WARNING | Authentication failed (401). Attempting re-login...
+00:37:34 | INFO | Verifying API key authentication...
+00:37:37 | INFO | Authentication successful!
+00:37:37 | INFO | Verifying API key authentication...
+00:37:40 | INFO | Authentication successful!
+00:37:40 | INFO | Registering agent: TUF
+00:37:46 | INFO | Agent registered successfully!
+00:37:46 | INFO | Agent workflow started: Polling & Autonomous Modes Active.

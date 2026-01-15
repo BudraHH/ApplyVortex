@@ -1,0 +1,170 @@
+nohup: ignoring input
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+00:55:56 | INFO | Using existing agent ID: 7035fc96...
+Initializing Headless Mode...
+00:55:56 | INFO | HTTP Request: GET http://localhost:11434/ "HTTP/1.1 200 OK"
+00:55:56 | INFO | HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+00:55:56 | WARNING | Authentication failed (401). Attempting re-login...
+00:55:56 | INFO | Verifying API key authentication...
+00:56:00 | INFO | Authentication successful!
+00:56:01 | INFO | Verifying API key authentication...
+00:56:03 | INFO | Authentication successful!
+00:56:03 | INFO | Registering agent: TUF
+00:56:10 | INFO | Agent registered successfully!
+00:56:10 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+00:57:28 | INFO | Manual Task: Found 1 pending tasks.
+00:57:31 | INFO | Processing task 2ac781a5-02d7-4167-984b-e7a9301eacc1: 1
+00:57:31 | INFO | Using Specialized LinkedIn Scraper for ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+00:57:31 | INFO | Starting Stealth Browser (headless=True)...
+00:57:31 | WARNING | Stealth launch failed: module 'undetected_playwright' has no attribute 'init'. Falling back to standard Playwright.
+00:57:35 | INFO | Standard Browser started: chromium (headless: True)
+00:57:35 | INFO | Checking authentication status...
+00:57:40 | INFO | User is authenticated.
+00:57:43 | INFO | Starting scrape for Location: Chennai | Keywords: ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+00:57:43 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22+OR+%22Backend+Developer%22+OR+%22Backend+Engineer%22%29&location=Chennai&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+00:58:00 | INFO | DEBUG: First Job Title: 'Software Engineer II'
+00:58:00 | INFO |   + Scraped 4 new jobs (Loc Total: 4)
+00:58:19 | INFO | DEBUG: First Job Title: 'Software Engineer II'
+00:58:19 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+00:58:19 | INFO |   Reached bottom of results (no height change).
+00:58:19 | INFO | Syncing 4 jobs from Chennai to server...
+00:58:19 | INFO | --- [BATCH SYNC] 4 Jobs ---
+      + Job: Software Engineer II... | Mr. Cooper... | Chennai, Tamil Nadu, India
+      + Job: Software Engineer I... | NCR Voyix... | Chennai, Tamil Nadu, India
+      + Job: Software Engineer II... | Byepo Technologies... | Chennai, Tamil Nadu, India
+      + Job: **** ***** *********... | ********* **** ***. ... | *******, ***** ****, *****
+      [Synced 4 jobs to server]
+00:58:48 | INFO | Finished Chennai. Sleeping for 6.51s...
+00:59:00 | INFO | Starting scrape for Location: Bengaluru | Keywords: ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+00:59:00 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22+OR+%22Backend+Developer%22+OR+%22Backend+Engineer%22%29&location=Bengaluru&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+00:59:17 | INFO | DEBUG: First Job Title: 'Software Engineer 1'
+00:59:17 | INFO |   + Scraped 7 new jobs (Loc Total: 7)
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+00:59:28 | INFO | Manual Task: Found 1 pending tasks.
+00:59:31 | INFO | Processing task 0bec2471-6fc4-4e3a-b811-28fdd7cc9655: 1
+00:59:31 | ERROR | Task execution failed: 'NoneType' object has no attribute 'lower'
+Traceback (most recent call last):
+  File "/home/budrahh/Projects/applyvortex/agent/main.py", line 189, in process_task
+    if portal.lower() == 'linkedin':
+       ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+00:59:43 | INFO | DEBUG: First Job Title: 'Software Engineer 1'
+00:59:43 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+00:59:43 | INFO |   Reached bottom of results (no height change).
+00:59:43 | INFO | Syncing 7 jobs from Bengaluru to server...
+00:59:43 | INFO | --- [BATCH SYNC] 7 Jobs ---
+      + Job: Software Engineer 1... | Intuit... | Bengaluru, Karnataka, India
+      + Job: Software Engineer 1... | Intuit... | Bengaluru, Karnataka, India
+      + Job: Backend Developer... | YourfriendlyHR... | Bengaluru, Karnataka, India
+      + Job: ******** ********... | ******... | *********, *********, *****
+      + Job: ******** ********, *... | ***** ************... | *********, *********, *****
+      + Job: ******* *********... | *****... | *********, *********, *****
+      + Job: ******* *********... | *****... | *********, *********, *****
+      [Synced 7 jobs to server]
+01:00:06 | INFO | Finished Bengaluru. Sleeping for 9.39s...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+01:00:11 | INFO | Manual Task: Found 1 pending tasks.
+01:00:14 | INFO | Processing task e9fb01a9-4aa6-4ece-b50f-4dbb915440d9: 1
+01:00:14 | ERROR | Task execution failed: 'NoneType' object has no attribute 'lower'
+Traceback (most recent call last):
+  File "/home/budrahh/Projects/applyvortex/agent/main.py", line 189, in process_task
+    if portal.lower() == 'linkedin':
+       ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+01:00:25 | INFO | Starting scrape for Location: Hyderabad | Keywords: ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+01:00:25 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22+OR+%22Backend+Developer%22+OR+%22Backend+Engineer%22%29&location=Hyderabad&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+01:00:41 | INFO | DEBUG: First Job Title: 'Associate Software Engineer'
+01:00:41 | INFO |   + Scraped 7 new jobs (Loc Total: 7)
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+01:00:48 | INFO | Manual Task: Found 1 pending tasks.
+01:00:51 | INFO | Processing task 9524fa0f-2869-4fbc-90f8-13abeb5ee7de: 1
+01:00:51 | ERROR | Task execution failed: 'NoneType' object has no attribute 'lower'
+Traceback (most recent call last):
+  File "/home/budrahh/Projects/applyvortex/agent/main.py", line 189, in process_task
+    if portal.lower() == 'linkedin':
+       ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'lower'
+01:01:03 | INFO | DEBUG: First Job Title: 'Associate Software Engineer'
+01:01:03 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+01:01:03 | INFO |   Reached bottom of results (no height change).
+01:01:03 | INFO | Syncing 7 jobs from Hyderabad to server...
+01:01:03 | INFO | --- [BATCH SYNC] 7 Jobs ---
+      + Job: Associate Software Engineer... | InvoiceCloud, Inc.... | Hyderabad, Telangana, India
+      + Job: Software Engineer... | Solera Holdings, LLC... | Hyderabad, Telangana, India
+      + Job: Software Engineer (.NET)... | InvoiceCloud, Inc.... | Hyderabad, Telangana, India
+      + Job: ********* **********-*** *****... | *********... | *********, *********, *****
+      + Job: ****** ******** ********... | ********* ******** *... | *********, *********, *****
+      + Job: ****** ******** ********-** **... | ***... | *********, *********, *****
+      + Job: ********** ******** ******** -... | ******* ******... | *********, *********, *****
+      [Synced 7 jobs to server]
+01:01:31 | INFO | Finished Hyderabad. Sleeping for 6.77s...
+01:01:40 | INFO | Total Unique Jobs Scraped: 18
+01:01:43 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:01:50 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:01:50 | INFO | Local AI Response received (Status: 200)
+01:01:52 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:01:57 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:01:57 | INFO | Local AI Response received (Status: 200)
+01:02:00 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:02:05 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:02:05 | INFO | Local AI Response received (Status: 200)
+01:02:08 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:02:22 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:02:22 | INFO | Local AI Response received (Status: 200)
+01:02:24 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:02:30 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:02:30 | INFO | Local AI Response received (Status: 200)
+01:02:33 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:02:36 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:02:36 | INFO | Local AI Response received (Status: 200)
+01:02:38 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:02:42 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:02:42 | INFO | Local AI Response received (Status: 200)
+01:02:45 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:00 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:00 | INFO | Local AI Response received (Status: 200)
+01:03:02 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:06 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:06 | INFO | Local AI Response received (Status: 200)
+01:03:08 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:11 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:11 | INFO | Local AI Response received (Status: 200)
+01:03:14 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:17 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:17 | INFO | Local AI Response received (Status: 200)
+01:03:20 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:30 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:30 | INFO | Local AI Response received (Status: 200)
+01:03:33 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:36 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:36 | INFO | Local AI Response received (Status: 200)
+01:03:39 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:44 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:44 | INFO | Local AI Response received (Status: 200)
+01:03:47 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:03:51 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:03:51 | INFO | Local AI Response received (Status: 200)
+01:03:54 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:04:02 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:04:06 | INFO | Local AI Response received (Status: 200)
+01:04:09 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:04:13 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:04:13 | INFO | Local AI Response received (Status: 200)
+01:04:16 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+01:04:21 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+01:04:21 | INFO | Local AI Response received (Status: 200)
+01:04:29 | INFO | Task 2ac781a5-02d7-4167-984b-e7a9301eacc1 completed. Found 18 jobs.

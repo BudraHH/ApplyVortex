@@ -1,0 +1,262 @@
+nohup: ignoring input
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://localhost:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+13:29:04 | INFO | Using existing agent ID: 7035fc96...
+Initializing Headless Mode...
+13:29:04 | INFO | HTTP Request: GET http://localhost:11434/ "HTTP/1.1 200 OK"
+13:29:04 | INFO | HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+13:29:17 | WARNING | Authentication failed (401). Attempting re-login...
+13:29:17 | INFO | Verifying API key authentication...
+13:29:21 | INFO | Authentication successful!
+13:29:23 | INFO | Verifying API key authentication...
+13:29:26 | INFO | Authentication successful!
+13:29:26 | INFO | Registering agent: TUF
+13:29:32 | INFO | Agent registered successfully!
+13:29:32 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:29:38 | INFO | Manual Task: Found 1 pending tasks.
+13:29:46 | INFO | Processing task ab7ae1dd-b564-4bfb-85ab-ed377ec0fad0: 1
+13:29:46 | INFO | Starting deep scrape for job aec9398e-a513-4a04-a86f-1def13e30d0f: https://in.linkedin.com/jobs/view/software-engineer-at-netapp-4351760038
+13:29:46 | INFO | Starting Stealth Browser (headless=True)...
+13:29:46 | WARNING | Stealth launch failed: module 'undetected_playwright' has no attribute 'init'. Falling back to standard Playwright.
+13:29:46 | INFO | Standard Browser started: chromium (headless: True)
+13:29:54 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-netapp-4351760038 after 4.4min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:30:16 | INFO | Manual Task: Found 1 pending tasks.
+13:30:19 | INFO | Processing task d5c75646-6ae2-4a52-8cb3-d73a3199e8e6: 1
+13:30:19 | INFO | Starting deep scrape for job eadfa8b9-9c93-4abb-9150-58e8fecd9331: https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4358167156
+13:30:30 | INFO | Deep scraping https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4358167156 after 4.6min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:33:22 | INFO | Manual Task: Found 1 pending tasks.
+13:33:24 | INFO | Processing task 0c0c128d-a667-401d-b3b5-85306ec940ea: 1
+13:33:24 | INFO | Using Specialized LinkedIn Scraper for ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+13:33:29 | INFO | Checking authentication status...
+13:33:33 | INFO | User is authenticated.
+13:33:36 | INFO | Starting scrape for Location: Chennai | Keywords: ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+13:33:36 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22+OR+%22Backend+Developer%22+OR+%22Backend+Engineer%22%29&location=Chennai&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+13:33:53 | INFO | DEBUG: First Job Title: 'Software Engineer II'
+13:33:53 | WARNING | Obfuscated Title Detected: ********* **** ***. ***
+13:33:53 | INFO |   + Scraped 4 new jobs (Loc Total: 4)
+13:34:13 | INFO | DEBUG: First Job Title: 'Software Engineer II'
+13:34:13 | WARNING | Obfuscated Title Detected: ********* **** ***. ***
+13:34:13 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+13:34:13 | INFO |   Reached bottom of results (no height change).
+13:34:13 | INFO | Syncing 4 jobs from Chennai to server...
+13:34:13 | INFO | --- [BATCH SCORING & SYNC] 4 Jobs ---
+13:34:13 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:34:17 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:34:17 | INFO | Local AI Response received (Status: 200)
+      + [80%] Software Engineer II | Mr. Cooper
+13:34:17 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:34:19 | INFO | Navigating to job detail page...
+13:34:20 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:34:20 | INFO | Local AI Response received (Status: 200)
+      + [80%] Software Engineer I | NCR Voyix
+13:34:20 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:34:22 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:34:22 | INFO | Local AI Response received (Status: 200)
+      + [80%] Software Engineer II | Byepo Technologies
+13:34:22 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:34:26 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:34:26 | INFO | Local AI Response received (Status: 200)
+      + [80%] ********* **** ***. *** | ********* **** ***. 
+13:34:38 | INFO |       [Synced 4 scored jobs to server]
+13:34:38 | INFO | Finished Chennai. Sleeping for 5.98s...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:34:44 | INFO | Manual Task: Found 1 pending tasks.
+13:34:51 | INFO | Processing task 63bd7705-b8a3-490a-92df-542b7c9c7b7e: 1
+13:34:51 | INFO | Starting deep scrape for job 86a92116-265c-4012-be95-f7acdbf8ce8c: https://in.linkedin.com/jobs/view/software-engineer-ii-at-mr-cooper-4343566297
+13:34:54 | INFO | Starting scrape for Location: Bengaluru | Keywords: ['Software Developer', 'Software Engineer', 'Backend Developer', 'Backend Engineer']
+13:34:55 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22+OR+%22Backend+Developer%22+OR+%22Backend+Engineer%22%29&location=Bengaluru&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+13:34:55 | INFO | Successfully scraped job details (1/10 in session)
+13:35:00 | INFO | Deep scrape completed for job aec9398e-a513-4a04-a86f-1def13e30d0f
+13:35:02 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-ii-at-mr-cooper-4343566297 after 4.2min delay...
+13:35:03 | INFO | Navigating to job detail page...
+13:35:08 | INFO | Successfully scraped job details (2/10 in session)
+13:35:13 | INFO | Deep scrape completed for job eadfa8b9-9c93-4abb-9150-58e8fecd9331
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:35:21 | INFO | Manual Task: Found 1 pending tasks.
+13:35:24 | INFO | Processing task 3a32b376-8822-4989-a24a-94f7d6bc5d54: 1
+13:35:24 | INFO | Starting deep scrape for job ee88ea09-5c4d-47a0-9187-4a89e4a333a3: https://in.linkedin.com/jobs/view/software-engineer-i-at-ncr-voyix-4358212884
+13:35:28 | INFO | DEBUG: First Job Title: 'Backend Developer'
+13:35:28 | WARNING | Obfuscated Title Detected: *****
+13:35:28 | WARNING | Obfuscated Title Detected: *****
+13:35:28 | WARNING | Obfuscated Title Detected: ******
+13:35:28 | WARNING | Obfuscated Title Detected: *****
+13:35:28 | INFO |   + Scraped 7 new jobs (Loc Total: 7)
+13:35:36 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-i-at-ncr-voyix-4358212884 after 4.2min delay...
+13:35:37 | INFO | DEBUG: First Job Title: 'Backend Developer'
+13:35:37 | WARNING | Obfuscated Title Detected: *****
+13:35:37 | WARNING | Obfuscated Title Detected: *****
+13:35:37 | WARNING | Obfuscated Title Detected: ******
+13:35:37 | WARNING | Obfuscated Title Detected: *****
+13:35:37 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+13:35:38 | INFO |   Reached bottom of results (no height change).
+13:35:38 | INFO | Syncing 7 jobs from Bengaluru to server...
+13:35:38 | INFO | --- [BATCH SCORING & SYNC] 7 Jobs ---
+13:35:38 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:35:41 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:35:41 | INFO | Local AI Response received (Status: 200)
+      + [80%] Backend Developer | YourfriendlyHR
+13:35:41 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:35:43 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:35:43 | INFO | Local AI Response received (Status: 200)
+      + [80%] Interesting Job Opportunity: B | SwiffyLabs
+13:35:43 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:35:47 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:35:47 | INFO | Local AI Response received (Status: 200)
+      + [80%] Software Engineer, I | Zebra Technologies
+13:35:47 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:35:49 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:35:49 | INFO | Local AI Response received (Status: 200)
+      + [80%] ***** | *****
+13:35:49 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:35:53 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:35:53 | INFO | Local AI Response received (Status: 200)
+      + [80%] ***** | *****
+13:35:53 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:35:59 | INFO | Manual Task: Found 1 pending tasks.
+13:36:02 | INFO | Processing task d7eef0e6-c368-48ba-9181-5ff969d3c49e: 1
+13:36:02 | INFO | Starting deep scrape for job 9a84c89b-d90d-4513-8da1-b27ff2ef3cd8: https://in.linkedin.com/jobs/view/software-engineer-ii-at-byepo-technologies-4330524469
+13:36:02 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:36:06 | INFO | Local AI Response received (Status: 200)
+      + [80%] ****** | ******
+13:36:06 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:36:08 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:36:08 | INFO | Local AI Response received (Status: 200)
+      + [80%] ***** | *****
+13:36:22 | INFO |       [Synced 7 scored jobs to server]
+13:36:22 | INFO | Finished Bengaluru. Sleeping for 5.23s...
+13:36:22 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-ii-at-byepo-technologies-4330524469 after 4.7min delay...
+13:36:27 | INFO | Total Unique Jobs Scraped: 11
+13:36:27 | ERROR | Error fetching task 0c0c128d-a667-401d-b3b5-85306ec940ea: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:27 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:36:32 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:34 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:38 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:38 | ERROR | Network failure after 3 attempts.
+13:36:38 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:40 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:44 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:44 | ERROR | Network failure after 3 attempts.
+13:36:44 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:36:44 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:46 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:36:57 | INFO | Local AI Response received (Status: 200)
+13:37:00 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:37:04 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:37:04 | INFO | Local AI Response received (Status: 200)
+13:37:07 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:37:11 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:37:11 | INFO | Local AI Response received (Status: 200)
+13:37:14 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:37:21 | INFO | Manual Task: Found 1 pending tasks.
+13:37:24 | INFO | Processing task 6e15736e-466e-4f47-b1c1-aff6491af5c9: 1
+13:37:24 | INFO | Starting deep scrape for job 5acf1e5c-f834-40cd-9e2e-2a7a99033771: https://in.linkedin.com/jobs/view/mern-stack-developer-at-different-hair-pvt-ltd-4330384479
+13:37:32 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:37:32 | INFO | Deep scraping https://in.linkedin.com/jobs/view/mern-stack-developer-at-different-hair-pvt-ltd-4330384479 after 3.1min delay...
+13:37:32 | INFO | Local AI Response received (Status: 200)
+13:37:35 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:37:39 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:37:39 | INFO | Local AI Response received (Status: 200)
+13:37:42 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:37:47 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:37:47 | INFO | Local AI Response received (Status: 200)
+13:38:04 | ERROR | Error fetching task 0c0c128d-a667-401d-b3b5-85306ec940ea: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+13:38:04 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:38:04 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:06 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:10 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:10 | ERROR | Network failure after 3 attempts.
+13:38:10 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:12 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:16 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:16 | ERROR | Network failure after 3 attempts.
+13:38:16 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:18 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:22 | WARNING | Network error on POST agents/heartbeat (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:22 | ERROR | Network failure after 3 attempts.
+13:38:27 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:38:27 | INFO | Local AI Response received (Status: 200)
+13:38:27 | ERROR | Error fetching task 0c0c128d-a667-401d-b3b5-85306ec940ea: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+13:38:27 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:38:31 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:38:31 | INFO | Local AI Response received (Status: 200)
+13:38:36 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:38:39 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:38:39 | INFO | Local AI Response received (Status: 200)
+13:38:42 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:38:53 | INFO | Manual Task: Found 1 pending tasks.
+13:39:00 | INFO | Processing task c440cec6-876a-48c3-9f97-c14d5a327de4: 1
+13:39:00 | INFO | Starting deep scrape for job e7caa50d-5790-47c9-b525-b08f47e16c42: https://in.linkedin.com/jobs/view/backend-developer-at-yourfriendlyhr-4330525150
+13:39:00 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:39:05 | INFO | Local AI Response received (Status: 200)
+13:39:09 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+13:39:14 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+13:39:14 | INFO | Local AI Response received (Status: 200)
+13:39:22 | INFO | Task 0c0c128d-a667-401d-b3b5-85306ec940ea completed. Found 11 jobs.
+13:39:22 | INFO | Navigating to job detail page...
+13:39:22 | INFO | Deep scraping https://in.linkedin.com/jobs/view/backend-developer-at-yourfriendlyhr-4330525150 after 3.8min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:39:35 | INFO | Manual Task: Found 1 pending tasks.
+13:39:38 | INFO | Processing task 97262bdc-c129-421a-8b7d-58e40b52fa66: 1
+13:39:38 | INFO | Starting deep scrape for job dd778da4-744e-4d38-a7d0-d69823aeeba3: https://in.linkedin.com/jobs/view/interesting-job-opportunity-backend-engineer-i-java-technologies-at-swiffylabs-4358295438
+13:39:48 | INFO | Successfully scraped job details (1/10 in session)
+13:39:53 | INFO | Deep scrape completed for job 86a92116-265c-4012-be95-f7acdbf8ce8c
+13:39:53 | INFO | Navigating to job detail page...
+13:39:54 | INFO | Deep scraping https://in.linkedin.com/jobs/view/interesting-job-opportunity-backend-engineer-i-java-technologies-at-swiffylabs-4358295438 after 4.5min delay...
+13:39:58 | INFO | Successfully scraped job details (2/10 in session)
+13:40:03 | INFO | Deep scrape completed for job ee88ea09-5c4d-47a0-9187-4a89e4a333a3
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:40:13 | INFO | Manual Task: Found 1 pending tasks.
+13:40:16 | INFO | Processing task 304b3ddf-9364-47f2-b86c-d455885b0bbe: 1
+13:40:16 | INFO | Starting deep scrape for job 86cd46d4-463f-4c89-87be-60a560ae4f13: https://in.linkedin.com/jobs/view/software-engineer-i-at-zebra-technologies-4351209877
+13:40:23 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-i-at-zebra-technologies-4351209877 after 3.4min delay...
+13:40:36 | INFO | Navigating to job detail page...
+13:40:42 | INFO | Successfully scraped job details (1/10 in session)
+13:40:49 | INFO | Deep scrape completed for job 5acf1e5c-f834-40cd-9e2e-2a7a99033771
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:40:53 | INFO | Manual Task: Found 1 pending tasks.
+13:41:00 | INFO | Processing task e5419f40-cab3-4c25-96f9-d7548ee0029b: 1
+13:41:00 | INFO | Starting deep scrape for job d80a33b8-5f06-4ddb-a60d-379745b46c58: https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4358291544
+13:41:05 | INFO | Navigating to job detail page...
+13:41:11 | INFO | Successfully scraped job details (1/10 in session)
+13:41:16 | INFO | Deep scrape completed for job 9a84c89b-d90d-4513-8da1-b27ff2ef3cd8
+13:41:16 | INFO | Deep scraping https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4358291544 after 3.2min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:41:37 | INFO | Manual Task: Found 1 pending tasks.
+13:41:41 | INFO | Processing task e27774b5-02d6-4c39-9360-b9647479b251: 1
+13:41:41 | INFO | Starting deep scrape for job 264649a2-ed59-4f5d-8c1a-8770385b9aeb: https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4354665569
+13:41:55 | INFO | Deep scraping https://in.linkedin.com/jobs/view/backend-developer-at-wipro-4354665569 after 4.4min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:42:16 | INFO | Manual Task: Found 1 pending tasks.
+13:42:20 | INFO | Processing task 30b83184-4108-4acc-aadc-e40a9374e3b8: 1
+13:42:20 | INFO | Starting deep scrape for job 8341195f-67db-4ac8-a4d7-b55930f24ab6: https://in.linkedin.com/jobs/view/software-engineer-at-netapp-4351760038
+13:42:31 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-netapp-4351760038 after 3.1min delay...
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+13:42:56 | INFO | Manual Task: Found 1 pending tasks.

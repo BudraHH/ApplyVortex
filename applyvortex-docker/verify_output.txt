@@ -1,0 +1,31 @@
+User ID: 40ddd3ab-3dfd-4b0d-a4f8-38ff26a2a273
+
+--- User Profile ---
+Headline: Professional
+Summary: None
+
+--- Educations (1) ---
+- Rathinam Technical Campus (Bachelor of Technology)
+
+--- Experiences (2) ---
+- SystItSoft Solutions (Full Stack Developer (React Specialist))
+- Zoho Corporation (ManageEngine) (Software Developer (Full Stack))
+
+--- Projects (4) ---
+- ApplyVortex - Enterprise Job Application Platform
+- TestCo - Test Management System
+- AutoIntell - Predictive Maintenance System
+- CVE Management System
+
+--- Research (0) ---
+
+--- Accomplishments (0) ---
+
+--- Certifications (2) ---
+- iMobilithon Hackathon 2024
+- PSG iTech Hackfest 2024
+
+--- Skill Maps (Counts) ---
+Project-Skill Mappings: 0
+Experience-Skill Mappings: 0
+Total Unique Skills in DB: 451

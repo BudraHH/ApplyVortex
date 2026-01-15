@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Colors */
+    --background: 0 0% 100%;
+    /* White */
+    --foreground: 210 100% 12.4%;
+    /* Navy Blue (#001F3F) */
+
+    /* Card & Popover */
+    --card: 0 0% 100%;
+    --card-foreground: 210 100% 12.4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 100% 12.4%;
+
+    /* Primary - Navy in Light Mode */
+    --primary: 210 100% 12.4%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Very Light Navy/White mix */
+    --secondary: 210 100% 98%;
+    --secondary-foreground: 210 100% 12.4%;
+
+    /* Muted */
+    --muted: 210 50% 96%;
+    --muted-foreground: 210 40% 40%;
+    /* Medium Navy for text */
+
+    /* Accent */
+    --accent: 210 50% 96%;
+    --accent-foreground: 210 100% 12.4%;
+
+    /* Status Colors - Mapped to Tailwind defaults but available as vars */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 210 100% 12.4%;
+    /* Navy (often used with opacity in utilities e.g. border-border/10) */
+    --input: 210 100% 12.4%;
+    --ring: 210 100% 12.4%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Base Colors */
+    --background: 210 100% 12.4%;
+    /* Navy Blue (#001F3F) */
+    --foreground: 0 0% 100%;
+    /* White */
+
+    /* Card & Popover */
+    --card: 210 100% 12.4%;
+    /* Keep background Navy, glassmorphism handled in components via bg-white/5 */
+    --card-foreground: 0 0% 100%;
+    --popover: 210 100% 12.4%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary - White in Dark Mode */
+    --primary: 0 0% 100%;
+    --primary-foreground: 210 100% 12.4%;
+
+    /* Secondary */
+    --secondary: 210 50% 20%;
+    /* Slightly lighter Navy for contrast */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted */
+    --muted: 210 50% 20%;
+    --muted-foreground: 210 20% 70%;
+    /* Light Blue-Grey */
+
+    /* Accent */
+    --accent: 210 50% 20%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Borders */
+    --border: 0 0% 100%;
+    --input: 0 0% 100%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #050505;
+  }
+}
+
+/* Custom Scrollbar - Dark Sleek Theme */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Light mode scrollbar */
+.light *::-webkit-scrollbar-thumb,
+html:not(.dark) *::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+}
+
+.light *::-webkit-scrollbar-thumb:hover,
+html:not(.dark) *::-webkit-scrollbar-thumb:hover {
+  background: #BBBBBB;
+}
+
+/* Hide scrollbar when not hovering (optional sleek effect) */
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.hide-scrollbar:hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Shimmer Animation for Progress Bar */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+
+  10% {
+    transform: translate(-1px, -1px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, -1px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(1px, 1px) rotate(1deg);
+  }
+
+  70% {
+    transform: translate(-1px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(-1px, -1px) rotate(-1deg);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.animate-vibrate {
+  animation: vibrate 0.75s linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.4;
+            font-size: 10pt; /* Optimal for A4 */
+        }
+        h1, h2, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            font-size: 24pt;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header .contact {
+            font-size: 9pt;
+            margin-top: 5px;
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 11pt;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 8px;
+            padding-bottom: 2px;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .summary p {
+            margin: 0;
+            text-align: justify;
+        }
+        
+        .skills-table {
+            width: 100%;
+            font-size: 9pt;
+        }
+        .skills-table td {
+            vertical-align: top;
+            padding-bottom: 4px;
+        }
+        .skill-category {
+            font-weight: bold;
+            width: 15%;
+            padding-right: 10px;
+        }
+        
+        .job-item {
+            margin-bottom: 10px;
+        }
+        .job-header {
+            display: flex; /* WeasyPrint supports flex */
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 10.5pt;
+        }
+        .job-sub {
+            font-style: italic;
+            font-size: 9pt;
+            color: #555;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .job-bullets {
+            margin: 0;
+            padding-left: 15px;
+        }
+        .job-bullets li {
+            margin-bottom: 2px;
+        }
+        
+        .project-item {
+            margin-bottom: 8px;
+        }
+        .project-header {
+            font-weight: bold;
+        }
+        .project-tech {
+            font-style: italic;
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        .education-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ resume.personal_info.name }}</h1>
+        <div class="contact">{{ resume.personal_info.contact }}</div>
+    </div>
+
+    <!-- Summary -->
+    {% if resume.summary %}
+    <div class="section summary">
+        <div class="section-title">Professional Summary</div>
+        <p>{{ resume.summary }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Skills -->
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <table class="skills-table">
+            {% if resume.skills.languages %}
+            <tr>
+                <td class="skill-category">Languages:</td>
+                <td>{{ resume.skills.languages | join(', ') }}</td>
+            </tr>
+            {% endif %}
+            {% if resume.skills.frameworks %}
+            <tr>
+                <td class="skill-category">Frameworks:</td>
+                <td>{{ resume.skills.frameworks | join(', ') }}</td>
+            </tr>
+            {% endif %}
+            {% if resume.skills.tools %}
+            <tr>
+                <td class="skill-category">Tools/Cloud:</td>
+                <td>{{ resume.skills.tools | join(', ') }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="section">
+        <div class="section-title">Work Experience</div>
+        {% for job in resume.work_experience %}
+        <div class="job-item">
+            <div class="job-header">
+                <span>{{ job.company }}</span>
+                <span>{{ job.dates }}</span>
+            </div>
+            <div class="job-sub">
+                <span>{{ job.role }}</span>
+            </div>
+            <ul class="job-bullets">
+                {% for bullet in job.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Projects -->
+    {% if resume.projects %}
+    <div class="section">
+        <div class="section-title">Relevant Projects</div>
+        {% for project in resume.projects %}
+        <div class="project-item">
+            <div class="project-header">
+                {{ project.name }} 
+                <span class="project-tech">| {{ project.tech_stack }}</span>
+            </div>
+            <div>{{ project.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Education -->
+    <div class="section">
+        <div class="section-title">Education</div>
+        {% for edu in resume.education %}
+        <div class="education-item">
+            <div class="job-header">
+                <span>{{ edu.institution }}</span>
+                <span>{{ edu.dates }}</span>
+            </div>
+            <div class="job-sub">
+                <span>{{ edu.degree }}</span>
+            </div>
+            {% if edu.details %}
+            <div>{{ edu.details }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Base Colors - Light Mode */
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+
+        /* Card & Popover */
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+
+        /* Primary - Black in Light Mode */
+        --primary: 240 5.9% 10%;
+        --primary-foreground: 0 0% 98%;
+
+        /* Secondary */
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+
+        /* Muted */
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+
+        /* Accent */
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+
+        /* Status Colors */
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --warning: 45 93% 47%;
+        --warning-foreground: 0 0% 100%;
+        --success: 142 76% 36%;
+        --success-foreground: 0 0% 100%;
+
+        /* Borders - Subtle Gray */
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 240 5.9% 10%;
+
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    section[id] {
+        scroll-margin-top: 5rem;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
+}
+
+/* Shimmer Animation for Progress Bar */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes vibrate {
+    0% {
+        transform: translate(0);
+    }
+
+    10% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(1px, 1px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(1px, 1px) rotate(1deg);
+    }
+
+    70% {
+        transform: translate(-1px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.animate-vibrate {
+    animation: vibrate 0.75s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

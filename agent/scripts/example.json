@@ -1,0 +1,16 @@
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a specialized Resume Parsing Engine. Extract the following candidate data into the strict ApplyVortex JSON schema. Return ONLY valid JSON."
+        },
+        {
+            "role": "user",
+            "content": "\nALEX DOE\nalex.doe@example.com | San Francisco\n\n\nTECHNICAL SKILLS\nKubernetes | Machine Learning | Azure\n \nPROFESSIONAL EXPERIENCE\nSoftSolutions - Data Scientist\n2020 - Present\n* Developed Kubernetes applications.\n* Improved performance by 20%."
+        },
+        {
+            "role": "assistant",
+            "content": "{\"personal\": {\"name\": \"Alex Doe\", \"email\": \"alex.doe@example.com\", \"location\": \"San Francisco\"}, \"skills\": [\"Kubernetes\", \"Machine Learning\", \"Azure\"], \"experience\": [{\"company\": \"SoftSolutions\", \"role\": \"Data Scientist\", \"dates\": \"2020 - Present\", \"bullets\": [\"Developed Kubernetes applications.\", \"Improved performance by 20%.\"]}]}"
+        }
+    ]
+}

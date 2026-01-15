@@ -1,0 +1,93 @@
+import tailwindcssAnimate from "tailwindcss-animate";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+	content: [
+		'./pages/**/*.{js,jsx}',
+		'./components/**/*.{js,jsx}',
+		'./app/**/*.{js,jsx}',
+		'./src/**/*.{js,jsx}',
+	],
+	prefix: "",
+	theme: {
+		extend: {
+			colors: {
+				border: 'hsl(var(--border))',
+				input: 'hsl(var(--input))',
+				ring: 'hsl(var(--ring))',
+				background: 'hsl(var(--background))',
+				foreground: 'hsl(var(--foreground))',
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))'
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))'
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive))',
+					foreground: 'hsl(var(--destructive-foreground))'
+				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))'
+				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover))',
+					foreground: 'hsl(var(--popover-foreground))'
+				},
+				card: {
+					DEFAULT: 'hsl(var(--card))',
+					foreground: 'hsl(var(--card-foreground))'
+				},
+				brand: {
+					DEFAULT: '#113F67',
+					50: '#eff5fa',
+					100: '#dae8f4',
+					200: '#b4d3ec',
+					300: '#80b5e0',
+					400: '#4892d1',
+					500: '#113F67', // User's requested primary color
+					600: '#0d3252',
+					700: '#0a2740',
+					800: '#081f33',
+					900: '#051421',
+					950: '#030b12'
+				}
+			},
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
+			},
+			'accordion-down': 'accordion-down 0.2s ease-out',
+			'accordion-up': 'accordion-up 0.2s ease-out',
+			'float': 'float 6s ease-in-out infinite',
+			'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+		},
+		keyframes: {
+			'accordion-down': {
+				from: { height: '0' },
+				to: { height: 'var(--radix-accordion-content-height)' }
+			},
+			'accordion-up': {
+				from: { height: 'var(--radix-accordion-content-height)' },
+				to: { height: '0' }
+			},
+			float: {
+				'0%, 100%': { transform: 'translateY(0)' },
+				'50%': { transform: 'translateY(-20px)' },
+			},
+			'pulse-glow': {
+				'0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+				'50%': { opacity: '1', transform: 'scale(1.05)' },
+			}
+		}
+	},
+	plugins: [tailwindcssAnimate],
+}

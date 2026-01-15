@@ -1,0 +1,181 @@
+x-base-config: &base-config
+  restart: unless-stopped
+  logging:
+    driver: "json-file"
+    options:
+      max-size: "10m"
+      max-file: "3"
+
+services:
+  # ==========================================
+  # DATABASE (PostgreSQL 16)
+  # ==========================================
+  # Note: You are using AWS Neon in SERVER config, so this local DB is optional.
+  # db:
+    # image: postgres:16-alpine
+    # <<: *base-config
+    # environment:
+    #   POSTGRES_DB: applyvortex
+    #   POSTGRES_USER: applyvortex_user
+    #   POSTGRES_PASSWORD: securepassword123
+    # ports:
+    #   - "5433:5432"
+    # volumes:
+    #   - postgres_data:/var/lib/postgresql/data
+    #   - ./server/app/db:/docker-entrypoint-initdb.d 
+    #   - ./logs:/logs
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready -U applyvortex_user -d applyvortex"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 10
+    #   start_period: 60s 
+    # networks:
+    #   - applyvortex-network
+
+  # ==========================================
+  # CACHE & RATE LIMITING (Redis)
+  # ==========================================
+  redis:
+    image: redis:7-alpine
+    <<: *base-config
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - applyvortex-network
+
+  # ==========================================
+  # SERVER (FastAPI)
+  # ==========================================
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    <<: *base-config
+    ports:
+      - "8000:8000"
+    environment:
+      # Using AWS Neon DB (Cloud)
+      DATABASE_URL: postgresql+asyncpg://neondb_owner:npg_pIXv9NKHU3CO@ep-muddy-rain-a47uehdw-pooler.us-east-1.aws.neon.tech/applyforge_db
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      DEBUG: "True"                 # Changed to True for dev
+      ENVIRONMENT: development
+      CLIENT_URL: http://localhost:3000
+      SMTP_HOST: smtp.gmail.com
+      SMTP_PORT: 587
+      SMTP_USER: your-email@gmail.com
+      SMTP_PASSWORD: your-app-password
+      R2_ENDPOINT_URL: ${R2_ENDPOINT_URL}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME}
+      LOG_LEVEL: INFO
+      AI_API_KEY: ${AI_API_KEY:-}
+    depends_on:
+      # db: condition: service_healthy  <-- Disabled because you use Neon DB
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./server:/app             # <--- SYNC CODE: Host folder -> Container
+      - static_volume:/app/static
+      - ./logs:/logs
+    # ADDED --reload for hot reloading
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --loop asyncio
+    networks:
+      - applyvortex-network
+
+  # ==========================================
+  # CELERY WORKER
+  # ==========================================
+  worker:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    <<: *base-config
+    environment:
+      DATABASE_URL: postgresql+asyncpg://neondb_owner:npg_pIXv9NKHU3CO@ep-muddy-rain-a47uehdw-pooler.us-east-1.aws.neon.tech/applyforge_db
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: 09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      # ... (Include other necessary env vars here)
+      PYTHONPATH: /app
+    command: python -m celery -A app.core.celery_app worker --loglevel=info
+    volumes:
+      - ./server:/app             # <--- SYNC CODE for worker too
+    depends_on:
+      - redis
+    networks:
+      - applyvortex-network
+    healthcheck:
+      disable: true
+
+  # ==========================================
+  # FLOWER (Celery Monitor)
+  # ==========================================
+  flower:
+    image: mher/flower
+    environment:
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+      - worker
+    networks:
+      - applyvortex-network
+
+  # ==========================================
+  # CLIENT (React/Vite Dev Server)
+  # ==========================================
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: development
+    <<: *base-config
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Important for Linux file watching
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./client:/app             # <--- SYNC CODE: Host -> Container
+      - /app/node_modules         # <--- PRESERVE dependencies inside container
+    # Run Dev Server (Make sure your Dockerfile supports this!)
+    command: npm run dev -- --host 0.0.0.0 --port 3000
+    networks:
+      - applyvortex-network
+
+  # ==========================================
+  # ADMINER
+  # ==========================================
+  adminer:
+    image: adminer
+    <<: *base-config
+    ports:
+      - "8080:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    networks:
+      - applyvortex-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  static_volume:
+    driver: local
+
+networks:
+  applyvortex-network:
+    driver: bridge

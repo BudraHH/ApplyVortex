@@ -1,0 +1,1269 @@
+nohup: ignoring input
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+22:52:33 | INFO | Using existing agent ID: 7035fc96...
+Initializing Headless Mode...
+22:52:33 | INFO | HTTP Request: GET http://localhost:11434/ "HTTP/1.1 200 OK"
+22:52:33 | INFO | HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+22:52:34 | WARNING | Authentication failed (401). Attempting re-login...
+22:52:34 | INFO | Verifying API key authentication...
+22:52:37 | INFO | Authentication successful!
+22:52:38 | INFO | Verifying API key authentication...
+22:52:41 | INFO | Authentication successful!
+22:52:41 | INFO | Registering agent: TUF
+22:52:48 | INFO | Agent registered successfully!
+22:52:48 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+
+>>> [PHASE 1] Found 1 manual scraping tasks. Starting...
+22:54:09 | INFO | Manual Task: Found 1 pending tasks.
+22:54:13 | INFO | Processing task 01eeb045-21e7-4ec9-866f-948a2f22b8ac: 1
+22:54:13 | INFO | Starting Stealth Browser (headless=True)...
+22:54:13 | WARNING | Stealth launch failed: module 'undetected_playwright' has no attribute 'init'. Falling back to standard Playwright.
+22:54:18 | INFO | Standard Browser started: chromium (headless: True)
+22:54:18 | INFO | Checking authentication status...
+22:54:23 | INFO | User is authenticated.
+22:54:27 | INFO | Starting scrape for Location: Chennai | Keywords: ['Software Developer', 'Software Engineer']
+22:54:27 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22%29&location=Chennai&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+22:54:56 | INFO | DEBUG: First Job Title: 'Software Engineer'
+22:54:56 | INFO |   + Scraped 2 new jobs (Loc Total: 2)
+22:55:06 | INFO | DEBUG: First Job Title: 'Software Engineer'
+22:55:06 | INFO |   No new jobs from scrolling. Checking for 'Next' page button...
+22:55:06 | INFO |   Reached bottom of results (no height change).
+22:55:06 | INFO | Syncing 2 jobs from Chennai to server...
+22:55:07 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:55:09 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:55:09 | INFO | Local AI Response received (Status: 200)
+22:55:09 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:55:11 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:55:11 | INFO | Local AI Response received (Status: 200)
+22:55:18 | INFO | Finished Chennai. Sleeping for 6.13s...
+22:55:36 | INFO | Starting scrape for Location: Hyderabad | Keywords: ['Software Developer', 'Software Engineer']
+22:55:36 | INFO | Navigating to https://www.linkedin.com/jobs/search/?keywords=%28%22Software+Developer%22+OR+%22Software+Engineer%22%29&location=Hyderabad&f_TPR=r86400&f_E=2&f_JT=F&f_WT=1
+22:55:55 | INFO | DEBUG: First Job Title: 'Software Engineer'
+22:55:55 | WARNING | Obfuscated Title Detected: *** ***** *** *******
+22:55:55 | WARNING | Obfuscated Title Detected: **** ******
+22:55:55 | WARNING | Obfuscated Title Detected: **&* ************
+22:55:55 | WARNING | Obfuscated Title Detected: *******
+22:55:55 | INFO |   + Scraped 7 new jobs (Loc Total: 7)
+22:55:55 | INFO | Syncing 7 jobs from Hyderabad to server...
+22:55:55 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:55:57 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:55:57 | INFO | Local AI Response received (Status: 200)
+22:55:57 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:06 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:12 | INFO | Local AI Response received (Status: 200)
+22:56:12 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:13 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:13 | INFO | Local AI Response received (Status: 200)
+22:56:13 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:18 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:18 | INFO | Local AI Response received (Status: 200)
+22:56:18 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:23 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:23 | INFO | Local AI Response received (Status: 200)
+22:56:23 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:27 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:27 | INFO | Local AI Response received (Status: 200)
+22:56:27 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+22:56:30 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+22:56:30 | INFO | Local AI Response received (Status: 200)
+22:56:45 | INFO | Finished Hyderabad. Sleeping for 6.08s...
+22:56:57 | INFO | Total Unique Jobs Scraped: 9
+22:57:05 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-valeo-4344462006 after 3.8min delay...
+23:00:51 | INFO | Navigating to job detail page...
+23:01:09 | INFO | No expand button found or description already expanded.
+23:01:09 | INFO | Successfully scraped job details (1/10 in session)
+23:01:09 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:01:18 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:01:23 | INFO | Local AI Response received (Status: 200)
+23:01:42 | INFO | Deep scraping https://in.linkedin.com/jobs/view/engineer-software-test-automation-at-kla-4347590066 after 3.9min delay...
+23:05:33 | INFO | Navigating to job detail page...
+23:06:03 | INFO | No expand button found or description already expanded.
+23:06:03 | INFO | Successfully scraped job details (1/10 in session)
+23:06:03 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:06:10 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:06:10 | INFO | Local AI Response received (Status: 200)
+23:06:37 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-eli-lilly-and-company-4334088927 after 3.5min delay...
+23:10:11 | INFO | Navigating to job detail page...
+23:10:31 | INFO | No expand button found or description already expanded.
+23:10:31 | INFO | Successfully scraped job details (1/10 in session)
+23:10:31 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:10:38 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:10:38 | INFO | Local AI Response received (Status: 200)
+23:11:05 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-eli-lilly-and-company-4333979506 after 4.4min delay...
+23:15:29 | INFO | Navigating to job detail page...
+23:16:03 | INFO | No expand button found or description already expanded.
+23:16:03 | INFO | Successfully scraped job details (1/10 in session)
+23:16:03 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:16:13 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:16:13 | INFO | Local AI Response received (Status: 200)
+23:16:43 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-eli-lilly-and-company-4334039536 after 4.1min delay...
+23:20:58 | INFO | Navigating to job detail page...
+23:21:19 | INFO | No expand button found or description already expanded.
+23:21:19 | INFO | Successfully scraped job details (1/10 in session)
+23:21:19 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:21:36 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:21:42 | INFO | Local AI Response received (Status: 200)
+23:22:01 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-at-eli-lilly-and-company-4334049570 after 3.9min delay...
+23:25:53 | INFO | Navigating to job detail page...
+23:26:22 | INFO | No expand button found or description already expanded.
+23:26:23 | INFO | Successfully scraped job details (1/10 in session)
+23:26:23 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:26:28 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:26:28 | INFO | Local AI Response received (Status: 200)
+23:26:55 | INFO | Deep scraping https://in.linkedin.com/jobs/view/associate-software-engineer-at-blue-yonder-4330827266 after 3.9min delay...
+23:30:49 | INFO | Navigating to job detail page...
+23:31:18 | INFO | No expand button found or description already expanded.
+23:31:19 | INFO | Successfully scraped job details (1/10 in session)
+23:31:19 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:31:25 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:31:25 | INFO | Local AI Response received (Status: 200)
+23:31:48 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-pa2025mspoff165-at-ss-c-technologies-4314851342 after 4.0min delay...
+23:35:46 | INFO | Navigating to job detail page...
+23:36:04 | INFO | No expand button found or description already expanded.
+23:36:04 | INFO | Successfully scraped job details (1/10 in session)
+23:36:04 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:36:16 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:36:22 | INFO | Local AI Response received (Status: 200)
+23:36:42 | INFO | Deep scraping https://in.linkedin.com/jobs/view/software-engineer-ii-at-cadence-4246255205 after 3.2min delay...
+23:39:55 | INFO | Navigating to job detail page...
+23:40:25 | INFO | No expand button found or description already expanded.
+23:40:25 | INFO | Successfully scraped job details (1/10 in session)
+23:40:25 | INFO | Local AI Request to http://localhost:11434/v1/chat/completions (Model: llama3.2) - Attempt 1
+23:40:30 | INFO | HTTP Request: POST http://localhost:11434/v1/chat/completions "HTTP/1.1 200 OK"
+23:40:30 | INFO | Local AI Response received (Status: 200)
+23:40:37 | INFO | Submitting Result Data keys: ['jobs', 'count']
+01:45:03 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+04:56:31 | INFO | Using existing agent ID: 7035fc96...
+04:56:31 | INFO | Starting Flet View app...
+04:56:31 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+04:56:31 | INFO | Verifying API key authentication...
+04:56:35 | ERROR | Authentication error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+04:56:35 | ERROR | Agent login failed. Retrying in 5s...
+04:56:40 | INFO | Verifying API key authentication...
+04:56:40 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+04:56:40 | ERROR | Agent login failed. Retrying in 10s...
+04:56:50 | INFO | Verifying API key authentication...
+04:56:50 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+04:56:50 | ERROR | Agent login failed. Retrying in 20s...
+04:57:10 | INFO | Verifying API key authentication...
+04:57:14 | INFO | Authentication successful!
+04:57:14 | INFO | GUI: Updating status to Online=True
+04:57:14 | INFO | Registering agent: TUF
+04:57:22 | INFO | Agent registered successfully!
+04:57:22 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+04:57:35 | INFO | GUI: Updating status to Online=True
+04:58:12 | INFO | GUI: Updating status to Online=True
+04:58:48 | INFO | GUI: Updating status to Online=True
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:13:09 | INFO | Using existing agent ID: 7035fc96...
+05:13:09 | INFO | Starting Flet View app...
+05:13:09 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:13:09 | INFO | Verifying API key authentication...
+05:13:12 | INFO | Authentication successful!
+05:13:12 | INFO | GUI: Updating status to Online=True
+05:13:12 | INFO | Registering agent: TUF
+05:13:18 | INFO | Agent registered successfully!
+05:13:18 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:13:19 | WARNING | Authentication failed (401). Attempting re-login...
+05:13:19 | INFO | Verifying API key authentication...
+05:13:22 | INFO | Authentication successful!
+05:13:24 | WARNING | Authentication failed (401). Attempting re-login...
+05:13:24 | INFO | Verifying API key authentication...
+05:13:27 | INFO | Authentication successful!
+05:13:28 | WARNING | Failed to fetch full profile on startup.
+05:13:28 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:13:39 | INFO | GUI: Updating status to Online=True
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:14:30 | INFO | Using existing agent ID: 7035fc96...
+05:14:30 | INFO | Starting Flet View app...
+05:14:30 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:14:30 | INFO | Verifying API key authentication...
+05:14:30 | ERROR | Authentication error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:14:30 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:14:30 | ERROR | Agent login failed. Retrying in 5s...
+05:14:32 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:35 | INFO | Verifying API key authentication...
+05:14:35 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:35 | ERROR | Agent login failed. Retrying in 10s...
+05:14:36 | WARNING | Network error on POST agents/heartbeat (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:36 | ERROR | Network failure after 3 attempts.
+05:14:36 | INFO | GUI: Updating status to Online=False
+05:14:40 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:42 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:45 | INFO | Verifying API key authentication...
+05:14:45 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:45 | ERROR | Agent login failed. Retrying in 20s...
+05:14:46 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:46 | ERROR | Network failure after 3 attempts.
+05:14:46 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:14:48 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:15:05 | INFO | Verifying API key authentication...
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:15:06 | INFO | Using existing agent ID: 7035fc96...
+05:15:06 | INFO | Starting Flet View app...
+05:15:06 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:15:06 | INFO | Verifying API key authentication...
+05:15:09 | INFO | Authentication successful!
+05:15:09 | INFO | GUI: Updating status to Online=True
+05:15:09 | INFO | Registering agent: TUF
+05:15:14 | INFO | Authentication successful!
+05:15:14 | INFO | GUI: Updating status to Online=True
+05:15:14 | INFO | Registering agent: TUF
+05:15:16 | INFO | Agent registered successfully!
+05:15:16 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:15:16 | WARNING | Authentication failed (401). Attempting re-login...
+05:15:16 | INFO | Verifying API key authentication...
+05:15:19 | INFO | Authentication successful!
+05:15:26 | INFO | Agent registered successfully!
+05:15:26 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:15:27 | WARNING | Authentication failed (401). Attempting re-login...
+05:15:27 | INFO | Verifying API key authentication...
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:15:29 | INFO | Using existing agent ID: 7035fc96...
+05:15:29 | INFO | Starting Flet View app...
+05:15:29 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: MissingPluginException(No implementation found for method _init on channel plugins.flutter.io/google_mobile_ads)
+#0      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:332)
+<asynchronous suspension>
+
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: MissingPluginException(No implementation found for method MobileAds#initialize on channel plugins.flutter.io/google_mobile_ads)
+#0      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:332)
+<asynchronous suspension>
+#1      AdInstanceManager.initialize (package:google_mobile_ads/src/ad_instance_manager.dart:440)
+<asynchronous suspension>
+
+05:15:30 | INFO | Verifying API key authentication...
+05:15:33 | INFO | Authentication successful!
+05:15:33 | INFO | GUI: Updating status to Online=True
+05:15:33 | INFO | Registering agent: TUF
+05:15:39 | INFO | Agent registered successfully!
+05:15:39 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:15:40 | WARNING | Authentication failed (401). Attempting re-login...
+05:15:40 | INFO | Verifying API key authentication...
+05:15:43 | INFO | Authentication successful!
+05:15:52 | INFO | Fetched FULL user profile for caching.
+05:15:52 | INFO | Saved full profile to cache.
+05:15:52 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:15:52 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Stack Overflow
+#0      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#1      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#2      main.<anonymous closure> (package:flet_client/main.dart)
+#3      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#4      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#5      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#6      main.<anonymous closure> (package:flet_client/main.dart)
+#7      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#8      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#9      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#10     main.<anonymous closure> (package:flet_client/main.dart)
+#11     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#12     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#13     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#14     main.<anonymous closure> (package:flet_client/main.dart)
+#15     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#16     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#17     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#18     main.<anonymous closure> (package:flet_client/main.dart)
+#19     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#20     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#21     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#22     main.<anonymous closure> (package:flet_client/main.dart)
+#23     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#24     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#25     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#26     main.<anonymous closure> (package:flet_client/main.dart)
+#27     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#28     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#29     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#30     main.<anonymous closure> (package:flet_client/main.dart)
+#31     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#32     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#33     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#34     main.<anonymous closure> (package:flet_client/main.dart)
+#35     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#36     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#37     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#38     main.<anonymous closure> (package:flet_client/main.dart)
+#39     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#40     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#41     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#42     main.<anonymous closure> (package:flet_client/main.dart)
+#43     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+...
+...
+#23829  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23830  main.<anonymous closure> (package:flet_client/main.dart)
+#23831  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23832  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23833  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23834  main.<anonymous closure> (package:flet_client/main.dart)
+#23835  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23836  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23837  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23838  main.<anonymous closure> (package:flet_client/main.dart)
+#23839  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23840  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23841  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23842  main.<anonymous closure> (package:flet_client/main.dart)
+#23843  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23844  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23845  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23846  main.<anonymous closure> (package:flet_client/main.dart)
+#23847  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23848  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23849  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23850  main.<anonymous closure> (package:flet_client/main.dart)
+#23851  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23852  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23853  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23854  main.<anonymous closure> (package:flet_client/main.dart)
+#23855  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23856  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23857  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23858  main.<anonymous closure> (package:flet_client/main.dart)
+#23859  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23860  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23861  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23862  main.<anonymous closure> (package:flet_client/main.dart)
+#23863  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23864  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23865  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23866  main.<anonymous closure> (package:flet_client/main.dart)
+#23867  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23868  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23869  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23870  main.<anonymous closure> (package:flet_client/main.dart)
+#23871  PlatformDispatcher._dispatchError (dart:ui/platform_dispatcher.dart)
+#23872  _onError (dart:ui/hooks.dart)
+
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Stack Overflow
+#0      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#1      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#2      main.<anonymous closure> (package:flet_client/main.dart)
+#3      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#4      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#5      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#6      main.<anonymous closure> (package:flet_client/main.dart)
+#7      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#8      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#9      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#10     main.<anonymous closure> (package:flet_client/main.dart)
+#11     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#12     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#13     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#14     main.<anonymous closure> (package:flet_client/main.dart)
+#15     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#16     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#17     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#18     main.<anonymous closure> (package:flet_client/main.dart)
+#19     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#20     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#21     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#22     main.<anonymous closure> (package:flet_client/main.dart)
+#23     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#24     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#25     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#26     main.<anonymous closure> (package:flet_client/main.dart)
+#27     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#28     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#29     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#30     main.<anonymous closure> (package:flet_client/main.dart)
+#31     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#32     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#33     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#34     main.<anonymous closure> (package:flet_client/main.dart)
+#35     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#36     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#37     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#38     main.<anonymous closure> (package:flet_client/main.dart)
+#39     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#40     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#41     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#42     main.<anonymous closure> (package:flet_client/main.dart)
+#43     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+...
+...
+#23829  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23830  main.<anonymous closure> (package:flet_client/main.dart)
+#23831  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23832  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23833  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23834  main.<anonymous closure> (package:flet_client/main.dart)
+#23835  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23836  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23837  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23838  main.<anonymous closure> (package:flet_client/main.dart)
+#23839  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23840  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23841  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23842  main.<anonymous closure> (package:flet_client/main.dart)
+#23843  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23844  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23845  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23846  main.<anonymous closure> (package:flet_client/main.dart)
+#23847  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23848  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23849  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23850  main.<anonymous closure> (package:flet_client/main.dart)
+#23851  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23852  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23853  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23854  main.<anonymous closure> (package:flet_client/main.dart)
+#23855  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23856  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23857  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23858  main.<anonymous closure> (package:flet_client/main.dart)
+#23859  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23860  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23861  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23862  main.<anonymous closure> (package:flet_client/main.dart)
+#23863  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23864  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23865  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23866  main.<anonymous closure> (package:flet_client/main.dart)
+#23867  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23868  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23869  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23870  main.<anonymous closure> (package:flet_client/main.dart)
+#23871  PlatformDispatcher._dispatchError (dart:ui/platform_dispatcher.dart)
+#23872  _onError (dart:ui/hooks.dart)
+
+05:16:03 | INFO | GUI: Updating status to Online=True
+05:16:38 | INFO | GUI: Updating status to Online=True
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Stack Overflow
+#0      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#1      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#2      main.<anonymous closure> (package:flet_client/main.dart)
+#3      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#4      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#5      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#6      main.<anonymous closure> (package:flet_client/main.dart)
+#7      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#8      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#9      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#10     main.<anonymous closure> (package:flet_client/main.dart)
+#11     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#12     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#13     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#14     main.<anonymous closure> (package:flet_client/main.dart)
+#15     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#16     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#17     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#18     main.<anonymous closure> (package:flet_client/main.dart)
+#19     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#20     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#21     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#22     main.<anonymous closure> (package:flet_client/main.dart)
+#23     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#24     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#25     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#26     main.<anonymous closure> (package:flet_client/main.dart)
+#27     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#28     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#29     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#30     main.<anonymous closure> (package:flet_client/main.dart)
+#31     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#32     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#33     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#34     main.<anonymous closure> (package:flet_client/main.dart)
+#35     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#36     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#37     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#38     main.<anonymous closure> (package:flet_client/main.dart)
+#39     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#40     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#41     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#42     main.<anonymous closure> (package:flet_client/main.dart)
+#43     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+...
+...
+#23829  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23830  main.<anonymous closure> (package:flet_client/main.dart)
+#23831  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23832  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23833  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23834  main.<anonymous closure> (package:flet_client/main.dart)
+#23835  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23836  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23837  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23838  main.<anonymous closure> (package:flet_client/main.dart)
+#23839  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23840  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23841  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23842  main.<anonymous closure> (package:flet_client/main.dart)
+#23843  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23844  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23845  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23846  main.<anonymous closure> (package:flet_client/main.dart)
+#23847  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23848  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23849  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23850  main.<anonymous closure> (package:flet_client/main.dart)
+#23851  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23852  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23853  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23854  main.<anonymous closure> (package:flet_client/main.dart)
+#23855  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23856  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23857  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23858  main.<anonymous closure> (package:flet_client/main.dart)
+#23859  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23860  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23861  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23862  main.<anonymous closure> (package:flet_client/main.dart)
+#23863  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23864  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23865  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23866  main.<anonymous closure> (package:flet_client/main.dart)
+#23867  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23868  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23869  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23870  main.<anonymous closure> (package:flet_client/main.dart)
+#23871  PlatformDispatcher._dispatchError (dart:ui/platform_dispatcher.dart)
+#23872  _onError (dart:ui/hooks.dart)
+
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: Stack Overflow
+#0      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#1      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#2      main.<anonymous closure> (package:flet_client/main.dart)
+#3      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#4      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#5      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#6      main.<anonymous closure> (package:flet_client/main.dart)
+#7      FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#8      ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#9      FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#10     main.<anonymous closure> (package:flet_client/main.dart)
+#11     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#12     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#13     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#14     main.<anonymous closure> (package:flet_client/main.dart)
+#15     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#16     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#17     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#18     main.<anonymous closure> (package:flet_client/main.dart)
+#19     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#20     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#21     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#22     main.<anonymous closure> (package:flet_client/main.dart)
+#23     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#24     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#25     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#26     main.<anonymous closure> (package:flet_client/main.dart)
+#27     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#28     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#29     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#30     main.<anonymous closure> (package:flet_client/main.dart)
+#31     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#32     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#33     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#34     main.<anonymous closure> (package:flet_client/main.dart)
+#35     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#36     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#37     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#38     main.<anonymous closure> (package:flet_client/main.dart)
+#39     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#40     ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#41     FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#42     main.<anonymous closure> (package:flet_client/main.dart)
+#43     FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+...
+...
+#23829  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23830  main.<anonymous closure> (package:flet_client/main.dart)
+#23831  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23832  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23833  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23834  main.<anonymous closure> (package:flet_client/main.dart)
+#23835  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23836  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23837  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23838  main.<anonymous closure> (package:flet_client/main.dart)
+#23839  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23840  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23841  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23842  main.<anonymous closure> (package:flet_client/main.dart)
+#23843  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23844  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23845  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23846  main.<anonymous closure> (package:flet_client/main.dart)
+#23847  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23848  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23849  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23850  main.<anonymous closure> (package:flet_client/main.dart)
+#23851  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23852  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23853  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23854  main.<anonymous closure> (package:flet_client/main.dart)
+#23855  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23856  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23857  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23858  main.<anonymous closure> (package:flet_client/main.dart)
+#23859  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23860  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23861  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23862  main.<anonymous closure> (package:flet_client/main.dart)
+#23863  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23864  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23865  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23866  main.<anonymous closure> (package:flet_client/main.dart)
+#23867  FlutterError.reportError (package:flutter/src/foundation/assertions.dart)
+#23868  ChangeNotifier.notifyListeners (package:flutter/src/foundation/change_notifier.dart)
+#23869  FletAppErrorsHandler.onError (package:flet/src/flet_app_errors_handler.dart)
+#23870  main.<anonymous closure> (package:flet_client/main.dart)
+#23871  PlatformDispatcher._dispatchError (dart:ui/platform_dispatcher.dart)
+#23872  _onError (dart:ui/hooks.dart)
+
+05:17:15 | INFO | GUI: Updating status to Online=True
+05:17:51 | INFO | GUI: Updating status to Online=True
+05:18:27 | INFO | GUI: Updating status to Online=True
+05:19:03 | INFO | GUI: Updating status to Online=True
+05:19:41 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:19:43 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:19:45 | INFO | Using existing agent ID: 7035fc96...
+05:19:45 | INFO | Starting Flet View app...
+05:19:45 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:19:46 | INFO | Verifying API key authentication...
+05:19:46 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:19:46 | ERROR | Agent login failed. Retrying in 5s...
+05:19:47 | WARNING | Network error on POST agents/heartbeat (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:19:47 | ERROR | Network failure after 3 attempts.
+05:19:47 | INFO | GUI: Updating status to Online=False
+05:19:51 | INFO | Verifying API key authentication...
+05:19:51 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:19:51 | ERROR | Agent login failed. Retrying in 10s...
+05:20:01 | INFO | Verifying API key authentication...
+05:20:07 | INFO | Authentication successful!
+05:20:07 | INFO | GUI: Updating status to Online=True
+05:20:07 | INFO | Registering agent: TUF
+05:20:16 | INFO | Agent registered successfully!
+05:20:16 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:20:17 | WARNING | Authentication failed (401). Attempting re-login...
+05:20:17 | INFO | Verifying API key authentication...
+05:20:20 | INFO | Authentication successful!
+05:20:27 | INFO | GUI: Updating status to Online=True
+05:20:28 | INFO | Fetched FULL user profile for caching.
+05:20:28 | INFO | Saved full profile to cache.
+05:20:28 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:20:28 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:20:39 | INFO | GUI: Updating status to Online=True
+05:21:01 | INFO | GUI: Updating status to Online=True
+05:21:15 | INFO | GUI: Updating status to Online=True
+05:22:08 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:22:08 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:22:10 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:10 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:14 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:14 | ERROR | Network failure after 3 attempts.
+05:22:14 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:22:14 | INFO | Using existing agent ID: 7035fc96...
+05:22:14 | INFO | Starting Flet View app...
+05:22:14 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:22:15 | INFO | Verifying API key authentication...
+05:22:15 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:15 | ERROR | Agent login failed. Retrying in 5s...
+05:22:16 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:20 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:20 | ERROR | Network failure after 3 attempts.
+05:22:20 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:20 | INFO | Verifying API key authentication...
+05:22:20 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:20 | ERROR | Agent login failed. Retrying in 10s...
+05:22:22 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:26 | WARNING | Network error on POST agents/heartbeat (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:22:26 | ERROR | Network failure after 3 attempts.
+05:22:26 | INFO | GUI: Updating status to Online=False
+05:22:30 | INFO | Verifying API key authentication...
+05:22:36 | INFO | Authentication successful!
+05:22:36 | INFO | GUI: Updating status to Online=True
+05:22:36 | INFO | Registering agent: TUF
+05:22:45 | INFO | Agent registered successfully!
+05:22:45 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:22:46 | WARNING | Authentication failed (401). Attempting re-login...
+05:22:46 | INFO | Verifying API key authentication...
+05:22:50 | INFO | Authentication successful!
+05:23:01 | INFO | Fetched FULL user profile for caching.
+05:23:01 | INFO | Saved full profile to cache.
+05:23:01 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:23:01 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:23:01 | INFO | GUI: Updating status to Online=True
+05:23:12 | INFO | GUI: Updating status to Online=True
+05:23:37 | INFO | GUI: Updating status to Online=True
+05:23:48 | INFO | GUI: Updating status to Online=True
+05:24:13 | INFO | GUI: Updating status to Online=True
+05:24:23 | INFO | GUI: Updating status to Online=True
+05:24:50 | INFO | GUI: Updating status to Online=True
+05:25:02 | INFO | GUI: Updating status to Online=True
+05:25:27 | INFO | GUI: Updating status to Online=True
+05:25:37 | INFO | GUI: Updating status to Online=True
+05:26:03 | INFO | GUI: Updating status to Online=True
+05:26:13 | INFO | GUI: Updating status to Online=True
+05:26:39 | INFO | GUI: Updating status to Online=True
+05:26:50 | INFO | GUI: Updating status to Online=True
+05:27:16 | INFO | GUI: Updating status to Online=True
+05:27:27 | INFO | GUI: Updating status to Online=True
+05:27:53 | INFO | GUI: Updating status to Online=True
+05:28:03 | INFO | GUI: Updating status to Online=True
+05:28:29 | INFO | GUI: Updating status to Online=True
+05:28:40 | INFO | GUI: Updating status to Online=True
+05:29:05 | INFO | GUI: Updating status to Online=True
+05:29:17 | INFO | GUI: Updating status to Online=True
+05:29:42 | INFO | GUI: Updating status to Online=True
+05:29:54 | INFO | GUI: Updating status to Online=True
+05:30:19 | INFO | GUI: Updating status to Online=True
+05:30:30 | INFO | GUI: Updating status to Online=True
+05:30:56 | INFO | GUI: Updating status to Online=True
+05:31:07 | INFO | GUI: Updating status to Online=True
+05:31:32 | INFO | GUI: Updating status to Online=True
+05:31:44 | INFO | GUI: Updating status to Online=True
+05:32:10 | INFO | GUI: Updating status to Online=True
+05:32:20 | INFO | GUI: Updating status to Online=True
+05:32:46 | INFO | GUI: Updating status to Online=True
+05:32:57 | INFO | GUI: Updating status to Online=True
+05:33:23 | INFO | GUI: Updating status to Online=True
+05:33:33 | INFO | GUI: Updating status to Online=True
+05:34:00 | INFO | GUI: Updating status to Online=True
+05:34:09 | INFO | GUI: Updating status to Online=True
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:34:28 | INFO | Using existing agent ID: 7035fc96...
+05:34:28 | INFO | Starting Flet View app...
+05:34:28 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:34:28 | INFO | Verifying API key authentication...
+05:34:31 | ERROR | Authentication error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:34:31 | ERROR | Agent login failed. Retrying in 5s...
+05:34:34 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:36 | INFO | Verifying API key authentication...
+05:34:36 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:36 | ERROR | Agent login failed. Retrying in 10s...
+05:34:36 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:40 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:34:40 | ERROR | Network failure after 3 attempts.
+05:34:40 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:34:42 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:46 | INFO | Verifying API key authentication...
+05:34:46 | ERROR | Authentication error: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:46 | ERROR | Agent login failed. Retrying in 20s...
+05:34:46 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:46 | ERROR | Network failure after 3 attempts.
+05:34:46 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+05:34:48 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+05:34:59 | INFO | GUI: Updating status to Online=True
+05:35:06 | INFO | Verifying API key authentication...
+05:35:09 | INFO | Authentication successful!
+05:35:09 | INFO | GUI: Updating status to Online=True
+05:35:09 | INFO | Registering agent: TUF
+05:35:22 | INFO | Agent registered successfully!
+05:35:22 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:35:23 | WARNING | Authentication failed (401). Attempting re-login...
+05:35:23 | INFO | Verifying API key authentication...
+05:35:27 | INFO | Authentication successful!
+05:35:34 | INFO | GUI: Updating status to Online=True
+05:35:35 | INFO | Fetched FULL user profile for caching.
+05:35:35 | INFO | Saved full profile to cache.
+05:35:35 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:35:35 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:35:46 | INFO | GUI: Updating status to Online=True
+05:36:10 | INFO | GUI: Updating status to Online=True
+05:36:24 | INFO | GUI: Updating status to Online=True
+05:36:46 | INFO | GUI: Updating status to Online=True
+05:37:01 | INFO | GUI: Updating status to Online=True
+05:37:23 | INFO | GUI: Updating status to Online=True
+05:37:38 | INFO | GUI: Updating status to Online=True
+05:37:59 | INFO | GUI: Updating status to Online=True
+05:38:13 | INFO | GUI: Updating status to Online=True
+05:38:35 | INFO | GUI: Updating status to Online=True
+05:38:50 | INFO | GUI: Updating status to Online=True
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:38:55 | INFO | Using existing agent ID: 7035fc96...
+05:38:55 | INFO | Starting Flet View app...
+05:38:55 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:38:56 | INFO | Verifying API key authentication...
+05:38:59 | INFO | Authentication successful!
+05:38:59 | INFO | GUI: Updating status to Online=True
+05:38:59 | INFO | Registering agent: TUF
+05:39:04 | INFO | Agent registered successfully!
+05:39:04 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:39:05 | WARNING | Authentication failed (401). Attempting re-login...
+05:39:05 | INFO | Verifying API key authentication...
+05:39:08 | INFO | Authentication successful!
+05:39:16 | INFO | Fetched FULL user profile for caching.
+05:39:16 | INFO | Saved full profile to cache.
+05:39:16 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:39:16 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:39:16 | INFO | Polling for pending tasks...
+05:39:26 | INFO | GUI: Updating status to Online=True
+05:39:26 | INFO | GUI: Updating status to Online=True
+05:39:52 | INFO | Polling for pending tasks...
+05:40:02 | INFO | GUI: Updating status to Online=True
+05:40:03 | INFO | GUI: Updating status to Online=True
+05:40:28 | INFO | Polling for pending tasks...
+05:40:38 | INFO | GUI: Updating status to Online=True
+05:40:39 | INFO | GUI: Updating status to Online=True
+05:41:05 | INFO | Polling for pending tasks...
+05:41:14 | INFO | GUI: Updating status to Online=True
+05:41:16 | INFO | GUI: Updating status to Online=True
+05:41:41 | INFO | Polling for pending tasks...
+05:41:51 | INFO | GUI: Updating status to Online=True
+05:41:52 | INFO | GUI: Updating status to Online=True
+05:42:17 | INFO | Polling for pending tasks...
+05:42:26 | INFO | GUI: Updating status to Online=True
+05:42:28 | INFO | GUI: Updating status to Online=True
+05:42:53 | INFO | Polling for pending tasks...
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:42:57 | INFO | Using existing agent ID: 7035fc96...
+05:42:57 | INFO | Starting Flet View app...
+05:42:57 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:42:57 | INFO | Verifying API key authentication...
+05:43:00 | INFO | Authentication successful!
+05:43:00 | INFO | GUI: Updating status to Online=True
+05:43:00 | INFO | Registering agent: TUF
+05:43:03 | INFO | GUI: Updating status to Online=True
+05:43:05 | INFO | Agent registered successfully!
+05:43:05 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:43:06 | WARNING | Authentication failed (401). Attempting re-login...
+05:43:06 | INFO | Verifying API key authentication...
+05:43:09 | INFO | Authentication successful!
+05:43:15 | INFO | Fetched FULL user profile for caching.
+05:43:15 | INFO | Saved full profile to cache.
+05:43:15 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:43:15 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:43:15 | INFO | Polling for pending tasks...
+05:43:25 | INFO | GUI: Updating status to Online=True
+05:43:29 | INFO | Polling for pending tasks...
+05:43:39 | INFO | GUI: Updating status to Online=True
+05:43:51 | INFO | Polling for pending tasks...
+05:44:03 | INFO | GUI: Updating status to Online=True
+05:44:05 | INFO | Polling for pending tasks...
+05:44:16 | INFO | GUI: Updating status to Online=True
+05:44:28 | INFO | Polling for pending tasks...
+05:44:39 | INFO | GUI: Updating status to Online=True
+05:44:41 | INFO | Polling for pending tasks...
+05:44:52 | INFO | GUI: Updating status to Online=True
+05:45:05 | INFO | Polling for pending tasks...
+05:45:15 | INFO | GUI: Updating status to Online=True
+05:45:18 | INFO | Polling for pending tasks...
+05:45:28 | INFO | GUI: Updating status to Online=True
+05:45:41 | INFO | Polling for pending tasks...
+05:45:52 | INFO | GUI: Updating status to Online=True
+05:45:54 | INFO | Polling for pending tasks...
+05:46:04 | INFO | GUI: Updating status to Online=True
+05:46:17 | INFO | Polling for pending tasks...
+05:46:27 | INFO | GUI: Updating status to Online=True
+05:46:30 | INFO | Polling for pending tasks...
+05:46:41 | INFO | GUI: Updating status to Online=True
+05:46:53 | INFO | Polling for pending tasks...
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:46:58 | INFO | Using existing agent ID: 7035fc96...
+05:46:58 | INFO | Starting Flet View app...
+05:46:58 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: MissingPluginException(No implementation found for method _init on channel plugins.flutter.io/google_mobile_ads)
+#0      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:332)
+<asynchronous suspension>
+
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: MissingPluginException(No implementation found for method MobileAds#initialize on channel plugins.flutter.io/google_mobile_ads)
+#0      MethodChannel._invokeMethod (package:flutter/src/services/platform_channel.dart:332)
+<asynchronous suspension>
+#1      AdInstanceManager.initialize (package:google_mobile_ads/src/ad_instance_manager.dart:440)
+<asynchronous suspension>
+
+05:46:59 | INFO | Verifying API key authentication...
+05:47:02 | INFO | Authentication successful!
+05:47:02 | INFO | GUI: Updating status to Online=True
+05:47:02 | INFO | Registering agent: TUF
+05:47:03 | INFO | GUI: Updating status to Online=True
+05:47:08 | INFO | Agent registered successfully!
+05:47:08 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:47:09 | WARNING | Authentication failed (401). Attempting re-login...
+05:47:09 | INFO | Verifying API key authentication...
+05:47:12 | INFO | Authentication successful!
+05:47:18 | INFO | Fetched FULL user profile for caching.
+05:47:18 | INFO | Saved full profile to cache.
+05:47:18 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:47:18 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:47:18 | INFO | Polling for pending tasks...
+05:47:27 | INFO | GUI: Updating status to Online=True
+05:47:29 | INFO | Polling for pending tasks...
+05:47:39 | INFO | GUI: Updating status to Online=True
+05:47:53 | INFO | Polling for pending tasks...
+05:48:04 | INFO | GUI: Updating status to Online=True
+05:48:05 | INFO | Polling for pending tasks...
+05:48:17 | INFO | GUI: Updating status to Online=True
+05:48:29 | INFO | Polling for pending tasks...
+05:48:40 | INFO | GUI: Updating status to Online=True
+05:48:42 | INFO | Polling for pending tasks...
+05:48:54 | INFO | GUI: Updating status to Online=True
+05:49:06 | INFO | Polling for pending tasks...
+05:49:17 | INFO | GUI: Updating status to Online=True
+05:49:19 | INFO | Polling for pending tasks...
+05:49:30 | INFO | GUI: Updating status to Online=True
+05:49:43 | INFO | Polling for pending tasks...
+05:49:54 | INFO | GUI: Updating status to Online=True
+05:49:55 | INFO | Polling for pending tasks...
+05:50:07 | INFO | GUI: Updating status to Online=True
+05:50:19 | INFO | Polling for pending tasks...
+05:50:31 | INFO | GUI: Updating status to Online=True
+05:50:32 | INFO | Polling for pending tasks...
+05:50:44 | INFO | GUI: Updating status to Online=True
+05:50:56 | INFO | Polling for pending tasks...
+05:51:07 | INFO | GUI: Updating status to Online=True
+05:51:08 | INFO | Polling for pending tasks...
+05:51:19 | INFO | GUI: Updating status to Online=True
+05:51:32 | INFO | Polling for pending tasks...
+05:51:44 | INFO | GUI: Updating status to Online=True
+05:51:45 | INFO | Polling for pending tasks...
+05:51:56 | INFO | GUI: Updating status to Online=True
+05:52:09 | INFO | Polling for pending tasks...
+05:52:21 | INFO | GUI: Updating status to Online=True
+05:52:21 | INFO | Polling for pending tasks...
+05:52:31 | INFO | GUI: Updating status to Online=True
+05:52:45 | INFO | Polling for pending tasks...
+05:52:57 | INFO | GUI: Updating status to Online=True
+05:52:57 | INFO | Polling for pending tasks...
+05:53:08 | INFO | GUI: Updating status to Online=True
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+--- Agent Configuration ---
+Server URL: http://127.0.0.1:8000
+API Key: apf_agent_... (Len: 33)
+Debug: False
+---------------------------
+05:53:11 | INFO | Using existing agent ID: 7035fc96...
+05:53:11 | INFO | Starting Flet View app...
+05:53:11 | INFO | Flet View found in: /home/budrahh/.flet/bin/flet-0.25.0
+package:media_kit_libs_linux registered.
+05:53:12 | INFO | Verifying API key authentication...
+05:53:15 | INFO | Authentication successful!
+05:53:15 | INFO | GUI: Updating status to Online=True
+05:53:15 | INFO | Registering agent: TUF
+05:53:20 | INFO | Agent registered successfully!
+05:53:20 | INFO | Performing startup profile sync...
+>>> [STARTUP] Syncing latest User Profile data from server...
+05:53:21 | WARNING | Authentication failed (401). Attempting re-login...
+05:53:21 | INFO | Verifying API key authentication...
+05:53:22 | INFO | Polling for pending tasks...
+05:53:24 | INFO | Authentication successful!
+05:53:32 | INFO | Fetched FULL user profile for caching.
+05:53:32 | INFO | Saved full profile to cache.
+05:53:32 | INFO | ✅ Full Profile Cached: 2 experiences, 1 educations.
+05:53:32 | INFO | Agent workflow started: Polling & Autonomous Modes Active.
+05:53:32 | INFO | Polling for pending tasks...
+05:53:33 | INFO | GUI: Updating status to Online=True
+05:53:43 | INFO | GUI: Updating status to Online=True
+05:53:59 | INFO | Polling for pending tasks...
+05:54:08 | INFO | Polling for pending tasks...
+05:54:10 | INFO | GUI: Updating status to Online=True
+05:54:20 | INFO | GUI: Updating status to Online=True
+05:54:35 | INFO | Polling for pending tasks...
+05:54:45 | INFO | Polling for pending tasks...
+05:54:47 | INFO | GUI: Updating status to Online=True
+05:54:56 | INFO | GUI: Updating status to Online=True
+05:55:12 | INFO | Polling for pending tasks...
+05:55:22 | INFO | Polling for pending tasks...
+05:55:23 | INFO | GUI: Updating status to Online=True
+05:55:33 | INFO | GUI: Updating status to Online=True
+05:55:49 | INFO | Polling for pending tasks...
+05:55:58 | INFO | Polling for pending tasks...
+05:56:00 | INFO | GUI: Updating status to Online=True
+05:56:08 | INFO | GUI: Updating status to Online=True
+05:56:25 | INFO | Polling for pending tasks...
+05:56:35 | INFO | Polling for pending tasks...
+05:56:36 | INFO | GUI: Updating status to Online=True
+05:56:45 | INFO | GUI: Updating status to Online=True
+05:57:02 | INFO | Polling for pending tasks...
+05:57:11 | INFO | Polling for pending tasks...
+05:57:13 | INFO | GUI: Updating status to Online=True
+05:57:22 | INFO | GUI: Updating status to Online=True
+05:57:38 | INFO | Polling for pending tasks...
+05:57:48 | INFO | Polling for pending tasks...
+05:57:49 | INFO | GUI: Updating status to Online=True
+05:57:59 | INFO | GUI: Updating status to Online=True
+05:58:15 | INFO | Polling for pending tasks...
+05:58:24 | INFO | Polling for pending tasks...
+05:58:25 | INFO | GUI: Updating status to Online=True
+05:58:35 | INFO | GUI: Updating status to Online=True
+05:58:51 | INFO | Polling for pending tasks...
+05:59:01 | INFO | Polling for pending tasks...
+05:59:02 | INFO | GUI: Updating status to Online=True
+05:59:12 | INFO | GUI: Updating status to Online=True
+05:59:28 | INFO | Polling for pending tasks...
+05:59:37 | INFO | Polling for pending tasks...
+05:59:39 | INFO | GUI: Updating status to Online=True
+05:59:49 | INFO | GUI: Updating status to Online=True
+06:00:04 | INFO | Polling for pending tasks...
+06:00:14 | INFO | Polling for pending tasks...
+06:00:15 | INFO | GUI: Updating status to Online=True
+06:00:25 | INFO | GUI: Updating status to Online=True
+06:00:41 | INFO | Polling for pending tasks...
+06:00:51 | INFO | Polling for pending tasks...
+06:00:53 | INFO | GUI: Updating status to Online=True
+06:01:03 | INFO | GUI: Updating status to Online=True
+06:01:18 | INFO | Polling for pending tasks...
+06:01:28 | INFO | Polling for pending tasks...
+06:01:29 | INFO | GUI: Updating status to Online=True
+06:01:39 | INFO | GUI: Updating status to Online=True
+06:01:54 | INFO | Polling for pending tasks...
+06:02:04 | INFO | Polling for pending tasks...
+06:02:05 | INFO | GUI: Updating status to Online=True
+06:02:16 | INFO | GUI: Updating status to Online=True
+06:02:31 | INFO | Polling for pending tasks...
+06:02:41 | INFO | Polling for pending tasks...
+06:02:41 | INFO | GUI: Updating status to Online=True
+06:02:52 | INFO | GUI: Updating status to Online=True
+06:03:07 | INFO | Polling for pending tasks...
+06:03:18 | INFO | Polling for pending tasks...
+06:03:18 | INFO | GUI: Updating status to Online=True
+06:03:28 | INFO | GUI: Updating status to Online=True
+06:03:43 | INFO | Polling for pending tasks...
+06:03:54 | INFO | Polling for pending tasks...
+06:03:55 | INFO | GUI: Updating status to Online=True
+06:04:06 | INFO | GUI: Updating status to Online=True
+06:04:20 | INFO | Polling for pending tasks...
+06:04:31 | INFO | Polling for pending tasks...
+06:04:31 | INFO | GUI: Updating status to Online=True
+06:04:43 | INFO | GUI: Updating status to Online=True
+06:04:57 | INFO | Polling for pending tasks...
+06:05:08 | INFO | Polling for pending tasks...
+06:05:08 | INFO | GUI: Updating status to Online=True
+06:05:19 | INFO | GUI: Updating status to Online=True
+06:05:33 | INFO | Polling for pending tasks...
+06:05:44 | INFO | Polling for pending tasks...
+06:05:45 | INFO | GUI: Updating status to Online=True
+06:05:55 | INFO | GUI: Updating status to Online=True
+06:06:10 | INFO | Polling for pending tasks...
+06:06:21 | INFO | Polling for pending tasks...
+06:06:22 | INFO | GUI: Updating status to Online=True
+06:06:31 | INFO | GUI: Updating status to Online=True
+06:06:46 | INFO | Polling for pending tasks...
+06:06:57 | INFO | Polling for pending tasks...
+06:06:58 | INFO | GUI: Updating status to Online=True
+06:07:08 | INFO | GUI: Updating status to Online=True
+06:07:23 | INFO | Polling for pending tasks...
+06:07:33 | INFO | Polling for pending tasks...
+06:07:34 | INFO | GUI: Updating status to Online=True
+06:07:46 | INFO | GUI: Updating status to Online=True
+06:07:59 | INFO | Polling for pending tasks...
+06:08:10 | INFO | GUI: Updating status to Online=True
+06:08:11 | INFO | Polling for pending tasks...
+06:08:22 | INFO | GUI: Updating status to Online=True
+06:08:36 | INFO | Polling for pending tasks...
+06:08:47 | INFO | Polling for pending tasks...
+06:08:48 | INFO | GUI: Updating status to Online=True
+06:09:00 | INFO | GUI: Updating status to Online=True
+06:09:13 | INFO | Polling for pending tasks...
+06:09:24 | INFO | GUI: Updating status to Online=True
+06:09:25 | INFO | Polling for pending tasks...
+06:09:36 | INFO | GUI: Updating status to Online=True
+06:09:49 | INFO | Polling for pending tasks...
+06:10:01 | INFO | Polling for pending tasks...
+06:10:01 | INFO | GUI: Updating status to Online=True
+06:10:12 | INFO | GUI: Updating status to Online=True
+06:10:26 | INFO | Polling for pending tasks...
+06:10:37 | INFO | Polling for pending tasks...
+06:10:37 | INFO | GUI: Updating status to Online=True
+06:10:50 | INFO | GUI: Updating status to Online=True
+06:11:03 | INFO | Polling for pending tasks...
+06:11:14 | INFO | GUI: Updating status to Online=True
+06:11:15 | INFO | Polling for pending tasks...
+06:11:26 | INFO | GUI: Updating status to Online=True
+06:11:40 | INFO | Polling for pending tasks...
+06:11:51 | INFO | GUI: Updating status to Online=True
+06:11:52 | INFO | Polling for pending tasks...
+06:12:03 | INFO | GUI: Updating status to Online=True
+06:12:16 | INFO | Polling for pending tasks...
+06:12:27 | INFO | GUI: Updating status to Online=True
+06:12:28 | INFO | Polling for pending tasks...
+06:12:39 | INFO | GUI: Updating status to Online=True
+06:12:53 | INFO | Polling for pending tasks...
+06:13:05 | INFO | Polling for pending tasks...
+06:13:05 | INFO | GUI: Updating status to Online=True
+06:13:18 | INFO | GUI: Updating status to Online=True
+06:13:30 | INFO | Polling for pending tasks...
+06:13:41 | INFO | Polling for pending tasks...
+06:13:43 | INFO | GUI: Updating status to Online=True
+06:13:54 | INFO | GUI: Updating status to Online=True
+06:14:07 | INFO | Polling for pending tasks...
+06:14:19 | INFO | Polling for pending tasks...
+06:14:20 | INFO | GUI: Updating status to Online=True
+06:14:30 | INFO | GUI: Updating status to Online=True
+06:14:44 | INFO | Polling for pending tasks...
+06:14:56 | INFO | Polling for pending tasks...
+06:14:56 | INFO | GUI: Updating status to Online=True
+06:15:06 | INFO | GUI: Updating status to Online=True
+06:15:21 | INFO | Polling for pending tasks...
+06:15:32 | INFO | Polling for pending tasks...
+06:15:32 | INFO | GUI: Updating status to Online=True
+06:15:41 | INFO | GUI: Updating status to Online=True
+06:15:58 | INFO | Polling for pending tasks...
+06:16:07 | INFO | GUI: Updating status to Online=True
+06:16:07 | INFO | Polling for pending tasks...
+06:16:17 | INFO | GUI: Updating status to Online=True
+06:16:33 | INFO | Polling for pending tasks...
+06:16:42 | INFO | GUI: Updating status to Online=True
+06:16:43 | INFO | Polling for pending tasks...
+06:16:52 | INFO | GUI: Updating status to Online=True
+06:17:08 | INFO | Polling for pending tasks...
+06:17:18 | INFO | GUI: Updating status to Online=True
+06:17:18 | INFO | Polling for pending tasks...
+06:17:28 | INFO | GUI: Updating status to Online=True
+06:17:44 | INFO | Polling for pending tasks...
+06:17:53 | INFO | Polling for pending tasks...
+06:17:56 | INFO | GUI: Updating status to Online=True
+06:18:05 | INFO | GUI: Updating status to Online=True
+06:18:21 | INFO | Polling for pending tasks...
+06:18:31 | INFO | Polling for pending tasks...
+06:18:36 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+06:18:38 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/unapplied-jobs?limit=10 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:18:42 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/unapplied-jobs?limit=10 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:18:42 | ERROR | Network failure after 3 attempts.
+06:18:42 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agents/heartbeat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:18:44 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agents/heartbeat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:18:48 | WARNING | Network error on POST agents/heartbeat (Attempt 3/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agents/heartbeat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:18:48 | ERROR | Network failure after 3 attempts.
+06:18:48 | INFO | GUI: Updating status to Online=False
+06:19:12 | INFO | Polling for pending tasks...
+06:19:12 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 1/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:14 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 2/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:18 | WARNING | Network error on GET agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Attempt 3/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/tasks?agent_id=7035fc96-a994-4833-91db-8fecabddc7b7 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:18 | ERROR | Network failure after 3 attempts.
+06:19:18 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 1/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/unapplied-jobs?limit=10 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:20 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 2/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/unapplied-jobs?limit=10 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:24 | WARNING | Network error on GET agent-forge/unapplied-jobs?limit=10 (Attempt 3/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agent-forge/unapplied-jobs?limit=10 (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:24 | ERROR | Network failure after 3 attempts.
+06:19:24 | WARNING | Network error on POST agents/heartbeat (Attempt 1/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agents/heartbeat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))
+06:19:26 | WARNING | Network error on POST agents/heartbeat (Attempt 2/3): HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/v1/agents/heartbeat (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [Errno 111] Connection refused"))

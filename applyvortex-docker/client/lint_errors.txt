@@ -1,0 +1,374 @@
+
+> package.json@0.0.0 lint
+> eslint .
+
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/App.jsx
+  22:12  error  'authChecked' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/agent/AgentStatusIndicator.jsx
+  14:11  error  'agents' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  15:11  error  'isLoading' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/agent/BlueprintEditor.jsx
+  180:8  warning  React Hook useEffect has a missing dependency: 'isGeoPickerOpen'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  246:8  warning  React Hook useEffect has a missing dependency: 'toast'. Either include it or remove the dependency array            react-hooks/exhaustive-deps
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/agent/TaskStatusList.jsx
+  26:18  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/jobs/JobMatchBadge.jsx
+  22:9  error  'is_strong_match' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/settings/AgentKeysManager.jsx
+  152:47  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/ui/badge.jsx
+  34:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/components/ui/form.jsx
+  130:3  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/layout/AdminLayout.jsx
+  137:55  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/layout/ProtectedLayout.jsx
+  284:47  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/layout/ThemeProvider.jsx
+   2:48  error  'useState' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                 no-unused-vars
+   9:43  error  'defaultTheme' is assigned a value but never used                                                                               no-unused-vars
+   9:67  error  'storageKey' is assigned a value but never used                                                                                 no-unused-vars
+  31:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/profile-setup/AccomplishmentCard.jsx
+  38:11  error  'getError' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  38:33  error  'formState' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       no-undef
+  41:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  39 |
+  40 |     useEffect(() => {
+> 41 |         setCharCount(descriptionValue?.length || 0);
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |     }, [descriptionValue]);
+  43 |
+  44 |     return (  react-hooks/set-state-in-effect
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/profile-setup/EducationCard.jsx
+  233:126  error  Parsing error: Unexpected token border
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/profile-setup/ExperienceCard.jsx
+  268:19  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/profile-setup/ProjectCard.jsx
+  93:126  error  Parsing error: Unexpected token border
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/features/profile-setup/ResearchCard.jsx
+  37:11  error  'titleValue' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+  41:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  39 |
+  40 |     useEffect(() => {
+> 41 |         setAbstractCharCount(abstractValue?.length || 0);
+     |         ^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |     }, [abstractValue]);
+  43 |
+  44 |     const getError = (field) => {  react-hooks/set-state-in-effect
+  48:11  error  'researchTypeLabel' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/hooks/use-toast.js
+  8:7  error  'actionTypes' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/auth/ForgotPasswordPage.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/auth/LoginPage.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/auth/ResetPasswordPage.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/auth/SignUpPage.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/auth/VerifyEmailPage.jsx
+    4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    no-unused-vars
+  152:18  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  150 |                 className="flex h-full w-full bg-white  rounded-2xl lg:rounded-3xl shadow-2xl  overflow-hidden min-h-[600px] relative  "
+  151 |             >
+> 152 |                 <VisualSection />
+      |                  ^^^^^^^^^^^^^ This component is created during render
+  153 |
+  154 |                 {/* Right Side - Content Section */}
+  155 |                 <div className="w-full lg:w-2/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-white ">
+
+   44 |
+   45 |     // Common Left Side Visual Section
+>  46 |     const VisualSection = () => (
+      |                           ^^^^^^^
+>  47 |         <div className="w-3/5 hidden lg:flex flex-col justify-center p-16 bg-gradient-to-br from-brand-700 via-brand-700 to-brand-600    text-white relative overflow-hidden">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  48 |             {/* Background Texture - Grid */}
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 137 |         </div>
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 138 |     );
+      | ^^^^^^ The component is created during render here
+  139 |
+  140 |     return (
+  141 |         <div className="h-screen w-full flex items-center justify-center bg-slate-100  p-6 md:p-16 lg:p-24 font-sans relative overflow-hidden">  react-hooks/static-components
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/error/ErrorPage.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/error/NotFoundPage.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/error/UnauthorizedPage.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/admin/AdminAuditLogsPage.jsx
+  68:36  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/admin/AdminConfigPage.jsx
+  19:12  error  'selectedModel' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  19:27  error  'setSelectedModel' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/admin/AdminDashboardPage.jsx
+  42:20  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/admin/AdminUsersPage.jsx
+  272:51  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/admin/components/AdminRoleDetails.jsx
+  72:15  error  'action' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/AgentIntroPage.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/ApplicationsPage.jsx
+    4:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                         no-unused-vars
+   77:38  error    'notes' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                 no-unused-vars
+   77:45  error    'interview_scheduled_at' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                no-unused-vars
+   77:69  error    'offer_received_at' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                     no-unused-vars
+  176:41  error    'Icon' is defined but never used                                                                                      no-unused-vars
+  195:12  error    'stats' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                 no-unused-vars
+  227:8   warning  React Hook useEffect has a missing dependency: 'fetchApplications'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/ApplyPage.jsx
+  168:23  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/DashBoardPage.jsx
+   8:10  error  'dashboardAPI' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  15:19  error  'setError' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  16:12  error  'dashboardData' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   no-unused-vars
+  16:27  error  'setDashboardData' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                no-unused-vars
+  21:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  19 |     useEffect(() => {
+  20 |         // Dashboard data fetching removed as requested
+> 21 |         setIsLoading(false);
+     |         ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  22 |     }, []);
+  23 |
+  24 |     const handleQuickAction = (action) => {  react-hooks/set-state-in-effect
+  24:11  error  'handleQuickAction' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+  55:34  error  'fetchDashboardData' is not defined                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-undef
+  67:11  error  'lastApplication' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  68:11  error  'incompleteData' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/DownloadAgentPage.jsx
+  10:11  error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  11:13  error  'token' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/JobDetailAnalysis.jsx
+  98:53  error  'key' is defined but never used  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/JobsPage.jsx
+    4:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                 no-unused-vars
+   41:24  error    'onApply' is defined but never used                                                                           no-unused-vars
+   41:33  error    'onTailor' is defined but never used                                                                          no-unused-vars
+   41:43  error    'isApplying' is defined but never used                                                                        no-unused-vars
+   41:55  error    'isTailoring' is defined but never used                                                                       no-unused-vars
+   41:80  error    'onSelect' is defined but never used                                                                          no-unused-vars
+  239:12  error    'isBulkApplying' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                no-unused-vars
+  299:8   warning  React Hook useEffect has a missing dependency: 'fetchJobs'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  332:18  error    'error' is defined but never used                                                                             no-unused-vars
+  350:11  error    'handleBulkApply' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u               no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/MyAgentsPage.jsx
+  45:45  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/NotificationsPage.jsx
+  246:11  error    'syncPendingReads' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                         no-unused-vars
+  346:8   warning  React Hook useEffect has a missing dependency: 'syncPendingReadsSync'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  396:18  error    'error' is defined but never used                                                                                        no-unused-vars
+  409:18  error    'error' is defined but never used                                                                                        no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/ProfileSetupPage.jsx
+  114:43  error  Parsing error: Unterminated string constant
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/WelcomePage.jsx
+   1:10  error  'useNavigate' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  53:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  51 |
+  52 |     useEffect(() => {
+> 53 |         setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+     |         ^^^^^^^^ Avoid calling setState() directly within an effect
+  54 |     }, []);
+  55 |
+  56 |     const firstName = user?.name?.split(" ")[0] || "Pioneer";  react-hooks/set-state-in-effect
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/agent/PairingPage.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  21:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  19 |     useEffect(() => {
+  20 |         if (!port || !state) {
+> 21 |             setStatus('standby');
+     |             ^^^^^^^^^ Avoid calling setState() directly within an effect
+  22 |         }
+  23 |     }, [port, state]);
+  24 |  react-hooks/set-state-in-effect
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/AccomplishmentForm.jsx
+  109:13  error  'isValid' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/CertificationForm.jsx
+  109:13  error  'isValid' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/EducationForm.jsx
+   27:10  error    'is' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                          no-unused-vars
+   27:14  error    'tr' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                          no-unused-vars
+  177:12  error    'educationComplete' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                  no-unused-vars
+  285:8   warning  React Hook useCallback has an unnecessary dependency: 'replace'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/ExperienceForm.jsx
+   79:12  error    'isLoadingSkills' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u               no-unused-vars
+  173:8   warning  React Hook useCallback has a missing dependency: 'replace'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  183:18  error    'error' is defined but never used                                                                             no-unused-vars
+  227:60  error    'id' is defined but never used                                                                                no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/ProfileInfoForm.jsx
+  132:82  error  Unnecessary escape character: \/    no-useless-escape
+  133:84  error  Unnecessary escape character: \/    no-useless-escape
+  134:84  error  Unnecessary escape character: \/    no-useless-escape
+  135:82  error  Unnecessary escape character: \/    no-useless-escape
+  136:85  error  Unnecessary escape character: \/    no-useless-escape
+  137:89  error  Unnecessary escape character: \/    no-useless-escape
+  138:82  error  Unnecessary escape character: \/    no-useless-escape
+  139:91  error  Unnecessary escape character: \/    no-useless-escape
+  560:47  error  'signal' is defined but never used  no-unused-vars
+  590:57  error  'signal' is defined but never used  no-unused-vars
+  621:68  error  'signal' is defined but never used  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/ProjectForm.jsx
+   77:12  error    'isLoadingSkills' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u               no-unused-vars
+  174:8   warning  React Hook useCallback has a missing dependency: 'replace'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  182:18  error    'error' is defined but never used                                                                             no-unused-vars
+  323:11  error    'isNextButtonEnabled' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u           no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/ResearchForm.jsx
+  220:18  error  'error' is defined but never used  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/ResumeUploadPage.jsx
+   22:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                    no-unused-vars
+  243:8   warning  React Hook useEffect has a missing dependency: 'fetchResumes'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  247:8   warning  React Hook useEffect has a missing dependency: 'fetchResumes'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  445:44  error    'isRefreshing' is not defined                                                                                    no-undef
+  445:60  error    'isSaving' is not defined                                                                                        no-undef
+  449:49  error    'isRefreshing' is not defined                                                                                    no-undef
+  449:82  error    'isSaving' is not defined                                                                                        no-undef
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/profile-setup/SkillsLibraryForm.jsx
+  42:30  error  Unnecessary escape character: \+  no-useless-escape
+  42:32  error  Unnecessary escape character: \#  no-useless-escape
+  42:34  error  Unnecessary escape character: \.  no-useless-escape
+  42:36  error  Unnecessary escape character: \-  no-useless-escape
+  46:51  error  'k' is defined but never used     no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/settings/ApplicationPreferences.jsx
+  51:189  error  Parsing error: Unexpected token border
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/protected/user/settings/SecuritySettings.jsx
+   7:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                     no-unused-vars
+  10:10  error    'cn' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                         no-unused-vars
+  65:8   warning  React Hook useEffect has a missing dependency: 'fetchSessions'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/about-sections/AboutCTA.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/about-sections/AboutHero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/about-sections/ProblemSection.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/about-sections/SolutionSection.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/about-sections/ValuesSection.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/sections/Features.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/sections/Hero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/sections/HowItWorks.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/sections/Pricing.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/pages/public/sections/ProductMockup.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/src/routes/Router.jsx
+  80:11  error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/tailwind.config.js
+  97:12  error  'require' is not defined  no-undef
+
+/home/budrahh/Projects/applyvortex/applyvortex-docker/client/vite.config.js
+  9:31  error  '__dirname' is not defined  no-undef
+
+✖ 138 problems (127 errors, 11 warnings)
+
