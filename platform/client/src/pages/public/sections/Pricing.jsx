@@ -44,8 +44,8 @@ const plans = [
         popular: true
     },
     {
-        id: "scale",
-        name: "Career Scale",
+        id: "max",
+        name: "Max Hunter",
         price: "$99",
         period: "per month",
         description: "Power users and agencies.",
@@ -58,7 +58,7 @@ const plans = [
             "API Access",
             "White-label Reports"
         ],
-        cta: "Contact Sales",
+        cta: "Upgrade to Max",
         gradient: "from-violet-600 to-violet-500",
         popular: false
     }
@@ -179,7 +179,7 @@ const Pricing = () => {
                             {/* CTA Button */}
                             <Button
                                 as={Link}
-                                to={ROUTES.SIGNUP}
+                                to={plan.id === 'pro' || plan.id === 'max' ? ROUTES.PAYMENT : ROUTES.SIGNUP}
                                 variant={plan.popular ? 'primary' : 'outline'}
                                 className={`w-full rounded-lg h-9 lg:h-10 text-xs lg:text-sm font-bold transition-all duration-300 shrink-0 ${plan.popular
                                     ? 'bg-gradient-to-r from-brand-600 to-brand-500 hover:from-brand-500 hover:to-brand-400 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 text-white border-0'

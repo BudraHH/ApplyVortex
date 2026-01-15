@@ -114,7 +114,7 @@ const AboutCTA = () => {
                                     </Button>
                                     <Button
                                         as={Link}
-                                        to={ROUTES.PRICING}
+                                        to={ROUTES.HOME + '#pricing'}
                                         variant="outline"
                                         size="responsive"
                                         className=" bg-slate-200 hover:bg-white"

@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
-import { FileSignature, Search, Rocket, ChevronRight, Sparkles, Globe, BrainCircuit, UploadCloud, MonitorCheck, CheckCircle2, MapPin, Shield, Zap, Clock } from 'lucide-react';
+import { FileSignature, Search, Rocket, ChevronRight, Sparkles, Globe, BrainCircuit, UploadCloud, MonitorCheck, CheckCircle2, MapPin, Shield, Zap, Clock, Play } from 'lucide-react';
 import { ROUTES } from '@/routes/routes';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/Button';
 
 const BlueprintVisual = () => (
     <div className="w-full h-full bg-slate-50/50 border border-slate-200/60 rounded-xl overflow-hidden flex flex-col shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] backdrop-blur-sm">
@@ -444,6 +445,15 @@ const HowItWorks = () => {
 
                         {/* RIGHT: List / Preview Cards */}
                         <div className="col-span-4 space-y-4">
+                            <Button
+                                    as={Link}
+                                    to={ROUTES.WATCH_DEMO}
+                                    variant="outline"
+                                    size="lg"
+                                    className="bg-slate-50 hover:bg-white w-full"  >
+                                    <Play className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
+                                    Watch How it Works
+                                </Button>
                             <p className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Process Stack</p>
 
                             {nextPhases.map((phase, index) => (

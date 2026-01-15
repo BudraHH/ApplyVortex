@@ -6,11 +6,15 @@ import Features from './sections/Features';
 import Pricing from './sections/Pricing';
 import Footer from './sections/Footer';
 
+import { useLocation } from 'react-router-dom';
+
 const LandingPage = () => {
-    // Handle initial hash scroll if arriving from another route
+    const location = useLocation();
+
+    // Handle hash scroll when location changes (including initial load)
     React.useEffect(() => {
-        if (window.location.hash) {
-            const id = window.location.hash.replace('#', '');
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
             if (id === 'hero') {
                 // For hero, use robust scroll to top
                 document.body.dataset.navScrolling = 'true';
@@ -42,12 +46,12 @@ const LandingPage = () => {
                         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                         const elementTop = rect.top + scrollTop;
                         const offsetPosition = Math.max(0, elementTop - navbarHeight);
-                        
+
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
                         });
-                        
+
                         // Ensure completion
                         let checkCount = 0;
                         const maxChecks = 30;
@@ -69,7 +73,7 @@ const LandingPage = () => {
                 }
             }
         }
-    }, []);
+    }, [location]);
 
     return (
         <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-primary-foreground custom-scrollbar">

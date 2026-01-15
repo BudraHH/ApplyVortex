@@ -111,6 +111,10 @@ const Hero = () => {
 
                 <div className="absolute top-0 left-0 w-[200px] h-[1px] bg-gradient-to-r from-brand-500/20 to-transparent" />
                 <div className="absolute bottom-0 right-0 w-[200px] h-[1px] bg-gradient-to-l from-blue-500/20 to-transparent" />
+
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_-30%,rgba(120,119,198,0.15),transparent)]"></div>
+
             </div>
 
             <div className="relative lg:sticky top-0 min-h-screen flex items-center pt-8 md:pt-16 lg:pt-0">
@@ -176,7 +180,7 @@ const Hero = () => {
                                     as={Link}
                                     to={ROUTES.SIGNUP}
                                     size="lg"
-                                    className="group relative overflow-hidden px-8 py-6 text-base font-semibold shadow-lg shadow-brand-500/20 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300"
+                                    className="group "
                                 >
                                     <span className="relative z-10 flex items-center gap-2">
                                         Start Applying Free
@@ -184,10 +188,11 @@ const Hero = () => {
                                     </span>
                                 </Button>
                                 <Button
+                                    as={Link}
+                                    to={ROUTES.WATCH_DEMO}
                                     variant="outline"
                                     size="lg"
-                                    className="border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50 px-8 py-6 text-base font-semibold transition-all duration-300 group"
-                                >
+                                    className="bg-slate-50 hover:bg-white"  >
                                     <Play className="h-5 w-5 mr-2 transition-transform group-hover:scale-110" />
                                     Watch How it Works
                                 </Button>

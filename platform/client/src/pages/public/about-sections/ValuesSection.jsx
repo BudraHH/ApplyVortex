@@ -344,7 +344,7 @@ const ValuesSection = () => {
                             <Quote className="absolute top-3 left-3 w-4 h-4 text-brand-100" />
 
                             <p className="text-sm font-medium text-slate-700 leading-relaxed mb-3 relative pl-3">
-                                "We've been there.
+                                "We've applied to thousands of jobs ourselves. We know the pain. 
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-500 font-bold"> That's why we built ApplyVortex.</span>"
                             </p>
 

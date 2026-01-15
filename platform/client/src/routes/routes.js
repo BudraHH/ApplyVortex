@@ -2,6 +2,8 @@
 export const ROUTES = {
     // Public
     HOME: '/',
+    WATCH_DEMO: '/watch-demo',
+    PAYMENT: '/payment',
     ABOUT: '/about',
 
     // Auth

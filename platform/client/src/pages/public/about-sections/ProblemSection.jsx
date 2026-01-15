@@ -137,7 +137,7 @@ const ProblemSection = () => {
                         </div>
 
                         {/* Stats Highlight Strip - Horizontal Scroll */}
-                        <div className="flex gap-3 overflow-x-auto pb-4 mb-4 -mx-4 px-4 scrollbar-hide">
+                        <div className="flex gap-3 overflow-x-auto pb-4 mb-4 -mx-4 px-4 no-scrollbar">
                             {problems.slice(0, 4).map((item, index) => {
                                 const colors = colorVariants[item.color];
                                 return (

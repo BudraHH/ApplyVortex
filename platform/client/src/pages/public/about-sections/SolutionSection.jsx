@@ -129,7 +129,7 @@ const SolutionSection = () => {
                         </div>
 
                         {/* Solution Tabs - Horizontal Scroll */}
-                        <div className="flex flex-row gap-2 w-full justify-between overflow-x-auto mt-20 mb-4 scrollbar-hide">
+                        <div className="flex flex-row gap-2 w-full justify-between overflow-x-auto mt-20 mb-4 no-scrollbar">
                             {solutions.map((solution, index) => (
                                 <button
                                     key={index}

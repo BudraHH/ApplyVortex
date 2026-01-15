@@ -28,6 +28,8 @@ import AdminDangerZonePage from "@/pages/protected/admin/AdminDangerZonePage.jsx
 
 // Public Pages
 import LandingPage from "@/pages/public/LandingPage";
+import WatchDemoPage from "@/pages/public/WatchDemoPage";
+import PaymentPage from "@/pages/public/PaymentPage";
 import AboutPage from "@/pages/public/AboutPage";
 
 // Auth Pages
@@ -162,6 +164,22 @@ export default function Router() {
                     element={
                         <PublicRoute>
                             <AboutPage />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={ROUTES.WATCH_DEMO}
+                    element={
+                        <PublicRoute>
+                            <WatchDemoPage />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path={ROUTES.PAYMENT}
+                    element={
+                        <PublicRoute>
+                            <PaymentPage />
                         </PublicRoute>
                     }
                 />

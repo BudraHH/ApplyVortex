@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Twitter, Github, Linkedin, Heart, ArrowUp } from 'lucide-react';
+import { Sparkles, Github, Linkedin, Heart, ArrowUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/routes/routes';
 
@@ -87,7 +87,7 @@ const Footer = () => {
                             AI-powered job application platform designed to help developers landing their dream jobs faster and smarter.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="text-muted-foreground hover:text-brand-400 transition-colors"><Twitter size={18} className="md:w-5 md:h-5" /></a>
+
                             <a href="#" className="text-muted-foreground hover:text-brand-400 transition-colors"><Github size={18} className="md:w-5 md:h-5" /></a>
                             <a href="#" className="text-muted-foreground hover:text-brand-400 transition-colors"><Linkedin size={18} className="md:w-5 md:h-5" /></a>
                         </div>
@@ -99,9 +99,9 @@ const Footer = () => {
                         <ul className="space-y-2 md:space-y-3">
                             <li><Link to={ROUTES.ABOUT} className="text-xs md:text-sm text-muted-foreground hover:text-foreground">About</Link></li>
                             <li><Link to="/#features" className="text-xs md:text-sm text-muted-foreground hover:text-foreground">Features</Link></li>
+                            <li><Link to="/#how-it-works" className="text-xs md:text-sm text-muted-foreground hover:text-foreground">How it Works</Link></li>
                             <li><Link to="/#pricing" className="text-xs md:text-sm text-muted-foreground hover:text-foreground">Pricing</Link></li>
-                            <li><Link to="#" className="text-xs md:text-sm text-muted-foreground hover:text-foreground">Integrations</Link></li>
-                            <li><Link to="#" className="text-xs md:text-sm text-muted-foreground hover:text-foreground">Changelog</Link></li>
+                            <li><Link to={ROUTES.WATCH_DEMO} className="text-xs md:text-sm text-muted-foreground hover:text-foreground">Watch Demo</Link></li>
                         </ul>
                     </div>
 
