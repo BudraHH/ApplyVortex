@@ -373,7 +373,7 @@ export default function SkillsLibraryForm() {
     // MAIN RENDER
     // ============================================
     return (
-        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4 flex flex-col justify-between gap-4">
+        <div className="h-full w-full mx-auto bg-white p-3 pb-24 md:pb-3 lg:p-4 flex flex-col justify-between gap-4">
             <div className="space-y-4">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
@@ -384,15 +384,15 @@ export default function SkillsLibraryForm() {
                         </p>
                     </div>
                     <Button
-                            variant="outline"
-                            onClick={handleRefresh}
-                            size="responsive"
-                            disabled={isLoading || isSaving || isRefreshing}
-                            className="gap-2  w-full md:w-auto "
-                        >
-                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
-                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
-                        </Button>
+                        variant="outline"
+                        onClick={handleRefresh}
+                        size="responsive"
+                        disabled={isLoading || isSaving || isRefreshing}
+                        className="gap-2  w-full md:w-auto "
+                    >
+                        <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                        {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
+                    </Button>
                 </div>
 
                 {/* Add Skill Input (Edit Mode) */}

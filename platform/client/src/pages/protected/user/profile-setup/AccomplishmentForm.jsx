@@ -257,7 +257,7 @@ export default function AccomplishmentForm() {
     };
 
     return (
-        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4 flex flex-col justify-between gap-4">
+        <div className="h-full w-full mx-auto bg-white p-3 pb-24 md:pb-3 lg:p-4 flex flex-col justify-between gap-4">
             <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
                 {/* Header */}
                 <section className="space-y-3 lg:space-y-4">
@@ -270,7 +270,7 @@ export default function AccomplishmentForm() {
                                 Highlight awards, volunteering, and other achievements
                             </p>
                         </div>
-                       <Button
+                        <Button
                             variant="outline"
                             onClick={handleRefresh}
                             size="responsive"
@@ -350,7 +350,7 @@ export default function AccomplishmentForm() {
                         )
                     )}
                 </section>
-               <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
                     <Button
                         type="button"
                         onClick={handlePrevious}

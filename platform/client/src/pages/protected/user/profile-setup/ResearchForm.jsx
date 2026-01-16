@@ -251,7 +251,7 @@ export default function ResearchForm() {
     };
 
     return (
-        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4">
+        <div className="h-full w-full mx-auto bg-white p-3 pb-24 md:pb-3 lg:p-4">
             <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
                 <section className="space-y-3 lg:space-y-4">
                     <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0'>

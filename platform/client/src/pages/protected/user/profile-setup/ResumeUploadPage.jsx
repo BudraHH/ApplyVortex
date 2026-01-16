@@ -438,7 +438,7 @@ export default function ResumeUploadPage() {
     }
 
     return (
-        <div className="h-full w-full mx-auto bg-white rounded-xl flex flex-col justify-between gap-4 p-3 lg:p-4">
+        <div className="h-full w-full mx-auto bg-white rounded-xl flex flex-col justify-between gap-4 p-3 pb-24 md:pb-3 lg:p-4">
             <div className="flex flex-col gap-4">
                 {/* Header */}
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between border-b border-slate-200 pb-3 lg:pb-4 gap-3 lg:gap-0">
@@ -484,7 +484,7 @@ export default function ResumeUploadPage() {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
 
                             {/* Desktop Skeleton Layout - Preserved */}

@@ -340,7 +340,7 @@ export default function ExperienceForm() {
     };
 
     return (
-        <div className="h-full w-full mx-auto bg-white space-y-3 lg:space-y-4 p-3 lg:p-4">
+        <div className="h-full w-full mx-auto bg-white space-y-3 lg:space-y-4 p-3 pb-24 md:pb-3 lg:p-4">
             <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
 
                 {/* Experience Section */}
@@ -509,7 +509,7 @@ export default function ExperienceForm() {
 
                 </section>
 
-               <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
                     <Button
                         type="button"
                         onClick={handlePrevious}
