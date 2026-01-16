@@ -49,7 +49,7 @@ class Settings(BaseSettings):
     )
     
     # Used by TrustedHostMiddleware
-    ALLOWED_HOSTS: List[str] = Field(["https://apply-vortex.vercel.app", "http://localhost:3000", "http://localhost:8000"], description="Allowed hosts")
+    ALLOWED_HOSTS: List[str] = Field(["*"], description="Allowed hosts")
 
     # --------------------------------------------------------------------------
     # Database
