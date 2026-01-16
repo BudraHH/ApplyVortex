@@ -132,22 +132,37 @@ export function TaskStatusList({ refreshTrigger, onLoadingChange }) {
                 {isLoading ? (
                     <div className="flex flex-col flex-1 divide-y divide-slate-50">
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                            <div key={i} className="flex items-center justify-between border-b border-slate-50 p-2 md:p-3 lg:p-4">
-                                <div className="flex items-center flex-1 min-w-0 gap-2 md:gap-3 lg:gap-4">
-                                    <Skeleton className="h-10 w-10 shrink-0 rounded-xl" />
-                                    <div className="flex-1 min-w-0 space-y-2 md:space-y-3 lg:space-y-4">
-                                        <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
-                                            <Skeleton className="h-4 w-32 rounded text-slate-900" />
-                                            <Skeleton className="h-4 w-16 rounded opacity-50" />
+                            <div key={i} className="flex-1">
+                                {/* Mobile Skeleton (lg:hidden) */}
+                                <div className="lg:hidden p-3 flex gap-3 items-start border-b border-slate-50">
+                                    <Skeleton className="h-9 w-9 rounded-lg shrink-0" />
+                                    <div className="flex-1 min-w-0 space-y-2">
+                                        <div className="flex items-center justify-between gap-2">
+                                            <Skeleton className="h-3 w-24 rounded" />
+                                            <Skeleton className="h-4 w-12 rounded" />
                                         </div>
-                                        <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
-                                            <Skeleton className="h-3 w-48 rounded" />
-                                            <div className="h-1 w-1 rounded-full bg-slate-100" />
-                                            <Skeleton className="h-3 w-12 rounded" />
+                                        <div className="flex items-center gap-2">
+                                            <Skeleton className="h-3 w-32 rounded" />
+                                            <Skeleton className="h-3 w-10 rounded-lg ml-auto" />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="shrink-0 ml-2 md:ml-3 lg:ml-4">
+
+                                {/* Desktop Skeleton (lg+) */}
+                                <div className="hidden lg:flex items-center justify-between border-b border-slate-50 p-4">
+                                    <div className="flex items-center flex-1 min-w-0 gap-4">
+                                        <Skeleton className="h-10 w-10 shrink-0 rounded-xl" />
+                                        <div className="flex-1 min-w-0 space-y-2">
+                                            <div className="flex items-center gap-2">
+                                                <Skeleton className="h-4 w-32 rounded" />
+                                                <Skeleton className="h-4 w-16 rounded opacity-50" />
+                                            </div>
+                                            <div className="flex items-center gap-4">
+                                                <Skeleton className="h-3 w-48 rounded" />
+                                                <Skeleton className="h-3 w-12 rounded" />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <Skeleton className="h-6 w-20 rounded-full" />
                                 </div>
                             </div>
@@ -230,53 +245,102 @@ function TaskItem({ task }) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="flex items-center justify-between hover:bg-slate-50/50 transition-colors group p-2 md:p-3 lg:p-4"
+            className="bg-slate-50 hover:bg-slate-100 transition-colors group border-b border-slate-100 last:border-0"
         >
-            <div className="flex items-center flex-1 min-w-0 gap-2 md:gap-3 lg:gap-4">
-                {/* Status Indicator / Icon */}
+            {/* Mobile / Tablet Layout (xs, sm, md) - Redesigned */}
+            {/* Mobile / Tablet Layout (xs, sm, md) - Redesigned Row */}
+            <div className="lg:hidden p-3 flex gap-3 items-start">
+                {/* Icon Box */}
                 <div className={cn(
-                    "relative flex-shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center transition-all",
-                    config.bgColor, config.borderColor
+                    "relative flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center transition-all bg-white",
+                    config.borderColor
                 )}>
                     {task.status === TaskStatus.IN_PROGRESS && (
-                        <div className="absolute inset-0 rounded-xl bg-brand-500/10 animate-ping" />
+                        <div className="absolute inset-0 rounded-lg bg-brand-500/10 animate-ping" />
                     )}
-                    <taskTypeInfo.icon className={cn("w-5 h-5", task.status === TaskStatus.IN_PROGRESS ? "text-brand-500" : "text-slate-400")} />
+                    <taskTypeInfo.icon className={cn("w-4 h-4", task.status === TaskStatus.IN_PROGRESS ? "text-brand-500" : "text-slate-400")} />
                 </div>
 
-                <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2 md:gap-3 lg:gap-4 mb-2 md:mb-3 lg:mb-4">
-                        <span className="text-sm font-bold text-slate-900  truncate uppercase tracking-tight">
-                            {taskTypeInfo.title}
+                {/* Content Column */}
+                <div className="flex-1 min-w-0 flex flex-col justify-center min-h-[36px]">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <div className="flex items-center gap-2 min-w-0">
+                            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-tight truncate">
+                                {taskTypeInfo.title}
+                            </h4>
+                            {task.payload?.portal && (
+                                <span className="text-[9px] font-bold text-slate-500 bg-white border border-slate-200 rounded px-1.5 py-0.5 uppercase tracking-wide shrink-0">
+                                    {PORTAL_LABELS[task.payload.portal]}
+                                </span>
+                            )}
+                        </div>
+                        {/* Compact Status Pill */}
+                        <span className={cn(
+                            "text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border ml-auto shrink-0",
+                            config.bgColor, config.borderColor, config.color
+                        )}>
+                            {config.label}
                         </span>
-                        {task.payload?.portal && (
-                            <span className="text-[10px] font-bold text-slate-400 bg-slate-100 rounded border border-slate-200 uppercase tracking-wider px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
-                                {PORTAL_LABELS[task.payload.portal] || 'External'}
-                            </span>
-                        )}
                     </div>
-                    <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
-                        <p className="text-xs text-slate-500  truncate max-w-[200px]">
+
+                    <div className="flex items-center text-[11px] text-slate-500 gap-2">
+                        <span className="truncate">
                             {taskTypeInfo.description}
-                        </p>
-                        <span className="text-[8px] text-slate-300 ">•</span>
-                        <p className="text-[10px] font-medium text-slate-300 ">
+                        </span>
+                        <span className="text-slate-300 px-0.5">•</span>
+                        <span className="shrink-0 text-[10px] font-medium text-slate-400 uppercase">
                             {formatTimeAgo(task.created_at)}
-                        </p>
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <div className="flex items-center gap-2 md:gap-3 lg:gap-4 ml-2 md:ml-3 lg:ml-4">
-                <div className={cn(
-                    "hidden sm:flex items-center rounded-full border text-[10px] font-bold uppercase tracking-wider gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4",
-                    config.bgColor, config.borderColor, config.color
-                )}>
-                    <Icon className="w-3 h-3" />
-                    {config.label}
+            {/* Desktop Layout (lg+) - Preserved */}
+            <div className="hidden lg:flex items-center justify-between p-4">
+                <div className="flex items-center flex-1 min-w-0 gap-4">
+                    {/* Status Indicator / Icon */}
+                    <div className={cn(
+                        "relative flex-shrink-0 w-10 h-10 rounded-xl border flex items-center justify-center transition-all",
+                        config.bgColor, config.borderColor
+                    )}>
+                        {task.status === TaskStatus.IN_PROGRESS && (
+                            <div className="absolute inset-0 rounded-xl bg-brand-500/10 animate-ping" />
+                        )}
+                        <taskTypeInfo.icon className={cn("w-5 h-5", task.status === TaskStatus.IN_PROGRESS ? "text-brand-500" : "text-slate-400")} />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                            <span className="text-sm font-bold text-slate-900  truncate uppercase tracking-tight">
+                                {taskTypeInfo.title}
+                            </span>
+                            {task.payload?.portal && (
+                                <span className="text-[10px] font-bold text-slate-400 bg-slate-100 rounded border border-slate-200 uppercase tracking-wider px-2 py-1">
+                                    {PORTAL_LABELS[task.payload.portal] || 'External'}
+                                </span>
+                            )}
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <p className="text-xs text-slate-500  truncate max-w-[200px]">
+                                {taskTypeInfo.description}
+                            </p>
+                            <span className="text-[8px] text-slate-300 ">•</span>
+                            <p className="text-[10px] font-medium text-slate-300 ">
+                                {formatTimeAgo(task.created_at)}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                {/* Mobile Dot */}
-                <div className={cn("w-2 h-2 rounded-full sm:hidden", config.color.replace('text-', 'bg-'))} />
+
+                <div className="flex items-center gap-2">
+                    <div className={cn(
+                        "flex items-center rounded-full border text-[10px] font-bold uppercase tracking-wider gap-2 px-2 py-1",
+                        config.bgColor, config.borderColor, config.color
+                    )}>
+                        <Icon className="w-3 h-3" />
+                        {config.label}
+                    </div>
+                </div>
             </div>
         </motion.div>
     );

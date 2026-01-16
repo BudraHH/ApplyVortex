@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { adminAPI } from '@/services/api/adminAPI.js';
 import { Button } from "@/components/ui/Button.jsx";
+import { SearchBar } from "@/components/ui/SearchBar.jsx";
 import {
     Search,
     Filter,
@@ -100,13 +101,11 @@ export default function AdminAuditLogsPage() {
             {/* Filters */}
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-center p-2 md:p-3 lg:p-4 gap-2 md:gap-3 lg:gap-4">
                 <div className="relative w-full sm:flex-1">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                    <input
-                        type="text"
+                    <SearchBar
                         placeholder="Search actions..."
                         value={actionFilter}
                         onChange={(e) => setActionFilter(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg text-sm border border-slate-200 focus:border-brand-500 outline-none pl-2 md:pl-3 lg:pl-4 pr-2 md:pr-3 lg:pr-4 py-2 md:py-3 lg:py-4"
+                        className="bg-slate-50 border-slate-200"
                     />
                 </div>
 

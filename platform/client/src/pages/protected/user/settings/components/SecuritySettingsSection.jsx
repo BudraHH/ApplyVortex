@@ -109,7 +109,7 @@ export function SecuritySettingsSection() {
                     iconBg="bg-amber-50"
                     iconColor="text-amber-600"
                 />
-                <div className="p-6">
+                <div className="p-3 lg:p-6">
                     <form onSubmit={passwordForm.handleSubmit(onChangePassword)} className="space-y-6">
                         <FormField label="Current Password" error={passwordForm.formState.errors.currentPassword?.message} required>
                             <PasswordInput
@@ -146,7 +146,7 @@ export function SecuritySettingsSection() {
                             </FormField>
                         </div>
 
-                        <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
+                        <div className="rounded-xl bg-slate-50 border border-slate-100 p-3 lg:p-4">
                             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Security Checklist</p>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 {passwordRequirements.map((req, idx) => (
@@ -198,7 +198,7 @@ export function SecuritySettingsSection() {
                     }
                 />
                 {!isLoadingSessions && sessions.length > 0 && (
-                    <div className="bg-slate-50 border-y border-slate-100 flex items-center justify-between px-6 py-3">
+                    <div className="bg-slate-50 border-y border-slate-100 flex items-center justify-between px-3 py-2 lg:px-6 lg:py-3">
                         <div className="flex items-center gap-3">
                             <span className={cn(
                                 "text-xs font-semibold rounded-sm px-2 py-0.5",
@@ -233,13 +233,13 @@ export function SecuritySettingsSection() {
                         </div>
                     ) : (
                         sessions.map(s => (
-                            <div key={s.id} className="flex items-center justify-between hover:bg-slate-50/50 transition-colors px-6 py-4">
+                            <div key={s.id} className="flex items-center justify-between hover:bg-slate-50/50 transition-colors px-3 py-3 lg:px-6 lg:py-4">
                                 <div className="flex items-center gap-4">
                                     <div className={cn(
-                                        "rounded-full p-2.5",
+                                        "rounded-full p-2 lg:p-2.5",
                                         s.is_current ? "bg-brand-100 text-brand-600" : "bg-slate-100 text-slate-600"
                                     )}>
-                                        {s.user_agent?.toLowerCase().includes('mobile') ? <Smartphone className="h-5 w-5" /> : <Laptop className="h-5 w-5" />}
+                                        {s.user_agent?.toLowerCase().includes('mobile') ? <Smartphone className="h-4 w-4 lg:h-5 lg:w-5" /> : <Laptop className="h-4 w-4 lg:h-5 lg:w-5" />}
                                     </div>
                                     <div>
                                         <div className="flex items-center gap-3">

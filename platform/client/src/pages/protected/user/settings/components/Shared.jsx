@@ -12,14 +12,11 @@ export const SectionCard = ({ children, className }) => (
 );
 
 export const SectionHeader = ({ icon: Icon, title, description, iconBg = "bg-brand-50", iconColor = "text-brand-600", action }) => (
-    <div className="bg-white border-b border-slate-100 flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-4">
-            <div className={cn("rounded-lg p-2", iconBg)}>
-                <Icon className={cn("h-5 w-5", iconColor)} />
-            </div>
-            <div>
-                <h3 className="font-semibold text-slate-900 text-base">{title}</h3>
-                <p className="text-sm text-slate-500 mt-1">{description}</p>
+    <div className="bg-white border-b border-slate-100 flex items-center justify-between px-3 py-3 lg:px-6 lg:py-4">
+        <div className="flex items-center gap-3 lg:gap-4">
+          <div>
+                <h3 className="font-semibold text-slate-900 text-sm lg:text-base">{title}</h3>
+                <p className="text-xs lg:text-sm text-slate-500 mt-0.5 lg:mt-1">{description}</p>
             </div>
         </div>
         {action}

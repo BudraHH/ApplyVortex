@@ -91,12 +91,15 @@ export default function DashBoardPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-full bg-white border border-slate-100 hover:border-slate-200 transition-colors rounded-xl overflow-y-auto custom-scrollbar gap-6 p-6">
+        <div className="flex flex-col min-h-full bg-white border border-slate-100 hover:border-slate-200 transition-colors rounded-xl overflow-y-auto custom-scrollbar gap-2 p-2 md:gap-6 md:p-6">
             {/* Header: Command Block */}
-            <div className="flex flex-col sm:flex-row justify-between items-center bg-slate-50/50 rounded-xl border border-slate-100 p-6 gap-4">
-                <div className="flex flex-col gap-1">
-                    <h1 className="text-xl font-bold tracking-tight text-black">Control Center</h1>
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Active System ID: AF-90210</p>
+            <div className="flex flex-row justify-between items-center bg-slate-50/50 rounded-xl border border-slate-100 p-4 md:p-6 gap-4">
+                <div className="flex flex-col gap-0.5">
+                    <h1 className="text-lg md:text-xl font-bold tracking-tight text-black">Control Center</h1>
+                    <p className="text-slate-500 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">
+                        <span className="md:hidden">ID: AF-90210</span>
+                        <span className="hidden md:inline">Active System ID: AF-90210</span>
+                    </p>
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="hidden md:flex flex-col items-end gap-2">
@@ -110,15 +113,16 @@ export default function DashBoardPage() {
                         variant="outline"
                         onClick={handleSyncClick}
                         disabled={isRefreshing}
+                        className="h-9 px-3 text-xs md:h-10 md:px-4 md:text-sm"
                     >
-                        <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin' : ''} mr-2`} />
+                        <RefreshCw className={`h-3 w-3 md:h-3.5 md:w-3.5 ${isRefreshing ? 'animate-spin' : ''} mr-2`} />
                         {isRefreshing ? 'Syncing...' : 'Sync Data'}
                     </Button>
                 </div>
             </div>
 
             {/* Metrics Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
                 <MetricCard
                     title="Total Detections"
                     value={stats.jobsFound24h}
@@ -149,14 +153,14 @@ export default function DashBoardPage() {
             </div>
 
             {/* Main Operational Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 md:gap-6">
 
                 {/* Primary Column (Span 8) */}
-                <div className="lg:col-span-8 flex flex-col gap-6">
+                <div className="lg:col-span-8 flex flex-col gap-2 md:gap-6">
 
                     {/* Heatmap block */}
                     <Card className="border-slate-100 bg-slate-50/30 rounded-xl shadow-none hover:border-slate-200 transition-colors">
-                        <CardHeader className="border-b border-white flex flex-row items-center justify-between p-6">
+                        <CardHeader className="border-b border-white flex flex-row items-center justify-between p-4 md:p-6">
                             <div className="flex items-center gap-2">
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Efficiency Pulse</span>
                                 {!isAnalyticsLoading && heatmapData.every(v => v === 0) && (
@@ -165,7 +169,7 @@ export default function DashBoardPage() {
                             </div>
                             <Badge variant="outline" className="border-slate-200 text-slate-500 rounded-xl font-bold text-[9px] px-3">14D RECAP</Badge>
                         </CardHeader>
-                        <CardContent className="p-6">
+                        <CardContent className="p-4 md:p-6">
                             <ActivityHeatmap data={heatmapData} isLoading={isAnalyticsLoading} />
                         </CardContent>
                     </Card>
@@ -263,7 +267,7 @@ export default function DashBoardPage() {
 
                     {/* Operation Stream (Top 5) */}
                     <Card className="border-slate-100 hover:border-slate-200 transition-colors bg-white rounded-xl flex-1 flex flex-col shadow-none">
-                        <CardHeader className="border-b border-slate-50 flex flex-row items-center justify-between p-6">
+                        <CardHeader className="border-b border-slate-50 flex flex-row items-center justify-between p-4 md:p-6">
                             <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Operational Feed</span>
 
                             {!isOperationalFeedLoading && activities.length > 0 && (<Button
@@ -323,11 +327,11 @@ export default function DashBoardPage() {
                 </div>
 
                 {/* Secondary Column (Span 4) */}
-                <div className="lg:col-span-4 flex flex-col gap-6">
+                <div className="lg:col-span-4 flex flex-col gap-2 md:gap-6">
 
                     {/* Market Distribution */}
                     <Card className="border-slate-100 hover:border-slate-200 transition-colors bg-white rounded-xl overflow-hidden shadow-none">
-                        <CardHeader className="border-b border-slate-50 p-6">
+                        <CardHeader className="border-b border-slate-50 p-4 md:p-6">
                             <div className="flex items-center gap-2">
                                 <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Market Share</span>
                                 {!isAnalyticsLoading && sourceData.every(item => item.value === 0) && (
@@ -335,13 +339,13 @@ export default function DashBoardPage() {
                                 )}
                             </div>
                         </CardHeader>
-                        <CardContent className="p-6">
+                        <CardContent className="p-4 md:p-6">
                             <SourceBreakdown data={sourceData} isLoading={isAnalyticsLoading} />
                         </CardContent>
                     </Card>
 
                     {/* Optimization Engine: Diagnostic UI */}
-                    <Card className="border border-slate-100 hover:border-slate-200 transition-colors bg-white rounded-xl relative flex-1 shadow-none overflow-hidden group p-6">
+                    <Card className="border border-slate-100 hover:border-slate-200 transition-colors bg-white rounded-xl relative flex-1 shadow-none overflow-hidden group p-4 md:p-6">
 
                         <div className="relative z-10 flex flex-col h-full gap-6">
                             <div className="space-y-1">
@@ -519,7 +523,7 @@ function MetricCard({ title, value, label, icon, color, isLoading, onClick }) {
     };
     return (
         <Card
-            className={`bg-white border border-slate-100 rounded-xl flex items-center shadow-none transition-all ${onClick ? 'cursor-pointer hover:border-slate-200' : ''} p-6 gap-4`}
+            className={`bg-white border border-slate-100 rounded-xl flex items-center shadow-none transition-all ${onClick ? 'cursor-pointer hover:border-slate-200' : ''} p-3 md:p-6 gap-3 md:gap-4`}
             onClick={onClick}
         >
             <div className={`rounded-xl ${variants[color]} border shrink-0 p-3`}>
@@ -567,115 +571,115 @@ function ActivityHeatmap({ data, isLoading }) {
     );
 }
 
-    function SourceBreakdown({ data, isLoading }) {
-        // Calculate cumulative offsets for each segment
-        const circumference = 100; // Using 100 for easy percentage math
-        let cumulativeOffset = 0;
+function SourceBreakdown({ data, isLoading }) {
+    // Calculate cumulative offsets for each segment
+    const circumference = 100; // Using 100 for easy percentage math
+    let cumulativeOffset = 0;
 
-        // Map colors to Tailwind stroke colors
-        const colorToStroke = {
-            'bg-brand-500': '#6366f1',    // brand/indigo
-            'bg-slate-500': '#64748b',    // slate
-            'bg-slate-400': '#94a3b8',    // slate-400
-            'bg-blue-500': '#3b82f6',     // blue
-            'bg-emerald-500': '#10b981',  // emerald
-        };
+    // Map colors to Tailwind stroke colors
+    const colorToStroke = {
+        'bg-brand-500': '#6366f1',    // brand/indigo
+        'bg-slate-500': '#64748b',    // slate
+        'bg-slate-400': '#94a3b8',    // slate-400
+        'bg-blue-500': '#3b82f6',     // blue
+        'bg-emerald-500': '#10b981',  // emerald
+    };
 
-        // Check if there's any data
-        const totalValue = data.reduce((sum, item) => sum + (item.value || 0), 0);
-        const hasData = totalValue > 0;
+    // Check if there's any data
+    const totalValue = data.reduce((sum, item) => sum + (item.value || 0), 0);
+    const hasData = totalValue > 0;
 
-        // Loading state
-        if (isLoading) {
-            return (
-                <div className="flex flex-col gap-6">
-                    <div className="flex items-center justify-center py-4">
-                        <Skeleton className="h-28 w-28 rounded-full" />
-                    </div>
-                    <div className="flex flex-col gap-3">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="flex justify-between items-center bg-slate-50/50 rounded-xl border border-slate-50 p-3">
-                                <div className="flex items-center gap-2">
-                                    <Skeleton className="h-2 w-2 rounded-xl" />
-                                    <Skeleton className="h-3 w-16 rounded" />
-                                </div>
-                                <Skeleton className="h-3 w-8 rounded" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            );
-        }
-
+    // Loading state
+    if (isLoading) {
         return (
             <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-center py-4">
-                    <div className="relative h-28 w-28">
-                        <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
-                            {/* Background circle */}
-                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f1f5f9" strokeWidth="4" />
-                            {/* Dynamic segments based on data */}
-                            {hasData ? (
-                                data.map((item, idx) => {
-                                    if (item.value <= 0) return null;
-                                    const strokeColor = colorToStroke[item.color] || '#94a3b8';
-                                    const dashArray = `${item.value} ${circumference - item.value}`;
-                                    const dashOffset = -cumulativeOffset;
-
-                                    // Update cumulative offset for next segment
-                                    const element = (
-                                        <circle
-                                            key={idx}
-                                            cx="18"
-                                            cy="18"
-                                            r="15.915"
-                                            fill="none"
-                                            stroke={strokeColor}
-                                            strokeWidth="4"
-                                            strokeDasharray={dashArray}
-                                            strokeDashoffset={dashOffset}
-                                        />
-                                    );
-
-                                    cumulativeOffset += item.value;
-                                    return element;
-                                })
-                            ) : (
-                                /* Empty state - full gray circle */
-                                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#e2e8f0" strokeWidth="4" />
-                            )}
-                        </svg>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <span className={`text-[10px] font-black tracking-tighter uppercase ${hasData ? 'text-black' : 'text-slate-400'}`}>
-                                {hasData ? 'Market' : 'No Data'}
-                            </span>
-                        </div>
-                    </div>
+                    <Skeleton className="h-28 w-28 rounded-full" />
                 </div>
                 <div className="flex flex-col gap-3">
-                    {hasData ? (
-                        data.map((item) => (
-                            <div key={item.label} className="flex justify-between items-center bg-slate-50/50 rounded-xl border border-slate-50 p-3">
-                                <div className="flex items-center gap-2">
-                                    <div className={`h-2 w-2 rounded-xl ${item.color}`} />
-                                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">{item.label}</span>
-                                </div>
-                                <span className="text-[10px] font-black text-black leading-none">{item.value}%</span>
+                    {[1, 2, 3].map((i) => (
+                        <div key={i} className="flex justify-between items-center bg-slate-50/50 rounded-xl border border-slate-50 p-3">
+                            <div className="flex items-center gap-2">
+                                <Skeleton className="h-2 w-2 rounded-xl" />
+                                <Skeleton className="h-3 w-16 rounded" />
                             </div>
-                        ))
-                    ) : (
-                        /* Empty state: skeleton rows */
-                        [1, 2, 3].map((i) => (
-                            <div key={i} className="flex justify-between items-center bg-slate-50 rounded-xl border border-slate-100 p-3">
-                                <div className="flex items-center gap-2">
-                                    <div className="h-2 w-2 rounded-xl bg-slate-200" />
-                                    <div className="h-3 w-16 bg-slate-100 rounded" />
-                                </div>
-                                <div className="h-3 w-8 bg-slate-100 rounded" />
-                            </div>
-                        ))
-                    )}
+                            <Skeleton className="h-3 w-8 rounded" />
+                        </div>
+                    ))}
                 </div>
             </div>
         );
     }
+
+    return (
+        <div className="flex flex-col gap-6">
+            <div className="flex items-center justify-center py-4">
+                <div className="relative h-28 w-28">
+                    <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
+                        {/* Background circle */}
+                        <circle cx="18" cy="18" r="15.915" fill="none" stroke="#f1f5f9" strokeWidth="4" />
+                        {/* Dynamic segments based on data */}
+                        {hasData ? (
+                            data.map((item, idx) => {
+                                if (item.value <= 0) return null;
+                                const strokeColor = colorToStroke[item.color] || '#94a3b8';
+                                const dashArray = `${item.value} ${circumference - item.value}`;
+                                const dashOffset = -cumulativeOffset;
+
+                                // Update cumulative offset for next segment
+                                const element = (
+                                    <circle
+                                        key={idx}
+                                        cx="18"
+                                        cy="18"
+                                        r="15.915"
+                                        fill="none"
+                                        stroke={strokeColor}
+                                        strokeWidth="4"
+                                        strokeDasharray={dashArray}
+                                        strokeDashoffset={dashOffset}
+                                    />
+                                );
+
+                                cumulativeOffset += item.value;
+                                return element;
+                            })
+                        ) : (
+                            /* Empty state - full gray circle */
+                            <circle cx="18" cy="18" r="15.915" fill="none" stroke="#e2e8f0" strokeWidth="4" />
+                        )}
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <span className={`text-[10px] font-black tracking-tighter uppercase ${hasData ? 'text-black' : 'text-slate-400'}`}>
+                            {hasData ? 'Market' : 'No Data'}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col gap-3">
+                {hasData ? (
+                    data.map((item) => (
+                        <div key={item.label} className="flex justify-between items-center bg-slate-50/50 rounded-xl border border-slate-50 p-3">
+                            <div className="flex items-center gap-2">
+                                <div className={`h-2 w-2 rounded-xl ${item.color}`} />
+                                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none">{item.label}</span>
+                            </div>
+                            <span className="text-[10px] font-black text-black leading-none">{item.value}%</span>
+                        </div>
+                    ))
+                ) : (
+                    /* Empty state: skeleton rows */
+                    [1, 2, 3].map((i) => (
+                        <div key={i} className="flex justify-between items-center bg-slate-50 rounded-xl border border-slate-100 p-3">
+                            <div className="flex items-center gap-2">
+                                <div className="h-2 w-2 rounded-xl bg-slate-200" />
+                                <div className="h-3 w-16 bg-slate-100 rounded" />
+                            </div>
+                            <div className="h-3 w-8 bg-slate-100 rounded" />
+                        </div>
+                    ))
+                )}
+            </div>
+        </div>
+    );
+}

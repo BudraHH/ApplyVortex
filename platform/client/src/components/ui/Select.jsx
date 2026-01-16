@@ -14,7 +14,7 @@ const SelectTrigger = React.forwardRef(({ className, children, ...props }, ref) 
     <SelectPrimitive.Trigger
         ref={ref}
         className={cn(
-            "flex h-10 w-full items-center justify-between rounded-md border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-brand-500 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 transition-all shadow-sm hover:bg-slate-50 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4",
+            "flex h-10 lg:h-12 w-full items-center justify-between rounded-md border border-slate-200 bg-white text-sm text-slate-900 placeholder:text-slate-400 outline-none focus:border-brand-500 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 transition-all shadow-sm hover:bg-slate-50 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4",
             className
         )}
         {...props}>
@@ -62,7 +62,7 @@ const SelectContent = React.forwardRef(({ className, children, position = "poppe
             <SelectScrollUpButton />
             <SelectPrimitive.Viewport
                 className={cn(
-                    "p-2 md:p-3 lg:p-4",
+                    "p-2 ",
                     position === "popper" &&
                     "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
                 )}>
@@ -86,15 +86,10 @@ const SelectItem = React.forwardRef(({ className, children, ...props }, ref) => 
     <SelectPrimitive.Item
         ref={ref}
         className={cn(
-            "relative flex w-full cursor-pointer select-none items-center rounded-sm text-sm outline-none focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 py-2 md:py-3 lg:py-4 pl-2 md:pl-3 lg:pl-4 pr-2 md:pr-3 lg:pr-4",
+            "relative flex w-full cursor-pointer select-none items-center rounded-sm text-sm outline-none focus:bg-slate-100 focus:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50    p-2",
             className
         )}
         {...props}>
-        <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-            <SelectPrimitive.ItemIndicator>
-                <Check className="h-4 w-4" />
-            </SelectPrimitive.ItemIndicator>
-        </span>
 
         <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>

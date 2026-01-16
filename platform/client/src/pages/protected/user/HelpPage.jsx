@@ -137,7 +137,7 @@ const FAQItem = ({ question, answer }) => {
             <Button
                 variant="ghost"
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex w-full items-center justify-between text-left h-auto hover:bg-transparent hover:text-inherit p-4"
+                className="flex w-full items-center justify-between text-left h-auto hover:bg-transparent hover:text-inherit p-3 lg:p-4"
             >
                 <span className={cn(
                     "font-medium text-[15px] transition-colors duration-300",
@@ -210,18 +210,18 @@ const PopularCard = ({ topic, onClick }) => (
         whileTap={{ scale: 0.98 }}
         onClick={onClick}
         className={cn(
-            "bg-white rounded-xl border border-slate-200 hover:shadow-brand-500/5 transition-all cursor-pointer group flex flex-col justify-between h-full p-4",
+            "bg-white rounded-xl border border-slate-200 hover:shadow-brand-500/5 transition-all cursor-pointer group flex flex-col justify-between h-full p-3 lg:p-4",
             topic.borderColor
         )}
     >
         <div>
-            <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300 mb-4", topic.color)}>
+            <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300 mb-1 lg:mb-4", topic.color)}>
                 <topic.icon className="h-5 w-5" />
             </div>
             <h4 className="font-semibold text-slate-900 group-hover:text-brand-700 transition-colors text-sm">{topic.title}</h4>
-            <p className="text-xs text-slate-500 leading-relaxed mt-4">{topic.desc}</p>
+            <p className="text-xs text-slate-500 leading-relaxed mt-0 lg:mt-4">{topic.desc}</p>
         </div>
-        <div className="flex items-center text-[10px] font-semibold text-slate-400 group-hover:text-brand-600 transition-colors mt-4">
+        <div className="flex items-center text-[10px] font-semibold text-slate-400 group-hover:text-brand-600 transition-colors mt-0 lg:mt-4">
             Learn more
             <ArrowRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 ml-2" />
         </div>
@@ -262,18 +262,18 @@ export default function HelpPage() {
         <div className="h-full flex flex-col bg-white rounded-xl border border-slate-100 hover:border-slate-200 overflow-hidden">
             {/* Scrollable Container */}
             <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar">
-                <div className="mx-auto p-6 space-y-6">
+                <div className="mx-auto p-2 space-y-2 lg:p-6 lg:space-y-6">
 
                     {/* HERO SECTION */}
-                    <div className="relative overflow-hidden rounded-xl bg-slate-900 text-center shadow-xl ring-1 ring-white/10 p-8">
+                    <div className="relative overflow-hidden rounded-xl bg-slate-900 text-center shadow-xl ring-1 ring-white/10 p-4 lg:p-8">
                         {/* Background Effects */}
                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/50 via-slate-900 to-slate-900" />
                         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay" />
 
                         {/* Content */}
-                        <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-                            <div className="space-y-4">
-                                <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                        <div className="relative z-10 max-w-2xl mx-auto space-y-4 lg:space-y-6">
+                            <div className="space-y-2 lg:space-y-4">
+                                <h1 className="text-2xl lg:text-5xl font-black text-white tracking-tight leading-tight">
                                     How can we <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-indigo-300">help you?</span>
                                 </h1>
                                 <p className="text-brand-100/60 text-base font-medium max-w-lg mx-auto leading-relaxed">
@@ -295,7 +295,7 @@ export default function HelpPage() {
                                     placeholder="Ask a question..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full text-base border-0 bg-white/10 text-white placeholder:text-slate-500 shadow-xl backdrop-blur-sm transition-all focus:bg-white focus:text-slate-900 focus:placeholder:text-slate-400 focus:ring-4 focus:ring-brand-500/20 pl-11 pr-10"
+                                    className="w-full text-base border-0 bg-white/10 text-white placeholder:text-slate-500 shadow-xl backdrop-blur-sm transition-all focus:bg-white focus:text-slate-900 focus:placeholder:text-slate-400 focus:ring-4 focus:ring-brand-500/20 !pl-12 !pr-10"
                                 />
                                 {searchQuery && (
                                     <Button
@@ -317,7 +317,7 @@ export default function HelpPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="grid grid-cols-2 lg:grid-cols-4 gap-4"
+                            className="grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4"
                         >
                             {popularTopics.map((topic, i) => (
                                 <PopularCard
@@ -330,18 +330,19 @@ export default function HelpPage() {
                     )}
 
                     {/* MAIN CONTENT AREA */}
-                    <div className="bg-white rounded-xl border border-slate-100 shadow-sm min-h-[400px] p-6">
+                    <div className="bg-white rounded-xl border border-slate-100 shadow-sm min-h-[400px] p-3 lg:p-6">
                         {!searchQuery && (
-                            <div className="w-full flex justify-around bg-slate-100/50 rounded-xl border border-slate-200/50 mb-6 p-2">
+                            <div className="w-full flex overflow-x-auto custom-scrollbar gap-2 lg:justify-around bg-slate-100/50 rounded-xl border border-slate-200/50 mb-4 lg:mb-6 p-2">
                                 {Object.entries(categoryConfig).map(([key, config]) => (
-                                    <TabButton
-                                        key={key}
-                                        isActive={activeTab === key}
-                                        onClick={() => setActiveTab(key)}
-                                        icon={config.icon}
-                                    >
-                                        {config.label}
-                                    </TabButton>
+                                    <div key={key} className="shrink-0">
+                                        <TabButton
+                                            isActive={activeTab === key}
+                                            onClick={() => setActiveTab(key)}
+                                            icon={config.icon}
+                                        >
+                                            {config.label}
+                                        </TabButton>
+                                    </div>
                                 ))}
                             </div>
                         )}
@@ -418,9 +419,9 @@ export default function HelpPage() {
                     </div>
 
                     {/* CONTACT FOOTER */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between rounded-xl border border-slate-200 bg-white shadow-sm p-6 gap-6">
+                    <div className="flex flex-col sm:flex-row items-center justify-between rounded-xl border border-slate-200 bg-white shadow-sm p-3 gap-3 lg:p-6 lg:gap-6">
                         <div className="flex items-center text-center sm:text-left gap-4">
-                            <div className="h-12 w-12 rounded-full bg-brand-50 flex items-center justify-center shrink-0">
+                            <div className="hidden lg:block h-12 w-12 rounded-full bg-brand-50 flex items-center justify-center shrink-0">
                                 <MessageCircle className="h-6 w-6 text-brand-600" />
                             </div>
                             <div>
@@ -428,16 +429,14 @@ export default function HelpPage() {
                                 <p className="text-sm text-slate-500">Our team is here to help you get the most out of ApplyVortex.</p>
                             </div>
                         </div>
-                        <div className="flex lg:gap-3">
-                            <Button
-                                variant="primary"
-                                onClick={() => window.location.href = 'mailto:support@applyvortex.com'}
-                                className="gap-2"
-                            >
-                                <Mail className="h-4 w-4" />
-                                Contact Us
-                            </Button>
-                        </div>
+                        <Button
+                            variant="primary"
+                            onClick={() => window.location.href = 'mailto:support@applyvortex.com'}
+                            className="gap-2 w-full"
+                        >
+                            <Mail className="h-4 w-4" />
+                            Contact Us
+                        </Button>
                     </div>
 
                     {/* Bottom Spacer */}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { userAPI } from '@/services/api/userAPI.js';
 import { Button } from "@/components/ui/Button.jsx"; // Import shared button
+import { SearchBar } from "@/components/ui/SearchBar.jsx";
 import {
     Search,
     Filter,
@@ -141,13 +142,11 @@ export default function AdminUsersPage() {
             {/* Filters & Search */}
             <div className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-center p-2 md:p-3 lg:p-4 gap-2 md:gap-3 lg:gap-4">
                 <div className="relative w-full sm:flex-1">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                    <input
-                        type="text"
+                    <SearchBar
                         placeholder="Search users by email..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg text-sm border border-slate-200 focus:border-brand-500 outline-none disabled:opacity-60 disabled:cursor-not-allowed pl-2 md:pl-3 lg:pl-4 pr-2 md:pr-3 lg:pr-4 py-2 md:py-3 lg:py-4"
+                        className="bg-slate-50 border-slate-200"
                     />
                 </div>
 
@@ -268,7 +267,7 @@ export default function AdminUsersPage() {
                                             </div>
                                         </td>
                                         <td className="px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
-                                            <div className={`inline-flex items-center rounded-full text-xs font-medium border ${user.is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-600 border-slate-200' } gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4`}>
+                                            <div className={`inline-flex items-center rounded-full text-xs font-medium border ${user.is_active ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-100 text-slate-600 border-slate-200'} gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4`}>
                                                 {user.is_active ? <CheckCircle className="h-3 w-3" /> : <Ban className="h-3 w-3" />}
                                                 {user.account_status}
                                             </div>
@@ -284,7 +283,7 @@ export default function AdminUsersPage() {
                                         </td>
                                         {roleFilter === 'user' && (
                                             <td className="px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
-                                                <span className={`inline-flex items-center rounded-full text-xs font-medium ${user.subscription_plan === 'pro' ? 'bg-indigo-100 text-indigo-700' : user.subscription_plan === 'max' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600' } px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4`}>
+                                                <span className={`inline-flex items-center rounded-full text-xs font-medium ${user.subscription_plan === 'pro' ? 'bg-indigo-100 text-indigo-700' : user.subscription_plan === 'max' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600'} px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4`}>
                                                     {user.subscription_plan ? user.subscription_plan.charAt(0).toUpperCase() + user.subscription_plan.slice(1) : 'Free'}
                                                 </span>
                                             </td>

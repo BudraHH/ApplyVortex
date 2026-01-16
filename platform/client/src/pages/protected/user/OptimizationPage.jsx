@@ -39,39 +39,44 @@ export default function OptimizationPage() {
         navigate(ROUTES.PROFILE_SETUP.SKILLS);
     };
 
+    const handleClickBack = () => {
+        navigate(ROUTES.DASHBOARD);
+    };
+
     return (
-        <div className="flex flex-col min-h-full bg-white border border-slate-100 hover:border-slate-200 rounded-xl overflow-y-auto custom-scrollbar gap-6 p-6">
+        <div className="flex flex-col min-h-full bg-white border border-slate-100 hover:border-slate-200 rounded-xl overflow-y-auto custom-scrollbar gap-4 lg:gap-6 p-3 lg:p-6">
 
             {/* Page Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white rounded-xl border border-slate-100 gap-6 p-6">
-                <div className="flex flex-col items-start">
-                    <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Intelligence Engine</h1>
-                    <p className="text-slate-500 text-xs font-medium mt-2">AI-driven profile optimization and market positioning analysis</p>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white rounded-xl border border-slate-100 gap-4 lg:gap-6 p-4 lg:p-6">
+                <div className="flex flex-col items-start space-y-1">
+                    <h1 className="text-lg lg:text-2xl font-bold text-slate-900 tracking-tight">Intelligence Engine</h1>
+                    <p className="text-slate-500 text-[10px] lg:text-xs font-medium">AI-driven profile optimization and market positioning analysis</p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 w-full md:w-auto">
                     <Button
                         onClick={handleAddSkills}
                         variant="primary"
-
+                        className="w-full md:w-auto"
                     >
                         Add Skills
                     </Button>
                     <Button
                         variant="outline"
-                        onClick={() => navigate(-1)}
+                        onClick={handleClickBack}
+                        className="w-full md:w-auto"
                     >
-                        <ArrowLeft className="h-4 w-4" /> Back
+                        <ArrowLeft className="h-3.5 w-3.5 lg:h-4 lg:w-4 mr-1.5" /> Back
                     </Button>
                 </div>
             </div>
 
             {/* Core Metrics Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
                 <ScoreCard
                     title="Overall Market Fit"
                     value={optimization.score || "0"}
                     unit="%"
-                    icon={<Target className="text-brand-500 h-4 w-4" />}
+                    icon={<Target className="text-brand-500 h-3.5 w-3.5 lg:h-4 lg:w-4" />}
                     trend="+12% from last week"
                     desc="Your profile is currently outperforming a significant portion of competing candidates in your target sector."
                 />
@@ -79,7 +84,7 @@ export default function OptimizationPage() {
                     title="Estimated Salary Boost"
                     value={optimization.salaryBoost?.replace('K', '').replace('+', '') || "0"}
                     unit="K"
-                    icon={<TrendingUp className="text-emerald-500 h-4 w-4" />}
+                    icon={<TrendingUp className="text-emerald-500 h-3.5 w-3.5 lg:h-4 lg:w-4" />}
                     trend="Potential Value"
                     desc={`Closing the identified skill gaps could increase your market value by approximately ${optimization.salaryBoost || '$0k'}.`}
                 />
@@ -87,7 +92,7 @@ export default function OptimizationPage() {
                     title="Agent Confidence"
                     value="94"
                     unit="%"
-                    icon={<ShieldCheck className="text-blue-500 h-4 w-4" />}
+                    icon={<ShieldCheck className="text-blue-500 h-3.5 w-3.5 lg:h-4 lg:w-4" />}
                     trend="High Precision"
                     desc="Our AI confidence score in the provided recommendations based on current market data."
                 />
@@ -99,12 +104,12 @@ export default function OptimizationPage() {
                 {/* Detailed Gap Analysis */}
                 <div className="lg:col-span-8 flex flex-col gap-4">
                     <Card className="border-slate-100 bg-white rounded-xl shadow-none">
-                        <CardHeader className="border-b border-slate-50 flex flex-row items-center justify-between bg-slate-50/30 p-4">
+                        <CardHeader className="border-b border-slate-50 flex flex-row items-center justify-between bg-slate-50/30 p-3 lg:p-4">
                             <div className="flex items-center gap-2">
-                                <AlertCircle className="h-4 w-4 text-red-500" />
-                                <span className="text-xs font-black text-slate-900 uppercase tracking-widest">Recommended Actions</span>
+                                <AlertCircle className="h-3.5 w-3.5 lg:h-4 lg:w-4 text-red-500" />
+                                <span className="text-[10px] lg:text-xs font-black text-slate-900 uppercase tracking-widest">Recommended Actions</span>
                             </div>
-                            <span className="text-[10px] font-bold text-slate-400">PRIORITIZED BY IMPACT</span>
+                            <span className="text-[9px] lg:text-[10px] font-bold text-slate-400">PRIORITIZED BY IMPACT</span>
                         </CardHeader>
                         <CardContent className="p-0">
                             <div className="divide-y divide-slate-50">
@@ -114,21 +119,24 @@ export default function OptimizationPage() {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: idx * 0.1 }}
-                                        className="hover:bg-slate-50/50 transition-all group p-4"
+                                        className="hover:bg-slate-50/50 transition-all group p-3 lg:p-4"
                                     >
-                                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                                            <div className="flex-1 space-y-2">
+                                        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3 lg:gap-4">
+                                            <div className="flex-1 space-y-1.5 lg:space-y-2">
                                                 <div className="flex items-center gap-2">
-                                                    <h3 className="text-md font-bold text-slate-900">{gap.skill}</h3>
-                                                    <Badge className={`${gap.bg} ${gap.color} border-0 rounded-xl h-5 font-black text-[8px] tracking-tighter shadow-none px-2`}>
+                                                    <h3 className="text-sm lg:text-md font-bold text-slate-900">{gap.skill}</h3>
+                                                    <Badge className={`${gap.bg} ${gap.color} border-0 rounded-xl h-4 lg:h-5 font-black text-[7px] lg:text-[8px] tracking-tighter shadow-none px-1.5 lg:px-2`}>
                                                         {gap.status.toUpperCase()}
                                                     </Badge>
                                                 </div>
-                                                <p className="text-xs text-slate-500 font-medium leading-normal max-w-2xl">{gap.detail}</p>
+                                                <p className="text-[10px] lg:text-xs text-slate-500 font-medium leading-normal max-w-2xl">{gap.detail}</p>
                                             </div>
-                                            <div className="bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 flex flex-col items-center justify-center shrink-0 min-w-[100px] px-3 py-2">
-                                                <span className="text-xl font-black">{gap.impact}</span>
-                                                <span className="text-[9px] font-bold uppercase tracking-tight">Boost</span>
+                                            <div className="w-full md:w-auto bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 flex flex-row md:flex-col items-center justify-between md:justify-center shrink-0 min-w-full md:min-w-[80px] lg:min-w-[100px] px-3 py-2 lg:px-3 lg:py-2 gap-2">
+                                                <span className="text-[10px] font-bold uppercase tracking-tight md:hidden">Impact Score</span>
+                                                <div className="flex items-baseline gap-1 md:flex-col md:items-center md:gap-0">
+                                                    <span className="text-lg lg:text-xl font-black">{gap.impact}</span>
+                                                    <span className="text-[9px] font-bold uppercase tracking-tight hidden md:block">Boost</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -141,46 +149,46 @@ export default function OptimizationPage() {
                 {/* Sidebar Stats/Tips */}
                 <div className="lg:col-span-4 flex flex-col gap-4">
                     <Card className="border-slate-100 bg-white rounded-xl shadow-none">
-                        <CardHeader className="border-b border-slate-50 p-4">
-                            <span className="text-xs font-black text-slate-900 uppercase tracking-widest">Industry Trends</span>
+                        <CardHeader className="border-b border-slate-50 p-3 lg:p-4">
+                            <span className="text-[10px] lg:text-xs font-black text-slate-900 uppercase tracking-widest">Industry Trends</span>
                         </CardHeader>
-                        <CardContent className="p-4 space-y-3">
-                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-3">
-                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-2">
-                                    <LineChart className="h-3.5 w-3.5 text-slate-600" />
+                        <CardContent className="p-3 lg:p-4 space-y-3">
+                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-2.5 lg:p-3">
+                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-1.5 lg:p-2">
+                                    <LineChart className="h-3 w-3 lg:h-3.5 lg:w-3.5 text-slate-600" />
                                 </div>
-                                <div className="space-y-1">
-                                    <p className="text-[11px] font-bold text-slate-900 leading-tight">Increased Demand: Kubernetes</p>
-                                    <p className="text-[10px] text-slate-500 font-medium leading-tight">Remote engineering roles requiring K8s have grown by 24% this quarter.</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-3">
-                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-2">
-                                    <Layers className="h-3.5 w-3.5 text-slate-600" />
-                                </div>
-                                <div className="space-y-1">
-                                    <p className="text-[11px] font-bold text-slate-900 leading-tight">Hybrid Work Resurgence</p>
-                                    <p className="text-[10px] text-slate-500 font-medium leading-tight">NYC & SF based hubs are seeing a shift toward 3-day hybrid schedules.</p>
+                                <div className="space-y-0.5 lg:space-y-1">
+                                    <p className="text-[10px] lg:text-[11px] font-bold text-slate-900 leading-tight">Increased Demand: Kubernetes</p>
+                                    <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium leading-tight">Remote engineering roles requiring K8s have grown by 24% this quarter.</p>
                                 </div>
                             </div>
-                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-3">
-                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-2">
-                                    <BarChart3 className="h-3.5 w-3.5 text-slate-600" />
+                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-2.5 lg:p-3">
+                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-1.5 lg:p-2">
+                                    <Layers className="h-3 w-3 lg:h-3.5 lg:w-3.5 text-slate-600" />
                                 </div>
-                                <div className="space-y-1">
-                                    <p className="text-[11px] font-bold text-slate-900 leading-tight">Salary Benchmarks Updated</p>
-                                    <p className="text-[10px] text-slate-500 font-medium leading-tight">New compensation data for Backend Engineers is now available via our API.</p>
+                                <div className="space-y-0.5 lg:space-y-1">
+                                    <p className="text-[10px] lg:text-[11px] font-bold text-slate-900 leading-tight">Hybrid Work Resurgence</p>
+                                    <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium leading-tight">NYC & SF based hubs are seeing a shift toward 3-day hybrid schedules.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start bg-slate-50/50 rounded-xl border border-slate-100 gap-3 p-2.5 lg:p-3">
+                                <div className="bg-white rounded-xl border border-slate-100 shrink-0 p-1.5 lg:p-2">
+                                    <BarChart3 className="h-3 w-3 lg:h-3.5 lg:w-3.5 text-slate-600" />
+                                </div>
+                                <div className="space-y-0.5 lg:space-y-1">
+                                    <p className="text-[10px] lg:text-[11px] font-bold text-slate-900 leading-tight">Salary Benchmarks Updated</p>
+                                    <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium leading-tight">New compensation data for Backend Engineers is now available via our API.</p>
                                 </div>
                             </div>
                         </CardContent>
                     </Card>
 
-                    <div className="bg-slate-100/50 rounded-xl border border-slate-100 p-4">
+                    <div className="bg-slate-100/50 rounded-xl border border-slate-100 p-3 lg:p-4">
                         <div className="flex items-center gap-2 mb-2">
-                            <Info className="h-4 w-4 text-slate-400" />
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">About This Score</span>
+                            <Info className="h-3.5 w-3.5 lg:h-4 lg:w-4 text-slate-400" />
+                            <span className="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">About This Score</span>
                         </div>
-                        <p className="text-[11px] text-slate-500 font-medium leading-relaxed">
+                        <p className="text-[10px] lg:text-[11px] text-slate-500 font-medium leading-relaxed">
                             Calculated daily based on millions of active job postings and thousands of successful placements in our ecosystem.
                         </p>
                     </div>
@@ -192,25 +200,25 @@ export default function OptimizationPage() {
 
 function ScoreCard({ title, value, unit, icon, trend, desc }) {
     return (
-        <Card className="bg-white border border-slate-100 rounded-xl shadow-none flex flex-col p-6 gap-4">
+        <Card className="bg-white border border-slate-100 rounded-xl shadow-none flex flex-col p-4 lg:p-6 gap-3 lg:gap-4">
             <div className="flex justify-between items-start">
-                <div className="bg-slate-50 rounded-xl border border-slate-100 p-3">
+                <div className="bg-slate-50 rounded-xl border border-slate-100 p-2 lg:p-3">
                     {icon}
                 </div>
                 <div className="text-right">
-                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">{title}</p>
+                    <p className="text-[8px] lg:text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">{title}</p>
                     <div className="flex items-baseline justify-end gap-1">
-                        <span className="text-2xl font-black text-slate-900">{value}</span>
-                        <span className="text-xs font-bold text-slate-500 underline decoration-brand-500/30">{unit}</span>
+                        <span className="text-xl lg:text-2xl font-black text-slate-900">{value}</span>
+                        <span className="text-[10px] lg:text-xs font-bold text-slate-500 underline decoration-brand-500/30">{unit}</span>
                     </div>
                 </div>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1.5 lg:space-y-2">
                 <div className="flex items-center gap-2">
                     <div className="h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{trend}</span>
+                    <span className="text-[8px] lg:text-[9px] font-bold text-emerald-600 uppercase tracking-widest">{trend}</span>
                 </div>
-                <p className="text-[10px] text-slate-500 font-medium leading-snug">{desc}</p>
+                <p className="text-[9px] lg:text-[10px] text-slate-500 font-medium leading-snug">{desc}</p>
             </div>
         </Card>
     );

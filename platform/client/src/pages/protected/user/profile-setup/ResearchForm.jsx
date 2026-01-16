@@ -68,27 +68,7 @@ const INITIAL_RESEARCH = {
     abstract: '',
 };
 
-// Mock Data
-const MOCK_RESEARCH = [
-    {
-        title: 'Deep Learning for Automated Resume Parsing',
-        researchType: 'journal',
-        authors: 'John Doe, Jane Smith',
-        publisher: 'International Journal of AI Research',
-        publicationDate: '2024-02',
-        url: 'https://example.com/research/resume-parsing',
-        abstract: 'This paper explores the application of transformer-based models in extracting structured information from unstructured resume documents. We propose a novel architecture that achieves state-of-the-art performance on the ResumeEntities dataset.',
-    },
-    {
-        title: 'Optimizing React Applications for Performance',
-        researchType: 'conference',
-        authors: 'Jane Smith',
-        publisher: 'ReactCon 2023',
-        publicationDate: '2023-11',
-        url: 'https://example.com/talks/react-optimization',
-        abstract: 'A comprehensive study on rendering behaviors in large-scale React applications. We discuss memoization strategies, virtualization techniques, and state management patterns that significantly reduce Time to Interactive (TTI).',
-    }
-];
+// Mock Data Removed
 
 export default function ResearchForm() {
     const navigate = useNavigate();
@@ -137,11 +117,9 @@ export default function ResearchForm() {
                 setHasData(true);
                 setIsEdit(false);
             } else {
-                // Use Mock Data if API is empty
-                console.log("Using Mock Research Data");
-                replace(MOCK_RESEARCH);
-                setOriginalData(MOCK_RESEARCH);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } catch (error) {
@@ -153,11 +131,9 @@ export default function ResearchForm() {
                     variant: 'destructive',
                 });
             } else {
-                // Fallback to Mock Data on Error too
-                console.log("Falling back to Mock Research Data");
-                replace(MOCK_RESEARCH);
-                setOriginalData(MOCK_RESEARCH);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } finally {
@@ -275,20 +251,26 @@ export default function ResearchForm() {
     };
 
     return (
-        <div className="w-full mx-auto bg-white p-4">
-            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
-                <section className="space-y-4">
-                    <div className='flex items-center justify-between'>
+        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
+                <section className="space-y-3 lg:space-y-4">
+                    <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0'>
                         <div className="flex-1">
-                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+                            <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">
                                 Research & Publications
                             </h2>
-                            <p className="text-slate-500 text-sm">
+                            <p className="text-slate-500 text-xs lg:text-sm">
                                 Add your research papers, publications, and academic contributions
                             </p>
                         </div>
-                        <Button variant="outline" onClick={handleRefresh} disabled={isLoading || isSaving || isRefreshing} className="gap-4">
-                            <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                        <Button
+                            variant="outline"
+                            onClick={handleRefresh}
+                            size="responsive"
+                            disabled={isLoading || isSaving || isRefreshing}
+                            className="gap-2  w-full md:w-auto "
+                        >
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
                             {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
                         </Button>
                     </div>
@@ -296,7 +278,7 @@ export default function ResearchForm() {
                     {isLoading || isRefreshing ? (
                         <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
                             {/* Header */}
-                            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between">
+                            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-3 lg:p-4">
                                 <div className="gap-1 flex flex-col items-start justify-start">
                                     <h3 className="text-lg text-slate-900 font-medium leading-none tracking-tight">
                                         {`Research`}
@@ -305,43 +287,43 @@ export default function ResearchForm() {
                                 </div>
                             </div>
                             {/* Body */}
-                            <div className="p-4 space-y-4">
+                            <div className="p-3 lg:p-4 space-y-3 lg:space-y-4">
                                 {/* Title */}
-                                <div className="space-y-4">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-20" />
-                                    <Skeleton className="h-10 w-full" />
+                                    <Skeleton className="h-8 lg:h-10 w-full" />
                                 </div>
                                 {/* Research Type + Publication Date */}
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
                                         <Skeleton className="h-4 w-28" />
-                                        <Skeleton className="h-10 w-full" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
                                     </div>
                                     <div className="space-y-2">
                                         <Skeleton className="h-4 w-36" />
-                                        <Skeleton className="h-10 w-full" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
                                     </div>
                                 </div>
                                 {/* Authors + Publisher */}
                                 <div className="grid md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
                                         <Skeleton className="h-4 w-24" />
-                                        <Skeleton className="h-10 w-full" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
                                     </div>
                                     <div className="space-y-2">
                                         <Skeleton className="h-4 w-36" />
-                                        <Skeleton className="h-10 w-full" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
                                     </div>
                                 </div>
                                 {/* DOI / URL */}
                                 <div className="space-y-2">
                                     <Skeleton className="h-4 w-24" />
-                                    <Skeleton className="h-10 w-full" />
+                                    <Skeleton className="h-8 lg:h-10 w-full" />
                                 </div>
                                 {/* Abstract */}
-                                <div className="space-y-4">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-24" />
-                                    <Skeleton className="h-24 w-full" />
+                                    <Skeleton className="h-12 lg:h-16 w-full" />
                                     <div className="flex justify-between">
                                         <Skeleton className="h-3 w-48" />
                                         <Skeleton className="h-3 w-16" />
@@ -351,12 +333,12 @@ export default function ResearchForm() {
                         </div>
                     ) : (
                         (!hasData && !isEdit) ? (
-                            <div className="border-2 border-dashed border-slate-300 rounded-lg text-center">
-                                <AlertCircle className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-                                <h3 className="text-lg font-semibold text-slate-900 mb-4">
-                                    No research publications added yet
+                            <div className="border-2 border-dashed border-slate-300 rounded-lg text-center p-3 lg:p-4 gap-4 min-h-[300px] lg:min-h-[500px] flex flex-col items-center justify-center">
+                                <AlertCircle className="h-12 w-12 text-slate-500 mx-auto " />
+                                <h3 className="text-lg font-semibold text-slate-900 ">
+                                    Oops, seems like your research publications are not updated
                                 </h3>
-                                <p className="text-slate-500 text-sm mb-4">
+                                <p className="text-slate-500 text-sm ">
                                     Showcase your academic contributions and research work
                                 </p>
                             </div>
@@ -382,43 +364,81 @@ export default function ResearchForm() {
                     )}
                 </section>
 
-                <div className="flex justify-between items-center border-t border-slate-200">
-                    <Button type="button" onClick={handlePrevious} disabled={isSaving} variant="outline" className="gap-4">
-                        <ArrowRight className="h-4 w-4 rotate-180" /> Previous
+                <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                    <Button
+                        type="button"
+                        onClick={handlePrevious}
+                        disabled={isSaving}
+                        variant="outline"
+                        className="col-start-1 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                    >
+                        <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
+                        Previous
                     </Button>
-                    <div className="flex items-center">
-                        {isEdit ? (
-                            <div className="flex items-center gap-4">
-                                <Button type="button" onClick={handleClickCancel} disabled={isSaving} variant="outline" className="gap-4">
-                                    <X className="h-4 w-4" /> Cancel
+
+                    <div className="contents md:flex md:items-center md:gap-2">
+                        {!isLoading && isEdit ? (
+                            <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full md:flex md:items-center md:w-auto md:gap-2">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickCancel}
+                                    disabled={isSaving}
+                                    variant="outline"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    <X className="h-3 w-3 md:h-4 md:w-4" />
+                                    Cancel
                                 </Button>
-                                <Button type="submit" disabled={isSaving} variant="primary" className="gap-4">
+                                <Button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    variant="primary"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                    aria-label="Save profile"
+                                >
                                     {isSaving ? (
                                         <>
-                                            <Loader2 className="h-4 w-4 animate-spin" /> Saving...
+                                            <Loader2 className="h-3 w-3 md:h-4 md:w-4 animate-spin" />
+                                            Saving...
                                         </>
                                     ) : (
                                         <>
-                                            <Save className="h-4 w-4" /> Save
+                                            <Save className="h-3 w-3 md:h-4 md:w-4" />
+                                            Save
                                         </>
                                     )}
                                 </Button>
                             </div>
                         ) : (
                             <>
-                                <Button type="button" onClick={handleClickEdit} disabled={isSaving} variant={`${isLoading ? "disabled" : "primary"}`} className="gap-4">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickEdit}
+                                    disabled={isSaving}
+                                    variant={`${isLoading ? "disabled" : "primary"}`}
+                                    className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4"
+                                >
                                     {isLoading || hasData ? (
                                         <>
-                                            <Edit3 className="h-4 w-4" /> Edit
+                                            <Edit3 className="h-3 w-3 md:h-4 md:w-4" />
+                                            Edit
                                         </>
                                     ) : (
                                         <>
-                                            <Plus className="h-4 w-4" /> Add
+                                            <Plus className="h-3 w-3 md:h-4 md:w-4" />
+                                            Add
                                         </>
                                     )}
                                 </Button>
-                                <Button type="button" disabled={isSaving} onClick={handleNext} variant="outline" className="gap-4">
-                                    Next <ArrowRight className="h-4 w-4" />
+                                <Button
+                                    type="button"
+                                    disabled={isSaving}
+                                    onClick={handleNext}
+                                    variant="outline"
+                                    className="col-start-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    Next
+                                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
                                 </Button>
                             </>
                         )}

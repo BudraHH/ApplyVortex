@@ -258,7 +258,7 @@ export default function Router() {
                     }
                 >
                     <Route path={ROUTES.DASHBOARD} element={<DashboardPage />} />
-                    {/* <Route path={ROUTES.SETTINGS.BASE} element={<SettingsPage />} />
+                    <Route path={ROUTES.SETTINGS.BASE} element={<SettingsPage />} />
                     <Route path={ROUTES.HELP} element={<HelpPage />} />
                     <Route path={`${ROUTES.HELP}/quick-start-guide`} element={<QuickStartGuide />} />
                     <Route path={`${ROUTES.HELP}/resume-builder`} element={<ResumeBuilderDocs />} />
@@ -317,7 +317,7 @@ export default function Router() {
                     <Route path={ROUTES.NOTIFICATIONS} element={<NotificationsPage />} />
                     <Route path={ROUTES.DOWNLOAD_AGENT} element={<DownloadAgentPage />} />
                     <Route path={ROUTES.AGENT_INSTRUCTIONS} element={<AgentInstructionsPage />} />
-                    <Route path={ROUTES.AGENT_PAIR} element={<PairingPage />} /> */}
+                    <Route path={ROUTES.AGENT_PAIR} element={<PairingPage />} />
                 </Route>
 
                 {/* Error / fallback routes */}

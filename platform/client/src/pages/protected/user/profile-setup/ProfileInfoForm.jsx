@@ -213,35 +213,35 @@ const BasicDetailsSection = memo(({ form, isEdit, isLoading, isRefreshing, toTit
         );
     }
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 animate-in slide-in-from-top-2 duration-200 p-4 gap-4">
-            <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 animate-in slide-in-from-top-2 duration-200 p-3 lg:p-4 gap-3 lg:gap-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>First Name <span className="text-red-500">*</span></Label>
                 <Input {...form.register('firstName')} disabled={!isEdit} placeholder="First Name" error={form.formState.errors.firstName} onChange={(e) => {
                     const val = toTitleCase(e.target.value);
                     e.target.value = val;
                     form.register('firstName').onChange(e);
                 }} />
-                {form.formState.errors.firstName && <p className="text-xs text-red-500 mt-4">{form.formState.errors.firstName.message}</p>}
+                {form.formState.errors.firstName && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.firstName.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Middle Name</Label>
                 <Input {...form.register('middleName')} disabled={!isEdit} placeholder="Optional" error={form.formState.errors.middleName} onChange={(e) => {
                     const val = toTitleCase(e.target.value);
                     e.target.value = val;
                     form.register('middleName').onChange(e);
                 }} />
-                {form.formState.errors.middleName && <p className="text-xs text-red-500 mt-4">{form.formState.errors.middleName.message}</p>}
+                {form.formState.errors.middleName && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.middleName.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Last Name <span className="text-red-500">*</span></Label>
                 <Input {...form.register('lastName')} disabled={!isEdit} placeholder="Last Name" error={form.formState.errors.lastName} onChange={(e) => {
                     const val = toTitleCase(e.target.value);
                     e.target.value = val;
                     form.register('lastName').onChange(e);
                 }} />
-                {form.formState.errors.lastName && <p className="text-xs text-red-500 mt-4">{form.formState.errors.lastName.message}</p>}
+                {form.formState.errors.lastName && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.lastName.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Gender <span className="text-red-500">*</span></Label>
                 <Controller name="gender" control={form.control} render={({ field }) => (
                     <Select onValueChange={(val) => field.onChange(Number(val))} defaultValue={String(field.value)} value={String(field.value)} disabled={!isEdit}>
@@ -249,40 +249,40 @@ const BasicDetailsSection = memo(({ form, isEdit, isLoading, isRefreshing, toTit
                         <SelectContent>{GENDER_OPTIONS.map(opt => (<SelectItem key={opt.value} value={String(opt.value)}>{opt.label}</SelectItem>))}</SelectContent>
                     </Select>
                 )} />
-                {form.formState.errors.gender && <p className="text-xs text-red-500 mt-4">{form.formState.errors.gender.message}</p>}
+                {form.formState.errors.gender && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.gender.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Email <span className="text-red-500">*</span></Label>
                 <Input {...form.register('email')} disabled />
-                {form.formState.errors.email && <p className="text-xs text-red-500 mt-4">{form.formState.errors.email.message}</p>}
+                {form.formState.errors.email && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.email.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Phone <span className="text-red-500">*</span></Label>
-                <div className="flex gap-4">
+                <div className="flex gap-3 lg:gap-4">
                     <Controller name="phoneCode" control={form.control} render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value} disabled={!isEdit}>
-                            <SelectTrigger className="w-[100px]"><SelectValue placeholder="Code" /></SelectTrigger>
+                            <SelectTrigger className="w-[80px] lg:w-[100px]"><SelectValue placeholder="Code" /></SelectTrigger>
                             <SelectContent>{COUNTRY_CODES.map((item) => (<SelectItem key={item.code} value={item.code}>+{item.code} ({item.country})</SelectItem>))}</SelectContent>
                         </Select>
                     )} />
                     <Input {...form.register('phone')} disabled={!isEdit} placeholder="Phone Number" className="flex-1" error={form.formState.errors.phone} />
                 </div>
-                {form.formState.errors.phone && <p className="text-xs text-red-500 mt-4">{form.formState.errors.phone.message}</p>}
+                {form.formState.errors.phone && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.phone.message}</p>}
             </div>
-            <div className="space-y-4">
+            <div className="space-y-3 lg:space-y-4">
                 <Label>Alternate Phone</Label>
-                <div className="flex gap-4">
+                <div className="flex gap-3 lg:gap-4">
                     <Controller name="alternatePhoneCode" control={form.control} render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value} disabled={!isEdit}>
-                            <SelectTrigger className="w-[100px]"><SelectValue placeholder="Code" /></SelectTrigger>
+                            <SelectTrigger className="w-[80px] lg:w-[100px]"><SelectValue placeholder="Code" /></SelectTrigger>
                             <SelectContent>{COUNTRY_CODES.map((item) => (<SelectItem key={item.code} value={item.code}>+{item.code} ({item.country})</SelectItem>))}</SelectContent>
                         </Select>
                     )} />
                     <Input {...form.register('alternatePhone')} disabled={!isEdit} placeholder="Alternate Phone" className="flex-1" error={form.formState.errors.alternatePhone} />
                 </div>
-                {form.formState.errors.alternatePhone && <p className="text-xs text-red-500 mt-4">{form.formState.errors.alternatePhone.message}</p>}
+                {form.formState.errors.alternatePhone && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.alternatePhone.message}</p>}
             </div>
-            <div className="md:col-span-2 space-y-4">
+            <div className="md:col-span-2 space-y-3 lg:space-y-4">
                 <Label>Search Status <span className="text-red-500">*</span></Label>
                 <Controller name="status" control={form.control} render={({ field }) => (
                     <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value} disabled={!isEdit}>
@@ -290,7 +290,7 @@ const BasicDetailsSection = memo(({ form, isEdit, isLoading, isRefreshing, toTit
                         <SelectContent>{STATUS_OPTIONS.map(opt => (<SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>))}</SelectContent>
                     </Select>
                 )} />
-                {form.formState.errors.status && <p className="text-xs text-red-500 mt-4">{form.formState.errors.status.message}</p>}
+                {form.formState.errors.status && <p className="text-xs text-red-500 mt-2 lg:mt-4">{form.formState.errors.status.message}</p>}
             </div>
         </div>
     );
@@ -1063,26 +1063,27 @@ export default function ProfileInfoForm() {
     };
 
     return (
-        <div className="w-full mx-auto bg-white p-4 space-y-4">
+        <div className="w-full mx-auto bg-white p-3 lg:p-4 space-y-3 lg:space-y-4">
 
 
             <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
 
-                <section className="space-y-4">
-                    <div className="flex flex-row items-center justify-between">
+                <section className="space-y-3 lg:space-y-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
                         <div className="flex-1">
-                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Your Personal Information</h2>
-                            <p className="text-slate-500 text-sm">
+                            <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">Your Personal Information</h2>
+                            <p className="text-slate-500 text-xs lg:text-sm">
                                 Manage your contact information and personal preferences
                             </p>
                         </div>
-                        <Button
+                       <Button
                             variant="outline"
                             onClick={handleRefresh}
+                            size="responsive"
                             disabled={isLoading || isSaving || isRefreshing}
-                            className="gap-4"
+                            className="gap-2  w-full md:w-auto "
                         >
-                            <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
                             {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
                         </Button>
                     </div>
@@ -1092,23 +1093,23 @@ export default function ProfileInfoForm() {
                         <button
                             type="button"
                             onClick={() => toggleSection('basic')}
-                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-4"
+                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="bg-brand-100 rounded-lg p-4">
-                                    <User className="h-5 w-5 text-brand-600" />
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 lg:p-4">
+                                    <User className="h-4 w-4 lg:h-5 lg:w-5 text-brand-600" />
                                 </div>
                                 <div className="text-left">
-                                    <h3 className="font-semibold text-slate-900">Basic Details</h3>
-                                    <p className="text-xs text-slate-500">Contact information and personal identifiers</p>
+                                    <h3 className="font-semibold text-sm lg:text-base text-slate-900">Basic Details</h3>
+                                    <p className="text-[10px] lg:text-xs text-slate-500">Contact information and personal identifiers</p>
                                 </div>
                             </div>
-                            {!isLoading && !isRefreshing && <ChevronDown className={`h-5 w-5 text-slate-500 transition-transform ${activeSection === 'basic' ? 'rotate-180' : ''}`} />}
+                            {!isLoading && !isRefreshing && <ChevronDown className={`h-4 w-4 lg:h-5 lg:w-5 text-slate-500 transition-transform ${activeSection === 'basic' ? 'rotate-180' : ''}`} />}
                         </button>
 
                         {activeSection === 'basic' && (
                             isLoading || isRefreshing ? (
-                                <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-3 p-3 lg:p-4 gap-4">
                                     {/* First Name */}
                                     <div className="space-y-4">
                                         <Skeleton className="h-4 w-24" />
@@ -1165,8 +1166,8 @@ export default function ProfileInfoForm() {
                                 </div>
 
                             ) : (
-                                <div className="grid grid-cols-1 md:grid-cols-3 p-4 gap-4">
-                                    <div className="space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-3 p-3 lg:p-4 gap-3 lg:gap-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>First Name <span className="text-red-500">*</span></Label>
                                         <Input {...form.register('firstName')} disabled={!isEdit} placeholder="First Name" error={form.formState.errors.firstName} onChange={(e) => {
                                             const val = toTitleCase(e.target.value);
@@ -1174,7 +1175,7 @@ export default function ProfileInfoForm() {
                                             form.register('firstName').onChange(e);
                                         }} />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Middle Name</Label>
                                         <Input {...form.register('middleName')} disabled={!isEdit} placeholder="Optional" error={form.formState.errors.middleName} onChange={(e) => {
                                             const val = toTitleCase(e.target.value);
@@ -1182,7 +1183,7 @@ export default function ProfileInfoForm() {
                                             form.register('middleName').onChange(e);
                                         }} />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Last Name <span className="text-red-500">*</span></Label>
                                         <Input {...form.register('lastName')} disabled={!isEdit} placeholder="Last Name" error={form.formState.errors.lastName} onChange={(e) => {
                                             const val = toTitleCase(e.target.value);
@@ -1190,7 +1191,7 @@ export default function ProfileInfoForm() {
                                             form.register('lastName').onChange(e);
                                         }} />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Gender <span className="text-red-500">*</span></Label>
                                         <Controller
                                             name="gender"
@@ -1211,19 +1212,19 @@ export default function ProfileInfoForm() {
                                             )}
                                         />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Email <span className="text-red-500">*</span></Label>
                                         <Input {...form.register('email')} disabled />
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Phone <span className="text-red-500">*</span></Label>
-                                        <div className="flex gap-4">
+                                        <div className="flex gap-3 lg:gap-4">
                                             <Controller
                                                 name="phoneCode"
                                                 control={form.control}
                                                 render={({ field }) => (
                                                     <Select onValueChange={field.onChange} value={field.value} disabled={!isEdit}>
-                                                        <SelectTrigger className="w-[100px]">
+                                                        <SelectTrigger className="w-[80px] lg:w-[100px]">
                                                             <SelectValue placeholder="Code" />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -1245,15 +1246,15 @@ export default function ProfileInfoForm() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="space-y-4">
+                                    <div className="space-y-3 lg:space-y-4">
                                         <Label>Alternate Phone</Label>
-                                        <div className="flex gap-4">
+                                        <div className="flex gap-3 lg:gap-4">
                                             <Controller
                                                 name="alternatePhoneCode"
                                                 control={form.control}
                                                 render={({ field }) => (
                                                     <Select onValueChange={field.onChange} value={field.value} disabled={!isEdit}>
-                                                        <SelectTrigger className="w-[100px]">
+                                                        <SelectTrigger className="w-[80px] lg:w-[100px]">
                                                             <SelectValue placeholder="Code" />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -1275,7 +1276,7 @@ export default function ProfileInfoForm() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="md:col-span-2 space-y-4">
+                                    <div className="md:col-span-2 space-y-3 lg:space-y-4">
                                         <Label>Search Status <span className="text-red-500">*</span></Label>
                                         <Controller
                                             name="status"
@@ -1642,45 +1643,46 @@ export default function ProfileInfoForm() {
 
                 </section>
 
-                <div className="flex justify-between items-center border-t border-slate-200 pt-4">
+                <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
                     <Button
                         type="button"
                         onClick={handlePrevious}
                         disabled={isSaving}
                         variant="outline"
-                        className="gap-4"
+                        className="col-start-1 row-start-2 w-full gap-2 md:w-auto md:gap-4"
                     >
-                        <ArrowLeft className="h-4 w-4" />
+                        <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
                         Previous
                     </Button>
-                    <div className="flex items-center gap-4">
+
+                    <div className="contents md:flex md:items-center md:gap-2">
                         {!isLoading && isEdit ? (
-                            <div className="flex items-center gap-4">
+                            <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full md:flex md:items-center md:w-auto md:gap-2">
                                 <Button
                                     type="button"
                                     onClick={handleClickCancel}
                                     disabled={isSaving}
                                     variant="outline"
-                                    className="gap-4"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
                                 >
-                                    <X className="h-4 w-4" />
+                                    <X className="h-3 w-3 md:h-4 md:w-4" />
                                     Cancel
                                 </Button>
                                 <Button
                                     type="submit"
                                     disabled={isSaving}
                                     variant="primary"
-                                    className="gap-4"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
                                     aria-label="Save profile"
                                 >
                                     {isSaving ? (
                                         <>
-                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                            <Loader2 className="h-3 w-3 md:h-4 md:w-4 animate-spin" />
                                             Saving...
                                         </>
                                     ) : (
                                         <>
-                                            <Save className="h-4 w-4" />
+                                            <Save className="h-3 w-3 md:h-4 md:w-4" />
                                             Save
                                         </>
                                     )}
@@ -1693,16 +1695,16 @@ export default function ProfileInfoForm() {
                                     onClick={handleClickEdit}
                                     disabled={isSaving}
                                     variant={`${isLoading ? "disabled" : "primary"}`}
-                                    className="gap-4"
+                                    className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4"
                                 >
                                     {isLoading || hasData ? (
                                         <>
-                                            <Edit3 className="h-4 w-4" />
+                                            <Edit3 className="h-3 w-3 md:h-4 md:w-4" />
                                             Edit
                                         </>
                                     ) : (
                                         <>
-                                            <Plus className="h-4 w-4" />
+                                            <Plus className="h-3 w-3 md:h-4 md:w-4" />
                                             Add
                                         </>
                                     )}
@@ -1712,15 +1714,13 @@ export default function ProfileInfoForm() {
                                     disabled={isSaving}
                                     onClick={handleNext}
                                     variant="outline"
-                                    className="gap-4"
+                                    className="col-start-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
                                 >
                                     Next
-                                    <ArrowRight className="h-4 w-4" />
+                                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
                                 </Button>
                             </>
                         )}
-
-
                     </div>
                 </div>
             </form>

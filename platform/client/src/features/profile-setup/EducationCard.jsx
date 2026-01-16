@@ -232,7 +232,7 @@ export default function EducationCard({ form, index, onRemove, onCurrentlyStudyi
     return (
         <div className={`w-full rounded-xl border bg-white shadow-sm ${isReadOnly ? 'bg-slate-50 border-slate-200' : 'border-slate-200 hover:border-blue-500/50 transition-colors'
             }`}>
-            <div className="bg-slate-50 flex items-center justify-between rounded-t-xl p-2 md:p-3 lg:p-4">
+            <div className="bg-slate-50 flex items-center justify-between rounded-t-xl p-3 lg:p-4">
                 <h3 className="text-lg font-medium leading-none tracking-tight text-slate-900 ">{degreeLabel}</h3>
                 {canRemove && !isReadOnly && (
                     <Button
@@ -246,7 +246,7 @@ export default function EducationCard({ form, index, onRemove, onCurrentlyStudyi
                 )}
             </div>
 
-            <div className="p-2 md:p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
+            <div className="p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
                 {/* Row 1: Degree Type (Select) + Degree Name (Input) */}
                 <div className="grid md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">
                     <div className="space-y-2 md:space-y-3 lg:space-y-4">

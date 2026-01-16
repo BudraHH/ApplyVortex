@@ -15,12 +15,12 @@ export default function CertificationCard({
 
     return (
         <div className={`w-full rounded-xl border bg-white shadow-sm ${isReadOnly ? 'bg-slate-50 border-slate-200' : 'border-slate-200 hover:border-blue-500/50 transition-colors'}`}>
-            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-2 md:p-3 lg:p-4">
-                <div className="flex flex-col items-start justify-start gap-2 md:gap-3 lg:gap-4">
+            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-3 lg:p-4">
+                <div className="flex flex-col items-start justify-start gap-3 lg:gap-4">
                     <h3 className="text-lg font-medium leading-none tracking-tight">
                         {`Certification ${index + 1}`}
                     </h3>
-                    <h3 className="text-brand-500 font-medium flex items-center gap-2 md:gap-3 lg:gap-4">
+                    <h3 className="text-brand-500 font-medium flex flex-wrap items-center gap-2 md:gap-3 lg:gap-4">
                         {form.watch(`certifications.${index}.name`)}
                         {form.watch(`certifications.${index}.issuingOrganization`) && (
                             <span className="text-slate-500">| By {form.watch(`certifications.${index}.issuingOrganization`)}</span>
@@ -38,7 +38,7 @@ export default function CertificationCard({
                 )}
             </div>
 
-            <div className="p-2 md:p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
+            <div className="p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
                 <div className="grid md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">
                     {/* Name */}
                     <div className="space-y-2 md:space-y-3 lg:space-y-4">

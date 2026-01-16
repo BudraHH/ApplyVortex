@@ -40,7 +40,7 @@ export function DangerZoneSection() {
                     iconBg="bg-red-50"
                     iconColor="text-red-600"
                 />
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-6 gap-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 gap-3 lg:p-6 lg:gap-4">
                     <div>
                         <h4 className="font-medium text-slate-900">Delete Account</h4>
                         <p className="text-sm text-slate-500 max-w-md mt-1">
@@ -64,7 +64,7 @@ export function DangerZoneSection() {
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             className="z-10 w-full max-w-md bg-white rounded-xl shadow-2xl overflow-hidden border border-slate-100"
                         >
-                            <div className="border-b border-slate-100 flex items-center justify-between px-6 py-4">
+                            <div className="border-b border-slate-100 flex items-center justify-between px-4 py-3 lg:px-6 lg:py-4">
                                 <h3 className="font-semibold text-lg text-red-600">Delete Account</h3>
                                 <button
                                     onClick={() => setIsDeleteModalOpen(false)}
@@ -73,7 +73,7 @@ export function DangerZoneSection() {
                                     <X className="h-4 w-4" />
                                 </button>
                             </div>
-                            <div className="space-y-4 p-6">
+                            <div className="space-y-4 p-4 lg:p-6">
                                 <div className="bg-red-50 border border-red-100 rounded-lg text-sm text-red-700 p-4">
                                     <p className="font-semibold mb-2">⚠️ Warning: This action is permanent</p>
                                     <ul className="text-red-600/80 space-y-2">
@@ -94,7 +94,7 @@ export function DangerZoneSection() {
                                     />
                                 </div>
                             </div>
-                            <div className="bg-slate-50 border-t border-slate-100 space-y-3 px-6 py-4">
+                            <div className="bg-slate-50 border-t border-slate-100 space-y-3 px-4 py-3 lg:px-6 lg:py-4">
                                 <Button
                                     variant="destructive"
                                     className="w-full"

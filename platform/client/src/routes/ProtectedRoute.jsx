@@ -22,9 +22,9 @@ export const ProtectedRoute = ({ children }) => {
             <div className="h-screen max-h-screen overflow-hidden flex bg-slate-50 transition-colors duration-300 p-2 md:p-3 lg:p-4 gap-2 md:gap-3 lg:gap-4">
                 {/* Sidebar Skeleton */}
                 <aside
-                    className={`h-full fixed lg:static inset-y-0 left-0 z-50 bg-white border border-slate-100 rounded-xl transform transition-all duration-300 ease-in-out 
+                    className={`hidden lg:flex h-full fixed lg:static inset-y-0 left-0 z-50 bg-white border border-slate-100 rounded-xl transform transition-all duration-300 ease-in-out 
                         ${isSidebarCollapsed ? 'lg:w-20' : 'lg:w-64'}
-                        w-64 flex flex-col relative`}
+                        w-64 flex-col relative`}
                 >
                     <div className="flex flex-col h-full overflow-hidden">
                         {/* Logo Section Skeleton */}

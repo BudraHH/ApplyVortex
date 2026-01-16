@@ -197,14 +197,14 @@ export default function ApplyPage() {
         loadProfiles(true);
     };
     return (
-        <div className="h-full flex flex-col bg-white border border-slate-100 rounded-xl hover:border-slate-200 flex-1 overflow-y-auto min-h-0 custom-scrollbar animate-in fade-in duration-500 p-6 space-y-6">
+        <div className="h-full flex flex-col bg-white border border-slate-100 rounded-xl hover:border-slate-200 flex-1 overflow-y-auto min-h-0 custom-scrollbar animate-in fade-in duration-500 p-3 space-y-4 lg:p-6 lg:space-y-6">
             {/* Hero Section */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="space-y-2">
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-500">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 lg:gap-6">
+                <div className="space-y-1 lg:space-y-2">
+                    <h1 className="text-xl lg:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-500">
                         Launch Your Search
                     </h1>
-                    <p className="text-slate-500 max-w-xl text-sm leading-relaxed">
+                    <p className="text-slate-500 max-w-xl text-xs lg:text-sm leading-relaxed">
                         Define your targets and let ApplyVortex handle the rest.
                         Create one or more targeting blueprints to guide the AI agent.
                     </p>
@@ -214,10 +214,10 @@ export default function ApplyPage() {
             <div className="space-y-6">
                 <AgentStatusIndicator variant="full" />
 
-                <div className="border border-slate-100 rounded-xl space-y-6 p-6">
+                <div className="border border-slate-100 rounded-xl space-y-4 p-3 lg:space-y-6 lg:p-6">
                     {/* Header Section - Always visible unless standard empty state logic prevails, 
                         but here we show it if we have content OR if we are adding */}
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div className="flex flex-col lg:flex-row items-center justify-between border-b border-slate-100 pb-4">
                         <div className="space-y-1">
                             <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-3">
                                 Preference Blueprints
@@ -226,7 +226,7 @@ export default function ApplyPage() {
                                 Manage your job targeting criteria and automation settings.
                             </p>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="mt-2 lg:mt-0 flex items-center gap-3 w-full lg:w-auto justify-between">
                             {profiles.length > 0 && (
                                 <Button
                                     disabled={isLoading || isAdding}
@@ -264,33 +264,30 @@ export default function ApplyPage() {
                                 className="bg-white/50 border border-slate-200 rounded-xl overflow-hidden "
                             >
                                 {/* Trigger */}
-                                <div className="p-4">
-                                    <div className="flex items-center justify-between">
+                                <div className="p-2 lg:p-4">
+                                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-3 lg:gap-0">
                                         {/* Left: name + portal badge */}
-                                        <div className="flex items-center gap-4">
-                                            <Skeleton className="h-4 w-32" />
-                                            <Skeleton className="h-4 w-14 rounded-sm" />
+                                        <div className="flex items-center gap-3 lg:gap-4">
+                                            <Skeleton className="h-4 w-24 lg:w-32" />
+                                            <Skeleton className="h-4 w-12 lg:w-14 rounded-sm" />
                                         </div>
 
                                         {/* Right: action buttons */}
-                                        <div className="flex items-center gap-3">
-                                            <Skeleton className="h-8 w-24 bg-brand-50 text-brand-700 text-sm flex justify-center items-center border border-brand-50 opacity-40">Find Jobs</Skeleton>
-                                            <Skeleton className="h-8 w-24 bg-amber-50 text-amber-700 text-sm flex justify-center items-center border border-amber-50 opacity-40">Auto Apply</Skeleton>
+                                        <div className="w-full lg:w-auto grid grid-cols-2 lg:flex items-center gap-2 lg:gap-3">
+                                            <Skeleton className="h-8 w-full lg:w-24 bg-brand-50 text-brand-700 text-xs lg:text-sm flex justify-center items-center border border-brand-50 opacity-40">Find Jobs</Skeleton>
+                                            <Skeleton className="h-8 w-full lg:w-24 bg-amber-50 text-amber-700 text-xs lg:text-sm flex justify-center items-center border border-amber-50 opacity-40">Auto Apply</Skeleton>
 
-                                            <ChevronDown className={`h-5 w-5 text-slate-400 opacity-40 rotate-180`} />
+                                            <ChevronDown className={`hidden lg:block h-5 w-5 text-slate-400 opacity-40 rotate-180`} />
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Content */}
-                                <div className="border-t border-slate-100 p-6 space-y-6">
+                                <div className="border-t border-slate-100 p-2 lg:p-6 space-y-4 lg:space-y-6">
                                     {/* Blueprint summary skeleton */}
-
-
-
-                                    <div className="flex flex-col md:flex-row justify-between gap-6 pt-0">
+                                    <div className="flex flex-col md:flex-row justify-between gap-4 lg:gap-6 pt-0">
                                         {/* Left section */}
-                                        <div className="flex-1 space-y-6">
+                                        <div className="flex-1 space-y-4 lg:space-y-6">
                                             {/* Target Roles */}
                                             <div className="space-y-2">
                                                 <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
@@ -316,12 +313,12 @@ export default function ApplyPage() {
                                         </div>
 
                                         {/* Right section */}
-                                        <div className="md:w-1/2 border-l border-slate-100 space-y-6 pl-6">
+                                        <div className="md:w-1/2 border-l-0 md:border-l border-slate-100 space-y-4 lg:space-y-6 pl-0 md:pl-6">
                                             {/* Filters */}
                                             <div className="space-y-2">
                                                 <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
                                                     Filters
-                                                </Label><div className="flex flex-wrap gap-2">
+                                                </Label><div className="flex flex-row gap-2">
                                                     {Array.from({ length: 4 }).map((_, i) => (
                                                         <Skeleton key={i} className="h-6 w-28 rounded-md" />
                                                     ))}
@@ -329,7 +326,7 @@ export default function ApplyPage() {
                                             </div>
 
                                             {/* Config */}
-                                            <div className="border-t border-slate-100 pt-6 space-y-4">
+                                            <div className="border-t border-slate-100 pt-4 lg:pt-6 space-y-4">
                                                 <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">
                                                     Config
                                                 </Label>
@@ -348,7 +345,7 @@ export default function ApplyPage() {
                                     </div>
 
                                     {/* Footer actions */}
-                                    <div className="flex justify-end border-t border-slate-50 gap-3 pt-6">
+                                    <div className="flex justify-end border-t border-slate-50 gap-3 pt-4 lg:pt-6">
                                         <Skeleton className="bg-red-50 text-red-700 text-sm flex justify-center items-center border border-red-50 opacity-40 px-4 py-2">Delete</Skeleton>
                                         <Skeleton className="bg-brand-50 text-brand-700 text-sm flex justify-center items-center border border-brand-50 opacity-40 px-4 py-2">Edit Blueprint</Skeleton>
 
@@ -401,19 +398,19 @@ export default function ApplyPage() {
                                             value={profile.id}
                                             className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm"
                                         >
-                                            <AccordionTrigger className="hover:no-underline group p-4">
-                                                <div className="flex flex-1 items-center justify-between mr-4">
-                                                    <div className="flex items-center gap-4">
+                                            <AccordionTrigger className="hover:no-underline group p-2 md:p-3 lg:p-4">
+                                                <div className="flex flex-col lg:flex-row flex-1 items-stretch lg:items-center justify-between mr-2 lg:mr-4 gap-3 lg:gap-0">
+                                                    <div className="flex items-center gap-3 lg:gap-4">
                                                         <span className="font-bold text-sm text-slate-900 ">
                                                             {profile.name || 'Untitled'}
                                                         </span>
                                                         {/* Portal Badge */}
-                                                        <span className={`text-[10px] uppercase font-bold rounded border ${profile.portal === Portal.LINKEDIN ? 'bg-brand-50 text-brand-700 border-brand-100' : 'bg-orange-50 text-orange-700 border-orange-100'} px-2 py-1`}>
+                                                        <span className={`text-[9px] lg:text-[10px] uppercase font-bold rounded border ${profile.portal === Portal.LINKEDIN ? 'bg-brand-50 text-brand-700 border-brand-100' : 'bg-orange-50 text-orange-700 border-orange-100'} px-1.5 py-0.5 lg:px-2 lg:py-1`}>
                                                             {PORTAL_LABELS[profile.portal]}
                                                         </span>
                                                     </div>
 
-                                                    <div className="flex items-center gap-3">
+                                                    <div className="w-full lg:w-auto grid grid-cols-2 lg:flex items-center gap-2 lg:gap-3">
                                                         {/* Find Jobs Button */}
                                                         <button
                                                             type="button"
@@ -430,7 +427,7 @@ export default function ApplyPage() {
                                                                 }
                                                             }}
                                                             className={cn(
-                                                                "h-8 font-bold uppercase tracking-wider text-[10px] items-center inline-flex transition-all duration-300 rounded-md px-3 gap-2",
+                                                                "h-7 lg:h-8 font-bold uppercase tracking-wider text-[9px] lg:text-[10px] items-center justify-center lg:justify-start inline-flex transition-all duration-300 rounded-md px-2 lg:px-3 gap-2 w-full lg:w-auto",
                                                                 (profile.status === BlueprintStatus.AUTO_SCRAPE || profile.active_task_status === 'SCRAPING')
                                                                     ? 'bg-red-600 hover:bg-red-700 text-white border-red-600'
                                                                     : 'bg-brand-50 hover:bg-brand-500 text-brand-500 hover:text-white border border-brand-500',
@@ -440,7 +437,7 @@ export default function ApplyPage() {
                                                             {(profile.status === BlueprintStatus.AUTO_SCRAPE || profile.active_task_status === 'SCRAPING') ? (
                                                                 <>
                                                                     <Search className="h-3 w-3 animate-pulse" />
-                                                                    Stop Finding...
+                                                                    Stop...
                                                                 </>
                                                             ) : (
                                                                 <><Search className="h-3 w-3 font-bold" /> Find Jobs</>
@@ -463,7 +460,7 @@ export default function ApplyPage() {
                                                                 }
                                                             }}
                                                             className={cn(
-                                                                "h-8 font-bold uppercase tracking-wider text-[10px] items-center inline-flex transition-all duration-300 rounded-md px-3 gap-2",
+                                                                "h-7 lg:h-8 font-bold uppercase tracking-wider text-[9px] lg:text-[10px] items-center justify-center lg:justify-start inline-flex transition-all duration-300 rounded-md px-2 lg:px-3 gap-2 w-full lg:w-auto",
                                                                 profile.status === BlueprintStatus.AUTO_APPLY
                                                                     ? 'bg-red-600 hover:bg-red-700 text-white border-red-600'
                                                                     : 'bg-orange-50 hover:bg-orange-600 hover:text-white text-orange-700 border border-orange-200',
@@ -473,7 +470,7 @@ export default function ApplyPage() {
                                                             {profile.status === BlueprintStatus.AUTO_APPLY ? (
                                                                 <>
                                                                     <Zap className="h-3 w-3 animate-pulse text-white" />
-                                                                    Stop Applying
+                                                                    Stop...
                                                                 </>
                                                             ) : (
                                                                 <><Zap className="h-3 w-3" /> Auto Apply</>
@@ -498,9 +495,9 @@ export default function ApplyPage() {
                                 {/* Add New Form */}
                                 {isAdding && (
                                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-300 border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-white ">
-                                        <div className="bg-slate-50 border-b border-slate-200 flex items-center justify-between p-4">
-                                            <h3 className="font-semibold text-sm">Create New Blueprint</h3>
-                                            <Button size="sm" variant="ghost" className="h-8 w-8 p-0" onClick={() => setIsAdding(false)}>
+                                        <div className="bg-slate-50 border-b border-slate-200 flex items-center justify-between p-3 lg:p-4">
+                                            <h3 className="font-semibold text-xs lg:text-sm">Create New Blueprint</h3>
+                                            <Button size="sm" variant="ghost" className="h-7 w-7 lg:h-8 lg:w-8 p-0" onClick={() => setIsAdding(false)}>
                                                 <span className="sr-only">Close</span>
                                                 <Plus className="h-4 w-4 rotate-45" />
                                             </Button>

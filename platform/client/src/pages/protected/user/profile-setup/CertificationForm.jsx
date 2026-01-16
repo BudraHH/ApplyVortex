@@ -60,27 +60,7 @@ const INITIAL_CERTIFICATION = {
     credentialUrl: '',
 };
 
-// Mock Data
-const MOCK_CERTIFICATIONS = [
-    {
-        name: 'Certified AWS Solutions Architect - Associate',
-        issuingOrganization: 'Amazon Web Services',
-        issueDate: '2023-05',
-        expiryDate: '2026-05',
-        doesNotExpire: false,
-        credentialId: 'AWS-12345678',
-        credentialUrl: 'https://aws.amazon.com/verification',
-    },
-    {
-        name: 'Google Project Management Professional',
-        issuingOrganization: 'Coursera',
-        issueDate: '2022-11',
-        expiryDate: '',
-        doesNotExpire: true,
-        credentialId: 'COURSERA-PM-99',
-        credentialUrl: 'https://coursera.org/verify/PM99',
-    }
-];
+// Mock Data Removed
 
 export default function CertificationForm() {
     const navigate = useNavigate();
@@ -132,11 +112,9 @@ export default function CertificationForm() {
                 setHasData(true);
                 setIsEdit(false);
             } else {
-                // Fallback to Mock Data
-                console.log("Using Mock Certification Data");
-                replace(MOCK_CERTIFICATIONS);
-                setOriginalData(MOCK_CERTIFICATIONS);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } catch (error) {
@@ -148,11 +126,9 @@ export default function CertificationForm() {
                     variant: 'destructive',
                 });
             } else {
-                // Fallback on Error
-                console.log("Falling back to Mock Certification Data");
-                replace(MOCK_CERTIFICATIONS);
-                setOriginalData(MOCK_CERTIFICATIONS);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } finally {
@@ -165,6 +141,16 @@ export default function CertificationForm() {
     useEffect(() => {
         loadCertifications();
     }, [loadCertifications]);
+
+    // Validation Error Handler
+    const onError = (errors) => {
+        console.error("Form Validation Errors:", errors);
+        toast({
+            title: 'Validation Error',
+            description: 'Please fix the errors highlighted in the form.',
+            variant: 'destructive',
+        });
+    };
 
     // Save Handlers
     const onSubmit = async (data) => {
@@ -287,71 +273,75 @@ export default function CertificationForm() {
     };
 
     return (
-        <form onSubmit={(e) => { e.preventDefault(); handleSave(); }} className="w-full mx-auto bg-white space-y-4 p-4">
-            <div className="space-y-4">
-                {/* Header */}
-                <div className="flex flex-row items-center justify-between">
-                    <div className="flex-1">
-                        <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                            Certifications
-                        </h2>
-                        <p className="text-slate-500 text-sm">
-                            Add your licenses and professional certifications
-                        </p>
-                    </div>
-                    <Button
-                        variant="outline"
-                        onClick={handleRefresh}
-                        disabled={isLoading || isSaving || isRefreshing}
-                        className="gap-4"
-                    >
-                        <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
-                        {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
-                    </Button>
-                </div>
-
-                {isLoading || isRefreshing ? (
-                    <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
-                        {/* Header skeleton */}
-                        <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-4">
-                            <div className="flex flex-col items-start justify-start gap-4">
-                                <h3 className="text-lg font-medium leading-none tracking-tight">
-                                    {`Certification`}
-                                </h3>
-                                <Skeleton className="h-6 w-96 bg-slate-100/90" />
-
-                            </div>
+        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4">
+            <form
+                onSubmit={form.handleSubmit(onSubmit, onError)}
+                className="h-full flex flex-col justify-between gap-4"
+            >
+                {/* ================= Certifications Section ================= */}
+                <section className="space-y-3 lg:space-y-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
+                        <div className="flex-1">
+                            <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">
+                                Certifications
+                            </h2>
+                            <p className="text-slate-500 text-xs lg:text-sm">
+                                Add your licenses and professional certifications
+                            </p>
                         </div>
-                        {/* Body skeleton */}
-                        <div className="p-4 space-y-4">
-                            <div className="space-y-4">
-                                <Skeleton className="h-4 w-40" />
-                                <Skeleton className="h-10 w-full" />
-                            </div>
-                            <div className="space-y-4">
-                                <Skeleton className="h-4 w-44" />
-                                <Skeleton className="h-10 w-full" />
-                            </div>
-                            <div className="grid md:grid-cols-3 gap-4">
-                                <div className="space-y-4">
-                                    <Skeleton className="h-4 w-24" />
-                                    <Skeleton className="h-10 w-full" />
-                                </div>
-                                <div className="space-y-4">
-                                    <Skeleton className="h-4 w-28" />
-                                    <Skeleton className="h-10 w-full" />
+
+                        <Button
+                            variant="outline"
+                            onClick={handleRefresh}
+                            size="responsive"
+                            disabled={isLoading || isSaving || isRefreshing}
+                            className="gap-2  w-full md:w-auto "
+                        >
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
+                        </Button>
+                    </div>
+
+                    {/* ================= Content ================= */}
+                    {isLoading || isRefreshing ? (
+                        <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
+                            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-3 lg:p-4">
+                                <div className="flex flex-col gap-4">
+                                    <h3 className="text-lg font-medium tracking-tight">
+                                        Certification
+                                    </h3>
+                                    <Skeleton className="h-6 w-96 bg-slate-100/90" />
                                 </div>
                             </div>
+
+                            <div className="p-3 lg:p-4 space-y-3 lg:space-y-4">
+                                <div className="space-y-3 lg:space-y-4">
+                                    <Skeleton className="h-4 w-40" />
+                                    <Skeleton className="h-8 lg:h-10 w-full" />
+                                </div>
+                                <div className="space-y-3 lg:space-y-4">
+                                    <Skeleton className="h-4 w-44" />
+                                    <Skeleton className="h-8 lg:h-10 w-full" />
+                                </div>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                    <div className="space-y-3 lg:space-y-4">
+                                        <Skeleton className="h-4 w-24" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
+                                    </div>
+                                    <div className="space-y-3 lg:space-y-4">
+                                        <Skeleton className="h-4 w-28" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                ) : (
-                    !hasData && !isEdit ? (
-                        <div className="border-2 border-dashed border-slate-300 rounded-lg text-center p-4">
-                            <AlertCircle className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-                            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+                    ) : !hasData && !isEdit ? (
+                        <div className="border-2 border-dashed border-slate-300 rounded-lg text-center p-3 lg:p-4 gap-4 min-h-[300px] lg:min-h-[500px] flex flex-col items-center justify-center">
+                            <AlertCircle className="h-12 w-12 text-slate-500 mx-auto " />
+                            <h3 className="text-lg font-semibold text-slate-900 ">
                                 Oops, seems like your certifications are not updated
                             </h3>
-                            <p className="text-slate-500 text-sm mb-4">
+                            <p className="text-slate-500 text-sm ">
                                 Showcase your professional achievements
                             </p>
                         </div>
@@ -381,92 +371,91 @@ export default function CertificationForm() {
                                 </Button>
                             )}
                         </div>
-                    )
-                )}
-            </div>
-
-            <div className="flex justify-between items-center border-t border-slate-200 pt-4">
-                <Button
-                    type="button"
-                    onClick={handlePrevious}
-                    disabled={isSaving}
-                    variant="outline"
-                    className="gap-4"
-                >
-                    <ArrowRight className="h-4 w-4 rotate-180" />
-                    Previous
-                </Button>
-
-                <div className="flex items-center gap-4">
-                    {isEdit ? (
-                        <div className="flex items-center gap-4">
-                            <Button
-                                type="button"
-                                onClick={handleClickCancel}
-                                disabled={isSaving}
-                                variant="outline"
-                                className="gap-4"
-                            >
-                                <X className="h-4 w-4" />
-                                Cancel
-                            </Button>
-
-                            <Button
-                                type="submit"
-                                disabled={isSaving}
-                                variant="primary"
-                                className="gap-4"
-                            >
-                                {isSaving ? (
-                                    <>
-                                        <Loader2 className="h-4 w-4 animate-spin" />
-                                        Saving...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Save className="h-4 w-4" />
-                                        Save
-                                    </>
-                                )}
-                            </Button>
-
-                        </div>
-                    ) : (
-                        <>
-                            <Button
-                                type="button"
-                                onClick={handleClickEdit}
-                                disabled={isSaving || isEdit}
-                                variant={`${isLoading ? "disabled" : "primary"}`}
-                                className="gap-4"
-                            >
-                                {isLoading || hasData ? (
-                                    <>
-                                        <Edit3 className="h-4 w-4" />
-                                        Edit
-                                    </>
-                                ) : (
-                                    <>
-                                        <Plus className="h-4 w-4" />
-                                        Add
-                                    </>
-                                )}
-                            </Button>
-
-                            <Button
-                                type="button"
-                                disabled={isSaving}
-                                onClick={handleNext}
-                                variant="outline"
-                                className="gap-4"
-                            >
-                                Next
-                                <ArrowRight className="h-4 w-4" />
-                            </Button>
-                        </>
                     )}
+                </section>
+
+               <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                    <Button
+                        type="button"
+                        onClick={handlePrevious}
+                        disabled={isSaving}
+                        variant="outline"
+                        className="col-start-1 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                    >
+                        <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
+                        Previous
+                    </Button>
+
+                    <div className="contents md:flex md:items-center md:gap-2">
+                        {!isLoading && isEdit ? (
+                            <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full md:flex md:items-center md:w-auto md:gap-2">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickCancel}
+                                    disabled={isSaving}
+                                    variant="outline"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    <X className="h-3 w-3 md:h-4 md:w-4" />
+                                    Cancel
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    variant="primary"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                    aria-label="Save profile"
+                                >
+                                    {isSaving ? (
+                                        <>
+                                            <Loader2 className="h-3 w-3 md:h-4 md:w-4 animate-spin" />
+                                            Saving...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Save className="h-3 w-3 md:h-4 md:w-4" />
+                                            Save
+                                        </>
+                                    )}
+                                </Button>
+                            </div>
+                        ) : (
+                            <>
+                                <Button
+                                    type="button"
+                                    onClick={handleClickEdit}
+                                    disabled={isSaving}
+                                    variant={`${isLoading ? "disabled" : "primary"}`}
+                                    className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    {isLoading || hasData ? (
+                                        <>
+                                            <Edit3 className="h-3 w-3 md:h-4 md:w-4" />
+                                            Edit
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Plus className="h-3 w-3 md:h-4 md:w-4" />
+                                            Add
+                                        </>
+                                    )}
+                                </Button>
+                                <Button
+                                    type="button"
+                                    disabled={isSaving}
+                                    onClick={handleNext}
+                                    variant="outline"
+                                    className="col-start-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    Next
+                                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
+                                </Button>
+                            </>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+
     );
 }

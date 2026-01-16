@@ -52,7 +52,7 @@ export function NotificationSettingsSection() {
             />
             <div className="divide-y divide-slate-100">
                 {items.map((item) => (
-                    <div key={item.id} className="flex items-center justify-between hover:bg-slate-50/50 transition-colors px-6 py-4">
+                    <div key={item.id} className="flex items-center justify-between hover:bg-slate-50/50 transition-colors px-3 py-3 lg:px-6 lg:py-4">
                         <div className="flex items-center gap-4">
                             <div className={cn("rounded-lg p-2", item.bg)}>
                                 <item.icon className={cn("h-5 w-5", item.color)} />
@@ -74,7 +74,7 @@ export function NotificationSettingsSection() {
                     </div>
                 ))}
             </div>
-            <div className="bg-slate-50 border-t border-slate-100 flex justify-end px-6 py-4">
+            <div className="bg-slate-50 border-t border-slate-100 flex justify-end px-3 py-3 lg:px-6 lg:py-4">
                 <Button onClick={handleSave} disabled={isSaving || !isDirty} className="min-w-[120px]">
                     {isSaving ? <><Loader2 className="h-4 w-4 animate-spin mr-2" />Saving...</> : <><Save className="h-4 w-4 mr-2" />Save Changes</>}
                 </Button>

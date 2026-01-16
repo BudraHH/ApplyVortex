@@ -50,15 +50,15 @@ export default function ResearchCard({ form, index, onRemove, canRemove, isReadO
     return (
         <div className={`w-full rounded-xl border bg-white shadow-sm ${isReadOnly ? 'bg-slate-50 border-slate-200' : 'border-slate-200 hover:border-blue-500/50 transition-colors'}`}>
             <div className="flex items-center justify-between">
-                <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-2 md:p-3 lg:p-4">
-                        <div className="flex flex-col items-start justify-start gap-2 md:gap-3 lg:gap-4">
-                            <h3 className="text-lg font-medium leading-none tracking-tight">
-                                {`Research ${index + 1}`}
-                            </h3>
-                            <h3 className="text-brand-500 font-medium">
-                                {form.watch(`research.${index}.title`)}</h3>
-                        </div>
+                <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-3 lg:p-4">
+                    <div className="flex flex-col items-start justify-start gap-3 lg:gap-4">
+                        <h3 className="text-lg font-medium leading-none tracking-tight">
+                            {`Research ${index + 1}`}
+                        </h3>
+                        <h3 className="text-brand-500 font-medium">
+                            {form.watch(`research.${index}.title`)}</h3>
                     </div>
+                </div>
                 {canRemove && !isReadOnly && (
                     <div className="flex-shrink-0">
                         <Button
@@ -73,11 +73,11 @@ export default function ResearchCard({ form, index, onRemove, canRemove, isReadO
                 )}
             </div>
 
-            <div className="p-2 md:p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
+            <div className="p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
                 {/* Title */}
                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                     <Label htmlFor={`title-${index}`} className="text-sm font-medium leading-none flex items-center gap-2 md:gap-3 lg:gap-4">
-                       Title <span className="text-red-500">*</span>
+                        Title <span className="text-red-500">*</span>
                     </Label>
                     <Input
                         id={`title-${index}`}
@@ -124,7 +124,7 @@ export default function ResearchCard({ form, index, onRemove, canRemove, isReadO
 
                     <div className="space-y-2 md:space-y-3 lg:space-y-4">
                         <Label htmlFor={`publicationDate-${index}`} className="text-sm font-medium leading-none flex items-center gap-2 md:gap-3 lg:gap-4">
-                           Publication Date <span className="text-red-500">*</span>
+                            Publication Date <span className="text-red-500">*</span>
                         </Label>
                         <DateInput
                             id={`publicationDate-${index}`}
@@ -140,7 +140,7 @@ export default function ResearchCard({ form, index, onRemove, canRemove, isReadO
                 <div className="grid md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">
                     <div className="space-y-2 md:space-y-3 lg:space-y-4">
                         <Label htmlFor={`authors-${index}`} className="text-sm font-medium leading-none flex items-center gap-2 md:gap-3 lg:gap-4">
-                           Authors <span className="text-red-500">*</span>
+                            Authors <span className="text-red-500">*</span>
                         </Label>
                         <Input
                             id={`authors-${index}`}
@@ -168,7 +168,7 @@ export default function ResearchCard({ form, index, onRemove, canRemove, isReadO
                 {/* DOI/URL */}
                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                     <Label htmlFor={`url-${index}`} className="text-sm font-medium leading-none flex items-center gap-2 md:gap-3 lg:gap-4">
-                       DOI or URL
+                        DOI or URL
                     </Label>
                     <Input
                         id={`url-${index}`}

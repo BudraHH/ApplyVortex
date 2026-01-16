@@ -59,8 +59,9 @@ const plans = [
             "White-label Reports"
         ],
         cta: "Upgrade to Max",
-        gradient: "from-violet-600 to-violet-500",
-        popular: false
+        gradient: "from-brand-600 to-brand-400",
+        popular: false,
+        suggested: true
     }
 ];
 
@@ -133,7 +134,9 @@ const Pricing = () => {
                             transition={{ delay: index * 0.1 }}
                             className={`relative rounded-2xl p-5 lg:p-6 flex flex-col h-full transition-all duration-300 ${plan.popular
                                 ? `bg-white ring-2 ring-brand-500 shadow-xl shadow-brand-500/10 z-10 lg:scale-105`
-                                : 'bg-white/60 border border-slate-200 hover:border-slate-300 hover:shadow-lg hover:-translate-y-1'
+                                : plan.suggested
+                                    ? `bg-white ring-2 ring-brand-400 shadow-xl shadow-brand-400/10 z-10 lg:scale-105`
+                                    : 'bg-white/60 border border-slate-200 ring-2 ring-slate-200 hover:border-slate-300 hover:shadow-lg hover:-translate-y-1'
                                 }`}
                         >
                             {plan.popular && (
@@ -141,11 +144,16 @@ const Pricing = () => {
                                     Most Popular
                                 </div>
                             )}
+                            {plan.suggested && (
+                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-600 to-brand-400 text-white px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest shadow-lg shadow-brand-500/30 ring-2 ring-white">
+                                    Suggested
+                                </div>
+                            )}
 
                             {/* Card Header */}
                             <div className="mb-4 shrink-0 relative">
                                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${plan.gradient} flex items-center justify-center text-white mb-3 shadow-md`}>
-                                    <plan.icon size={18} className={plan.popular ? 'animate-pulse' : ''} />
+                                    <plan.icon size={18} className={(plan.popular || plan.suggested) ? 'animate-pulse' : ''} />
                                 </div>
                                 <h3 className="text-lg font-bold mb-0.5 text-slate-900">{plan.name}</h3>
                                 <p className="text-xs text-slate-500 leading-relaxed min-h-[32px]">{plan.description}</p>
@@ -154,7 +162,7 @@ const Pricing = () => {
                             {/* Price */}
                             <div className="mb-4 shrink-0 flex items-end gap-2">
                                 <div className="flex items-baseline gap-1">
-                                    <span className={`text-3xl lg:text-4xl font-extrabold tracking-tight ${plan.popular ? `text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}` : 'text-slate-900'}`}>{plan.price}</span>
+                                    <span className={`text-3xl lg:text-4xl font-extrabold tracking-tight ${(plan.popular || plan.suggested) ? `text-transparent bg-clip-text bg-gradient-to-r ${plan.gradient}` : 'text-slate-900'}`}>{plan.price}</span>
                                     <span className="text-[10px] font-medium text-slate-400">/{billingCycle === 'monthly' ? 'mo' : 'yr'}</span>
                                 </div>
                                 {billingCycle === 'yearly' && plan.price !== '$0' && (

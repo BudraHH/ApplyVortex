@@ -54,7 +54,7 @@ const findLabel = (constObj, value) => {
 function SkillBadge({ skill, onRemove, isReadOnly }) {
     return (
         <span
-            className="inline-flex items-center rounded-md border border-slate-200 bg-white text-sm font-medium text-slate-900 transition-colors hover:bg-slate-50 group p-4"
+            className="inline-flex items-center rounded-md border border-slate-200 bg-white text-sm font-medium text-slate-900 transition-colors hover:bg-slate-50 group p-2 lg:p-4"
         >
             <span>{skill}</span>
             {!isReadOnly && (
@@ -373,57 +373,31 @@ export default function SkillsLibraryForm() {
     // MAIN RENDER
     // ============================================
     return (
-        <div className="w-full mx-auto bg-white space-y-4 p-4">
+        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4 flex flex-col justify-between gap-4">
             <div className="space-y-4">
                 {/* Header */}
-                <div className="flex flex-row justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <div className="flex-1">
-                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Skills Library</h2>
-                            <p className="text-slate-500 text-sm">
-                                Add your technical and professional skills
-                            </p>
-                        </div>
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
+                    <div className="flex-1">
+                        <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">Skills Library</h2>
+                        <p className="text-slate-500 text-xs lg:text-sm">
+                            Add your technical and professional skills
+                        </p>
                     </div>
-                    <div className="flex items-center gap-4">
-
-
-
-                        {/* Skills Counter */}
-                        <div className="flex items-center gap-4">
-                            {isLoading || isRefreshing ? (
-                                <Skeleton className="h-9 w-24 rounded-lg" />
-
-                            ) : (
-                                <>
-                                    {userSkills.length < 5 && (
-                                        <span className="text-sm text-red-500">
-                                            Minimum 5 required *
-                                        </span>
-                                    )}
-                                    <div className={`inline-flex items-center rounded-lg text-sm font-medium transition-colors ${userSkills.length < 5 ? "bg-red-50 text-red-600 border border-red-200" : isFormValid ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-700 border border-slate-200"} gap-4 p-4`}>
-                                        <span>{userSkills.length} skill{userSkills.length !== 1 ? "s" : ""}</span>
-                                    </div>
-
-                                </>
-                            )}
-
-                        </div>
-                        <Button
+                    <Button
                             variant="outline"
                             onClick={handleRefresh}
-                            disabled={isLoading || isRefreshing || isSaving}
-                            className="gap-4"
+                            size="responsive"
+                            disabled={isLoading || isSaving || isRefreshing}
+                            className="gap-2  w-full md:w-auto "
                         >
-                            <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
-                            {isLoading ? 'Loading...' : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
                         </Button>
-                    </div>
                 </div>
 
                 {/* Add Skill Input (Edit Mode) */}
                 {isEdit && (
-                    <div className="border border-slate-200 rounded-lg bg-slate-50 p-4 space-y-4">
+                    <div className="border border-slate-200 rounded-lg bg-slate-50 p-3 lg:p-4 space-y-4">
                         <div className="flex items-center gap-4">
                             <Code2 className="h-4 w-4 text-brand-600" />
                             <Label htmlFor="skill-input" className="text-sm font-medium text-slate-900">
@@ -463,7 +437,7 @@ export default function SkillsLibraryForm() {
                                     {filteredOptions.map((skill) => (
                                         <li
                                             key={skill.id || skill.name}
-                                            className="hover:bg-slate-100 cursor-pointer text-sm text-slate-900 flex items-center justify-between group p-4"
+                                            className="hover:bg-slate-100 cursor-pointer text-sm text-slate-900 flex items-center justify-between group p-3 lg:p-4"
                                             onMouseDown={(e) => {
                                                 e.preventDefault(); // Prevent input blur
                                                 handleSelectSkill(skill.name);
@@ -495,7 +469,7 @@ export default function SkillsLibraryForm() {
 
                 {/* Skills Display */}
                 <div className="w-full border border-slate-200 rounded-lg overflow-hidden">
-                    <div className="w-full bg-slate-50 border-b border-slate-200 p-4">
+                    <div className="w-full bg-slate-50 border-b border-slate-200 p-3 lg:p-4">
                         <div className="w-full flex justify-between items-center gap-4">
                             <h3 className="text-base font-semibold text-slate-900">Your Skills</h3>
                             {isEdit && userSkills.length > 0 && (
@@ -503,36 +477,44 @@ export default function SkillsLibraryForm() {
                                     type="button"
                                     onClick={handleClearAll}
                                     variant="ghost"
-                                    className="text-xs font-medium text-red-600 hover:text-red-700 hover:bg-red-50 h-auto uppercase tracking-wider p-4"
+                                    className="text-xs font-medium text-red-600 hover:text-red-700 hover:bg-red-50 h-auto uppercase tracking-wider p-2 lg:p-4"
                                 >
                                     Clear All
                                 </Button>
                             )}
+                            {!isLoading && !isRefreshing && userSkills.length < 5 && (
+                                <span className="text-xs lg:text-sm text-red-500 whitespace-nowrap">
+                                    Min 5 required *
+                                </span>
+                            )}
+                            {!isLoading && !isRefreshing && <div className={`inline-flex items-center rounded-lg text-xs lg:text-sm font-medium transition-colors ${userSkills.length < 5 ? "bg-red-50 text-red-600 border border-red-200" : isFormValid ? "bg-brand-600 text-white" : "bg-slate-100 text-slate-700 border border-slate-200"} gap-2 lg:gap-4 p-2 `}>
+                                <span>{userSkills.length} skill{userSkills.length !== 1 ? "s" : ""}</span>
+                            </div>}
                         </div>
 
                     </div>
 
                     {isLoading || isRefreshing ? (
-                        <div className="p-4">
-                            <div className="space-y-4">
+                        <div className="p-3 lg:p-4">
+                            <div className="space-y-3 lg:space-y-4">
                                 {/* Category 1 Skeleton (e.g., Computer Domain) */}
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-4">
-                                        <Skeleton className="h-6 w-48 rounded" />
+                                <div className="space-y-3 lg:space-y-4">
+                                    <div className="flex items-center gap-2 lg:gap-4">
+                                        <Skeleton className="h-5 lg:h-6 w-32 lg:w-48 rounded" />
                                         <div className="flex-1 h-px bg-slate-200"></div>
                                     </div>
 
-                                    <div className="space-y-4 pl-4">
+                                    <div className="space-y-3 lg:space-y-4 pl-2 lg:pl-4">
                                         {/* Subcategories */}
                                         {[1, 2, 3, 4].map((j) => (
-                                            <div key={j} className="space-y-4">
-                                                <div className="flex items-center gap-4">
+                                            <div key={j} className={`space-y-3 lg:space-y-4 ${j === 4 ? 'hidden lg:block' : ''}`}>
+                                                <div className="flex items-center gap-2 lg:gap-4">
                                                     <Skeleton className="w-1.5 h-1.5 rounded-full" />
-                                                    <Skeleton className="h-3 w-32 rounded" />
+                                                    <Skeleton className="h-4 lg:h-3 w-24 lg:w-32 rounded" />
                                                 </div>
-                                                <div className="flex flex-wrap gap-4">
+                                                <div className="flex flex-wrap gap-2 lg:gap-4">
                                                     {[1, 2, 3, 4].map((i) => (
-                                                        <Skeleton key={`skill-${j}-${i}`} className="h-9 w-24 rounded-md" />
+                                                        <Skeleton key={`skill-${j}-${i}`} className={`h-8 lg:h-9 w-20 lg:w-24 rounded-md ${i === 4 ? 'hidden lg:block' : ''}`} />
                                                     ))}
                                                 </div>
                                             </div>
@@ -541,15 +523,15 @@ export default function SkillsLibraryForm() {
                                 </div>
 
                                 {/* Category 2 Skeleton (e.g., Soft Skills) */}
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-4">
-                                        <Skeleton className="h-6 w-36 rounded" />
+                                <div className="space-y-3 lg:space-y-4">
+                                    <div className="flex items-center gap-2 lg:gap-4">
+                                        <Skeleton className="h-5 lg:h-6 w-24 lg:w-36 rounded" />
                                         <div className="flex-1 h-px bg-slate-200"></div>
                                     </div>
-                                    <div className="pl-4">
-                                        <div className="flex flex-wrap gap-4">
-                                            {[1, 2, 3,].map((i) => (
-                                                <Skeleton key={`skill-3-${i}`} className="h-9 w-24 rounded-md" />
+                                    <div className="pl-2 lg:pl-4">
+                                        <div className="flex flex-wrap gap-2 lg:gap-4">
+                                            {[1, 2, 3].map((i) => (
+                                                <Skeleton key={`skill-3-${i}`} className="h-8 lg:h-9 w-20 lg:w-24 rounded-md" />
                                             ))}
                                         </div>
                                     </div>
@@ -573,7 +555,7 @@ export default function SkillsLibraryForm() {
                                         .map(([category, subcategories]) => (
                                             <div key={category} className="space-y-4">
                                                 <div className="flex items-center gap-4">
-                                                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-widest bg-slate-100 rounded-sm border-l-2 border-brand-600 p-4">
+                                                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-widest bg-slate-100 rounded-sm border-l-2 border-brand-600 p-2 ">
                                                         {findLabel(SkillsCategory, category).replace(/_/g, " ")}
                                                     </h4>
                                                     <div className="flex-1 h-px bg-slate-200"></div>
@@ -595,7 +577,7 @@ export default function SkillsLibraryForm() {
                                                                     {skills.sort((a, b) => a.name.localeCompare(b.name)).map((skill) => (
                                                                         <span
                                                                             key={skill.name}
-                                                                            className="group inline-flex items-center rounded-md border border-slate-200 bg-white text-sm font-medium text-slate-900 shadow-sm transition-all hover:bg-brand-50 active:scale-95 gap-4 p-4"
+                                                                            className="group inline-flex items-center rounded-md border border-slate-200 bg-white text-sm font-medium text-slate-900 shadow-sm transition-all hover:bg-brand-50 active:scale-95 gap-2 lg:gap-4 p-2 "
                                                                         >
                                                                             <span>{skill.name}</span>
                                                                             {isEdit && (
@@ -634,31 +616,33 @@ export default function SkillsLibraryForm() {
 
                     {/* Save/Cancel Buttons (Edit Mode) */}
 
+                    {/* Save/Cancel Buttons (Edit Mode) */}
+
                 </div>
             </div>
-            <div className="flex justify-between items-center border-t border-slate-200 pt-4">
+            <div className="flex flex-row gap-3 border-t border-slate-200 pt-3 md:justify-between md:items-center md:pt-4">
                 <Button
                     type="button"
                     onClick={handlePrevious}
                     disabled={isSaving}
                     variant="outline"
-                    className="gap-4"
+                    className="col-span-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
                 >
-                    <ArrowLeft className="h-4 w-4" />
+                    <ArrowLeft className="h-3 w-3 lg:h-4 lg:w-4" />
                     Previous
                 </Button>
 
-                <div className="flex items-center gap-4">
+                <div className="contents lg:flex lg:items-center lg:gap-4">
                     {isEdit ? (
-                        <div className="flex items-center gap-4">
+                        <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full lg:flex lg:items-center lg:w-auto lg:gap-4">
                             <Button
                                 type="button"
                                 onClick={handleClickCancel}
                                 disabled={isSaving}
                                 variant="outline"
-                                className="gap-4"
+                                className="w-full gap-2 md:w-auto md:gap-4"
                             >
-                                <X className="h-4 w-4" />
+                                <X className="h-3 w-3 lg:h-4 lg:w-4" />
                                 Cancel
                             </Button>
                             <Button
@@ -666,43 +650,41 @@ export default function SkillsLibraryForm() {
                                 onClick={handleSave}
                                 disabled={!isFormValid || isSaving}
                                 variant="primary"
-                                className="gap-4"
+                                className="w-full gap-2 md:w-auto md:gap-4"
                             >
                                 {isSaving ? (
                                     <>
-                                        <Loader2 className="h-4 w-4 animate-spin" />
+                                        <Loader2 className="h-3 w-3 lg:h-4 lg:w-4 animate-spin" />
                                         Saving...
                                     </>
                                 ) : (
                                     <>
-                                        <Save className="h-4 w-4" />
+                                        <Save className="h-3 w-3 lg:h-4 lg:w-4" />
                                         Save
                                     </>
                                 )}
                             </Button>
                         </div>
                     ) : (
-                        <>
-                            <Button
-                                type="button"
-                                onClick={handleClickEdit}
-                                disabled={isSaving}
-                                variant={`${isLoading || isRefreshing ? "disabled" : "primary"}`}
-                                className="gap-4"
-                            >
-                                {isLoading || hasData ? (
-                                    <>
-                                        <Edit3 className="h-4 w-4" />
-                                        Edit
-                                    </>
-                                ) : (
-                                    <>
-                                        <Plus className="h-4 w-4" />
-                                        Add
-                                    </>
-                                )}
-                            </Button>
-                        </>
+                        <Button
+                            type="button"
+                            onClick={handleClickEdit}
+                            disabled={isSaving}
+                            variant={`${isLoading || isRefreshing ? "disabled" : "primary"}`}
+                            className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4 ml-auto"
+                        >
+                            {isLoading || hasData ? (
+                                <>
+                                    <Edit3 className="h-3 w-3 lg:h-4 lg:w-4" />
+                                    Edit
+                                </>
+                            ) : (
+                                <>
+                                    <Plus className="h-3 w-3 lg:h-4 lg:w-4" />
+                                    Add
+                                </>
+                            )}
+                        </Button>
                     )}
                 </div>
             </div>

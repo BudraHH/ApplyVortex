@@ -105,23 +105,23 @@ function NotificationCard({ notification, onMarkAsRead, onDelete, onClick, onVis
         <div
             ref={cardRef}
             onClick={() => onClick(notification)}
-            className={`group relative flex items-start rounded-xl border cursor-pointer transition-colors duration-200 focus-within:ring-1 focus-within:ring-slate-400 overflow-y-auto max-h-full custom-scrollbar ${!notification.read ? "border-brand-200 bg-brand-50/20" : "border-slate-100 bg-white hover:border-brand-200 transition-all"} gap-4 p-4`}
+            className={`group relative flex items-start rounded-xl border cursor-pointer transition-colors duration-200 focus-within:ring-1 focus-within:ring-slate-400 overflow-y-auto max-h-full custom-scrollbar ${!notification.read ? "border-brand-200 bg-brand-50/20" : "border-slate-100 bg-white hover:border-brand-200 transition-all"} gap-3 p-3 lg:gap-4 lg:p-4`}
         >
             {!notification.read && (
-                <span className="absolute right-4 top-4 h-2 w-2 rounded-full bg-brand-500 shadow-sm shadow-brand-500/50" />
+                <span className="absolute right-3 top-3 lg:right-4 lg:top-4 h-2 w-2 rounded-full bg-brand-500 shadow-sm shadow-brand-500/50" />
             )}
 
             <div
                 className={`
-          flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg
+          flex h-8 w-8 lg:h-10 lg:w-10 flex-shrink-0 items-center justify-center rounded-lg
           ${bg}
         `}
             >
-                <Icon className={`h-5 w-5 ${color}`} />
+                <Icon className={`h-4 w-4 lg:h-5 lg:w-5 ${color}`} />
             </div>
 
-            <div className="flex w-full items-start justify-between gap-4">
-                <div className="flex-1 space-y-1">
+            <div className="flex w-full items-start justify-between gap-2 lg:gap-4">
+                <div className="flex-1 space-y-0.5 lg:space-y-1">
                     <h4
                         className={`
               text-sm font-semibold leading-snug line-clamp-1
@@ -136,7 +136,7 @@ function NotificationCard({ notification, onMarkAsRead, onDelete, onClick, onVis
 
                     <p
                         className={`
-              text-sm leading-relaxed line-clamp-2
+              text-xs lg:text-sm leading-relaxed line-clamp-2
               ${!notification.read
                                 ? "text-slate-600 "
                                 : "text-slate-500 "
@@ -147,13 +147,13 @@ function NotificationCard({ notification, onMarkAsRead, onDelete, onClick, onVis
                     </p>
                 </div>
 
-                <div ref={menuRef} className="relative flex self-center">
-                    <div className="flex items-center text-[11px] text-slate-400 gap-3">
-                        <Badge variant="secondary" className="py-0 text-[10px] uppercase font-bold tracking-wider rounded-md px-2">
+                <div ref={menuRef} className="relative flex self-start lg:self-center pt-1 lg:pt-0">
+                    <div className="flex flex-col-reverse lg:flex-row items-end lg:items-center text-[10px] lg:text-[11px] text-slate-400 gap-1 lg:gap-3">
+                        <Badge variant="secondary" className="py-0 text-[9px] lg:text-[10px] uppercase font-bold tracking-wider rounded-md px-1 lg:px-2">
                             {label}
                         </Badge>
-                        <span className="text-slate-300 ">•</span>
-                        <span className="text-[11px]">
+                        <span className="hidden lg:inline text-slate-300 ">•</span>
+                        <span className="text-[10px] lg:text-[11px] whitespace-nowrap">
                             {formatDistanceToNow(notification.timestamp, { addSuffix: true })}
                         </span>
                     </div>
@@ -419,11 +419,11 @@ export default function NotificationsPage() {
     ];
 
     return (
-        <div className="bg-white border border-slate-100 hover:border-slate-200 rounded-xl h-full w-full flex-1 overflow-y-auto min-h-0 custom-scrollbar text-slate-900 p-6">
-            <div className="flex flex-col justify-between md:flex-row md:items-end gap-6 mb-6">
+        <div className="bg-white border border-slate-100 hover:border-slate-200 rounded-xl h-full w-full flex-1 overflow-y-auto min-h-0 custom-scrollbar text-slate-900 p-3 lg:p-6">
+            <div className="flex flex-col justify-between md:flex-row md:items-end gap-3 lg:gap-6 mb-3 lg:mb-6">
                 <div className="space-y-1">
-                    <h1 className="text-2xl font-semibold tracking-tight">Activity</h1>
-                    <p className="text-sm text-slate-500 ">
+                    <h1 className="text-lg lg:text-2xl font-semibold tracking-tight">Activity</h1>
+                    <p className="text-xs lg:text-sm text-slate-500 ">
                         {unreadCount > 0
                             ? `You have ${unreadCount} unread notification${unreadCount !== 1 ? "s" : ""
                             }.`
@@ -431,35 +431,33 @@ export default function NotificationsPage() {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-3">
-                    {unreadCount > 0 && (
-                        <Button
-                            onClick={handleMarkAllAsRead}
-                            variant="primary"
-                            className="gap-2"
-                        >
-                            <CheckCheck className="h-3.5 w-3.5" />
-                            Mark all read
-                        </Button>
-                    )}
-                    {notifications.length > 0 && (
-                        <Button
-                            onClick={handleDeleteAll}
-                            variant="danger"
-                            className="gap-2"
-                        >
-                            Clear all
-                        </Button>
-                    )}
+                <div className="w-full lg:w-auto flex justify-between flex-wrap items-center gap-2 lg:gap-3">
                     <Button
                         variant="outline"
                         onClick={() => fetchNotifications(false)}
                         disabled={isLoading || isRefreshing}
-                        className="gap-2"
+                        className="gap-2 h-8 px-3 text-xs lg:h-10 lg:px-4 lg:text-sm"
                     >
-                        <RefreshCw className={cn("h-3.5 w-3.5", (isLoading || isRefreshing) && "animate-spin")} />
+                        <RefreshCw className={cn("h-3 w-3 lg:h-3.5 lg:w-3.5", (isLoading || isRefreshing) && "animate-spin")} />
                         {isLoading ? 'Loading' : isRefreshing ? 'Refreshing...' : 'Refresh Intel'}
                     </Button>
+                    <Button
+                            onClick={handleMarkAllAsRead}
+                            variant="primary"
+                            disabled={notifications.length === 0 || unreadCount === 0}
+                            className="gap-2 h-8 px-3 text-xs lg:h-10 lg:px-4 lg:text-sm"
+                        >
+                           Mark all read
+                        </Button>
+                    <Button
+                            onClick={handleDeleteAll}
+                            variant="danger"
+                            disabled={notifications.length === 0}
+                            className="gap-2 h-8 px-3 text-xs lg:h-10 lg:px-4 lg:text-sm"
+                        >
+                            Clear all
+                        </Button>
+                    
                 </div>
             </div>
 
@@ -469,7 +467,7 @@ export default function NotificationsPage() {
                         key={t.id}
                         variant="ghost"
                         onClick={() => setFilter(t.id)}
-                        className={`h-9 text-xs font-semibold rounded-lg transition-all border ${filter === t.id ? 'bg-brand-50 text-brand-700 border-brand-200' : 'bg-transparent text-slate-500 border-transparent hover:bg-slate-50'} px-4`}
+                        className={`h-9 text-xs font-semibold rounded-none lg:rounded-lg transition-all border-b lg:border ${filter === t.id ? 'lg:bg-brand-50 text-brand-700 border-brand-500 lg:border-brand-200' : 'bg-transparent text-slate-500 border-transparent hover:bg-slate-50'} px-4`}
                     >
                         {t.label}
                         {t.count !== undefined && (

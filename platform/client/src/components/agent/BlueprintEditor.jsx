@@ -354,9 +354,9 @@ export function BlueprintEditor({
                             <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2 md:mb-3 lg:mb-4">
                                 Target Roles
                             </Label>
-                            <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
+                            <div className="flex flex-wrap gap-2">
                                 {keywordList.length > 0 ? keywordList.map((kw, i) => (
-                                    <span key={i} className="text-brand-500 text-sm font-medium rounded-md border border-slate-200 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                    <span key={i} className="text-brand-500 text-sm font-medium rounded-md border border-slate-200 px-2 py-1 lg:p-2">
                                         {kw}
                                     </span>
                                 )) : <span className="text-slate-400 italic text-sm">No keywords defined</span>}
@@ -367,9 +367,9 @@ export function BlueprintEditor({
                             <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2 md:mb-3 lg:mb-4">
                                 Locations ({locations.length})
                             </Label>
-                            <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
+                            <div className="flex flex-wrap gap-2">
                                 {locations.length > 0 ? locations.map((loc, i) => (
-                                    <span key={i} className="text-brand-500 text-sm font-medium rounded-md border border-slate-200 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                    <span key={i} className="text-brand-500 text-sm font-medium rounded-md border border-slate-200 px-2 py-1 lg:p-2">
                                         {loc}
                                     </span>
                                 )) : <span className="text-slate-400 italic text-sm">Anywhere</span>}
@@ -383,37 +383,37 @@ export function BlueprintEditor({
                                 <Label className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2 md:mb-3 lg:mb-4">
                                     Filters
                                 </Label>
-                                <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
+                                <div className="flex flex-wrap gap-2">
                                     {(!experience && !employmentType && !workMode && !datePosted) && (
                                         <span className="text-slate-400 italic text-sm">No filters applied</span>
                                     )}
 
                                     {experience !== '' && experience !== null && (
-                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 px-2 py-1 lg:p-2">
                                             <span className="capitalize">{EXPERIENCE_LABELS[experience] || 'Unknown'}</span>
                                         </div>
                                     )}
 
                                     {employmentType !== '' && employmentType !== null && (
-                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 px-2 py-1 lg:p-2">
                                             <span className="capitalize">{JOB_TYPE_LABELS[employmentType] || 'Unknown'}</span>
                                         </div>
                                     )}
 
                                     {workMode !== '' && workMode !== null && (
-                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 px-2 py-1 lg:p-2">
                                             <span className="capitalize">{WORK_MODE_LABELS[workMode] || 'Unknown'}</span>
                                         </div>
                                     )}
 
                                     {datePosted && datePosted !== 'any_time' && (
-                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div className="inline-flex items-center bg-brand-50 text-brand-500 text-xs font-medium rounded border border-brand-100 gap-2 px-2 py-1 lg:p-2">
                                             <span className="capitalize">{datePosted.replace('-', ' ')}</span>
                                         </div>
                                     )}
 
                                     {minSalary && minSalary !== '0' && (
-                                        <div className="inline-flex items-center bg-orange-50 text-orange-700 text-xs font-medium rounded border border-orange-100 gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div className="inline-flex items-center bg-orange-50 text-orange-700 text-xs font-medium rounded border border-orange-100 gap-2 px-2 py-1 lg:p-2">
                                             <span>{parseInt(minSalary) / 100000} LPA+</span>
                                         </div>
                                     )}
@@ -479,7 +479,7 @@ export function BlueprintEditor({
                             placeholder="e.g. Remote React Jobs"
                             value={name}
                             onChange={(e) => setName(toTitleCase(e.target.value))}
-                            className="h-11 border-slate-200 bg-slate-50 focus:bg-white transition-colors font-medium text-slate-900 pl-2 md:pl-3 lg:pl-4"
+                            className="h-10 lg:h-11 border-slate-200 bg-slate-50 focus:bg-white transition-colors font-medium text-slate-900 pl-10"
                         />
                     </div>
                 </div>
@@ -516,19 +516,19 @@ export function BlueprintEditor({
                                             handleAddKeyword();
                                         }
                                     }}
-                                    className="h-11 border-slate-200 bg-white focus:ring-brand-500/20 pl-2 md:pl-3 lg:pl-4"
+                                    className="h-10 lg:h-11 border-slate-200 bg-white focus:ring-brand-500/20 pl-10"
                                 />
                             </div>
                             <div className="flex flex-wrap min-h-[32px] gap-2 md:gap-3 lg:gap-4">
                                 {keywordList.length > 0 ? keywordList.map((kw, idx) => (
-                                    <div key={idx} className="flex items-center bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm group gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                    <div key={idx} className="flex items-center bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm group gap-2 px-2 py-1.5 lg:gap-4 lg:px-4 lg:py-4">
                                         {kw}
                                         <Button
                                             variant="ghost"
                                             onClick={() => handleRemoveKeyword(kw)}
                                             className="h-auto w-auto p-0 hover:bg-transparent text-slate-400 hover:text-red-500"
                                         >
-                                            <X className="h-3.5 w-3.5" />
+                                            <X className="h-4 w-4" />
                                         </Button>
                                     </div>
                                 )) : (
@@ -647,7 +647,7 @@ export function BlueprintEditor({
                             {locations.length > 0 && (
                                 <div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4 pt-2 md:pt-3 lg:pt-4">
                                     {locations.map((loc, idx) => (
-                                        <div key={idx} className="flex items-center bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm group gap-2 md:gap-3 lg:gap-4 px-2 md:px-3 lg:px-4 py-2 md:py-3 lg:py-4">
+                                        <div key={idx} className="flex items-center bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm group gap-2 px-2 py-1.5 lg:gap-4 lg:px-4 lg:py-4">
                                             {loc}
                                             <Button
                                                 variant="ghost"
@@ -655,7 +655,7 @@ export function BlueprintEditor({
                                                 onClick={() => handleRemoveLocation(loc)}
                                                 className="h-auto w-auto p-0 hover:bg-transparent text-slate-400 hover:text-red-500"
                                             >
-                                                {!relocationContext?.location && <X className="h-3.5 w-3.5" />}
+                                                {!relocationContext?.location && <X className="h-4 w-4" />}
                                             </Button>
                                         </div>
                                     ))}
@@ -676,7 +676,7 @@ export function BlueprintEditor({
                                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                                     <Label className="text-xs font-medium text-slate-600 ">Source <span className="text-red-500">*</span></Label>
                                     <Select value={portalSlug} onValueChange={setPortalSlug}>
-                                        <SelectTrigger className="h-10 bg-white ">
+                                        <SelectTrigger className="h-9 lg:h-10 bg-white ">
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -687,7 +687,7 @@ export function BlueprintEditor({
                                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                                     <Label className="text-xs font-medium text-slate-600 ">Scan Frequency</Label>
                                     <Select value={String(checkInterval)} onValueChange={setCheckInterval}>
-                                        <SelectTrigger className="h-10 bg-white ">
+                                        <SelectTrigger className="h-9 lg:h-10 bg-white ">
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>

@@ -131,19 +131,19 @@ export function AccountSettingsSection() {
                     description="Manage your personal details and contact info"
                     action={!isEditing && (
                         <Button type="button" variant="outline" size="sm" onClick={() => setIsEditing(true)}>
-                            Edit Profile
+                            Edit
                         </Button>
                     )}
                 />
 
-                <div className="p-6 space-y-6">
-                    <div className="flex items-center border-b border-slate-100 gap-4 pb-4">
+                <div className="p-3 space-y-4 lg:p-6 lg:space-y-6">
+                    <div className="flex items-center border-b border-slate-100 gap-3 lg:gap-4 pb-3 lg:pb-4">
                         {isLoading ? (
                             <Skeleton className="h-20 w-20 rounded-full" />
                         ) : (
                             <div className="relative group">
-                                <div className="h-20 w-20 rounded-full bg-gradient-to-br from-brand-100 to-brand-50 flex items-center justify-center border-2 border-white shadow-md">
-                                    <User className="h-8 w-8 text-brand-600" />
+                                <div className="h-16 w-16 lg:h-20 lg:w-20 rounded-full bg-gradient-to-br from-brand-100 to-brand-50 flex items-center justify-center border-2 border-white shadow-md">
+                                    <User className="h-6 w-6 lg:h-8 lg:w-8 text-brand-600" />
                                 </div>
                                 {isEditing && (
                                     <button
@@ -173,12 +173,11 @@ export function AccountSettingsSection() {
                                 <Skeleton className="h-10 w-full" />
                             ) : (
                                 <div className="relative">
-                                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                     <Input
                                         {...register("full_name")}
                                         placeholder="John Doe"
                                         disabled={!isEditing}
-                                        className={cn("pl-10", errors.full_name && "border-red-500")}
+                                        className={cn( errors.full_name && "border-red-500")}
                                     />
                                 </div>
                             )}
@@ -189,8 +188,7 @@ export function AccountSettingsSection() {
                                 <Skeleton className="h-10 w-full" />
                             ) : (
                                 <div className="relative">
-                                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                                    <Input {...register("email")} disabled className="bg-slate-50 text-slate-500 pl-10" />
+                                    <Input {...register("email")} disabled className="bg-slate-50 text-slate-500" />
                                 </div>
                             )}
                         </FormField>
@@ -209,7 +207,7 @@ export function AccountSettingsSection() {
                                             onValueChange={(val) => setValue('phone_country_code', val, { shouldDirty: true })}
                                             disabled={!isEditing}
                                         >
-                                            <SelectTrigger className="w-28">
+                                            <SelectTrigger className="w-24 lg:w-28">
                                                 <SelectValue placeholder="Code" />
                                             </SelectTrigger>
                                             <SelectContent>
@@ -221,12 +219,11 @@ export function AccountSettingsSection() {
                                             </SelectContent>
                                         </Select>
                                         <div className="relative flex-1">
-                                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                             <Input
                                                 {...register("phone_number")}
                                                 placeholder="123 456 7890"
                                                 disabled={!isEditing}
-                                                className="pl-10"
+                                                className=""
                                             />
                                         </div>
                                     </div>
@@ -241,7 +238,7 @@ export function AccountSettingsSection() {
                 </div>
 
                 {isEditing && (
-                    <div className="bg-slate-50 border-t border-slate-100 flex justify-end px-6 py-4 gap-4">
+                    <div className="bg-slate-50 border-t border-slate-100 flex justify-end px-3 py-3 lg:px-6 lg:py-4 gap-3 lg:gap-4">
                         {!isSaving && (
                             <Button type="button" variant="ghost" onClick={handleCancel}>Cancel</Button>
                         )}

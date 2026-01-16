@@ -76,7 +76,7 @@ export default function WelcomePage() {
     };
 
     return (
-        <div className="relative w-full min-h-screen bg-slate-50 overflow-hidden font-sans flex flex-col items-center justify-center selection:bg-brand-100 selection:text-brand-900">
+        <div className="py-10 lg:py-0 relative w-full min-h-screen bg-slate-50 overflow-hidden font-sans flex flex-col items-center justify-center selection:bg-brand-100 selection:text-brand-900">
 
             {/* Optimized Dynamic Background - GPU Accelerated */}
             <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -104,7 +104,7 @@ export default function WelcomePage() {
                 />
             </div>
 
-            <main className="relative z-10 w-full max-w-7xl flex flex-col h-full max-h-[900px] justify-between p-6">
+            <main className="relative z-10 w-full max-w-7xl flex flex-col h-full max-h-[900px] justify-between p-4 lg:p-6">
 
                 {/* Top Section: Header & Stats */}
                 <motion.div
@@ -117,7 +117,7 @@ export default function WelcomePage() {
                         <motion.div
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center rounded-full bg-white/80 backdrop-blur border border-brand-100 shadow-sm text-brand-600 text-xs font-bold tracking-widest uppercase cursor-default gap-2 px-4 py-2"
+                            className="inline-flex items-center rounded-full bg-white/80 backdrop-blur border border-brand-100 shadow-sm text-brand-600 text-[10px] lg:text-xs font-bold tracking-widest uppercase cursor-default gap-2 px-3 py-1 lg:px-4 lg:py-2"
                         >
                             <Sparkles className="h-3 w-3" />
                             <span>Ready to Launch</span>
@@ -126,13 +126,13 @@ export default function WelcomePage() {
 
                     <motion.h1
                         variants={itemVariants}
-                        className="text-4xl md:text-6xl font-black tracking-tight text-slate-900"
+                        className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900"
                     >
                         Welcome, <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-brand-700">{firstName}.</span>
                     </motion.h1>
 
                     <motion.div variants={itemVariants} className="max-w-xl mx-auto">
-                        <p className="text-lg md:text-xl text-slate-500 font-medium">{quote}</p>
+                        <p className="text-sm md:text-lg lg:text-xl text-slate-500 font-medium">{quote}</p>
                     </motion.div>
                 </motion.div>
 
@@ -141,24 +141,24 @@ export default function WelcomePage() {
                     initial="hidden"
                     animate="visible"
                     variants={containerVariants}
-                    className="flex-1 flex items-center justify-center py-8"
+                    className="flex-1 flex items-center justify-center py-4 lg:py-8"
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 lg:gap-6">
                         {steps.map((step, i) => (
                             <motion.div
                                 key={i}
                                 variants={itemVariants}
                                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
-                                className="group relative bg-white/60 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:border-brand-100 transition-all duration-300 p-6"
+                                className="group relative bg-white/60 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:border-brand-100 transition-all duration-300 p-4 lg:p-6"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-brand-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl " />
 
                                 <div className="relative z-10">
-                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-50 to-white border border-brand-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm text-brand-600 mb-4">
-                                        <step.icon className="h-6 w-6" />
+                                    <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-gradient-to-br from-brand-50 to-white border border-brand-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm text-brand-600 mb-2 lg:mb-4">
+                                        <step.icon className="h-5 w-5 lg:h-6 lg:w-6" />
                                     </div>
-                                    <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
-                                    <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                                    <h3 className="text-base lg:text-lg font-bold text-slate-900 mb-1 lg:mb-2">{step.title}</h3>
+                                    <p className="text-xs lg:text-sm text-slate-500 leading-relaxed font-medium">
                                         {step.description}
                                     </p>
                                 </div>
@@ -175,9 +175,9 @@ export default function WelcomePage() {
                     className="flex-none max-w-4xl mx-auto w-full space-y-4"
                 >
                     {/* Clarified Note */}
-                    <div className="flex items-center bg-white/60 backdrop-blur border border-slate-200 rounded-xl text-sm text-slate-700 shadow-sm hover:shadow-md transition-shadow duration-300 gap-4 p-4">
-                        <div className="bg-slate-100 rounded-lg shrink-0 text-brand-600 p-3">
-                            <AlertTriangle className="h-5 w-5" />
+                    <div className="flex items-center bg-white/60 backdrop-blur border border-slate-200 rounded-xl text-xs lg:text-sm text-slate-700 shadow-sm hover:shadow-md transition-shadow duration-300 gap-3 lg:gap-4 p-3 lg:p-4">
+                        <div className="bg-slate-100 rounded-lg shrink-0 text-brand-600 p-2 lg:p-3">
+                            <AlertTriangle className="h-4 w-4 lg:h-5 lg:w-5" />
                         </div>
                         <div className="flex-1 flex flex-col md:flex-row md:items-center gap-3">
                             <span className="font-bold text-slate-900 shrink-0">Please Note:</span>
@@ -198,7 +198,7 @@ export default function WelcomePage() {
                     <div className="flex flex-col sm:flex-row items-center gap-4">
                         <Link
                             to={ROUTES.PROFILE_SETUP.RESUME}
-                            className="flex-1 group relative overflow-hidden rounded-xl bg-brand-900 hover:bg-brand-500 text-white shadow-lg hover:shadow-brand-900/20 transition-all font-bold text-lg w-full text-center py-4 px-6"
+                            className="flex-1 group relative overflow-hidden rounded-xl bg-brand-900 hover:bg-brand-500 text-white shadow-lg hover:shadow-brand-900/20 transition-all font-bold text-sm lg:text-lg w-full text-center py-3 px-4 lg:py-4 lg:px-6"
                         >
                             <motion.div
                                 whileHover={{ scale: 1.02 }}
@@ -206,9 +206,9 @@ export default function WelcomePage() {
                                 className="w-full h-full flex items-center justify-center gap-3"
                             >
                                 <div className="relative flex items-center justify-center gap-2">
-                                    <Upload className="h-5 w-5" />
+                                    <Upload className="h-4 w-4 lg:h-5 lg:w-5" />
                                     <span>Import Resume</span>
-                                    <ChevronRight className="h-5 w-5 opacity-50 group-hover:translate-x-1 transition-transform" />
+                                    <ChevronRight className="h-4 w-4 lg:h-5 lg:w-5 opacity-50 group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </motion.div>
                         </Link>
@@ -217,14 +217,14 @@ export default function WelcomePage() {
 
                         <Link
                             to={ROUTES.PROFILE_SETUP.PERSONAL}
-                            className="flex-1 group rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-brand-700 hover:border-brand-200 hover:bg-brand-50/30 transition-all font-bold text-lg shadow-sm w-full text-center py-4 px-6"
+                            className="flex-1 group rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-brand-700 hover:border-brand-200 hover:bg-brand-50/30 transition-all font-bold text-sm lg:text-lg shadow-sm w-full text-center py-3 px-4 lg:py-4 lg:px-6"
                         >
                             <motion.div
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 className="w-full h-full flex items-center justify-center gap-3"
                             >
-                                <FileText className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+                                <FileText className="h-4 w-4 lg:h-5 lg:w-5 group-hover:scale-110 transition-transform duration-300" />
                                 <span>Manual Entry</span>
                             </motion.div>
                         </Link>

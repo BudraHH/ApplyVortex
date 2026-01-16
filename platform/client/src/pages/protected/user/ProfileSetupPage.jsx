@@ -91,22 +91,50 @@ export default function ProfileSetupPage() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <div className="h-full overflow-hidden flex bg-transparent gap-4">
-            {/* Steps Sidebar */}
+        <div className="h-full overflow-hidden flex bg-transparent gap-0 lg:gap-4">
+            {/* Mobile Sidebar (Drawer) */}
             <aside
-                className={`rounded-xl h-full fixed lg:static inset-y-0 left-0 z-40 bg-white border border-slate-100 hover:border-slate-200 transform transition-all duration-300 ease-in-out 
-                    ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-                    ${isCollapsed ? 'lg:w-20' : 'lg:w-64'}
-                    w-64 flex flex-col`}
+                className={`fixed rounded-r-xl left-0 z-50 w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                    }`}
+            >
+                <div className="flex items-center justify-between p-4 border-b border-slate-100">
+                    <h2 className="font-semibold text-slate-900">Profile Sections</h2>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setSidebarOpen(false)}
+                    >
+                        <ChevronLeft className="h-5 w-5" />
+                    </Button>
+                </div>
+
+                <nav className="flex-1 overflow-y-auto p-3 space-y-1">
+                    {STEPS.map(({ id, title, icon: Icon, path }) => (
+                        <div
+                            key={id}
+                            onClick={() => {
+                                navigate(path);
+                                setSidebarOpen(false);
+                            }}
+                            className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors cursor-pointer ${isActive(path)
+                                ? 'bg-brand-50 text-brand-700'
+                                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                                }`}
+                        >
+                            <Icon className={`h-4 w-4 ${isActive(path) ? 'text-brand-600' : 'text-slate-400'}`} />
+                            {title}
+                            {isActive(path) && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-brand-600" />}
+                        </div>
+                    ))}
+                </nav>
+            </aside>
+
+            {/* Desktop Sidebar (Static) */}
+            <aside
+                className={`hidden lg:flex rounded-xl h-full bg-white border border-slate-100 hover:border-slate-200 flex-col transition-all duration-300 ease-in-out 
+                    ${isCollapsed ? 'w-20' : 'w-64'}`}
             >
                 <div className="flex flex-col h-full min-h-0 overflow-hidden">
-                    <div className="border-b border-slate-200 lg:hidden flex items-center justify-between p-4">
-                        <h2 className="font-semibold text-lg text-slate-900">Profile Steps</h2>
-                        <button onClick={() => setSidebarOpen(false)} className="hover:bg-slate-100 rounded text-slate-600 p-2">
-                            <ArrowLeft className="h-5 w-5" />
-                        </button>
-                    </div>
-
                     <nav className="flex-1 overflow-y-auto p-4 space-y-1">
                         {STEPS.map(({ id, title, icon: Icon, path }) => (
                             <div
@@ -155,22 +183,24 @@ export default function ProfileSetupPage() {
             )}
 
             {/* Main Content */}
-            <main className="flex-1 min-h-0 h-full max-h-full overflow-hidden flex flex-col">
+            <main className="flex-1 min-h-0 h-full max-h-full overflow-hidden flex flex-col gap-2">
                 {/* Mobile Top Bar (Toggle for Steps) */}
-                <div className="lg:hidden flex items-center justify-between border-b border-slate-200 bg-white p-4">
-                    <div className="flex items-center gap-3">
-                        <button
-                            className="hover:bg-slate-100 rounded-md transition-colors text-slate-600 p-2"
-                            onClick={() => setSidebarOpen(true)}
-                        >
-                            <Menu className="h-5 w-5" />
-                        </button>
-                        <span className="font-semibold text-slate-900">Profile Setup</span>
-                    </div>
+                <div className="rounded-lg lg:hidden flex items-center bg-white  border-b border-slate-200  py-2">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setSidebarOpen(true)}
+                        className="text-slate-600"
+                    >
+                        <Menu className="h-5 w-5" />
+                    </Button>
+                     <h1 className="text-base font-bold text-slate-800 truncate max-w-[160px]">
+                            {STEPS.find(s => s.path === location.pathname)?.title || 'Profile Setup'}
+                    </h1>
                 </div>
 
                 {/* Page Content */}
-                <div className="flex-1 min-h-0 overflow-y-auto max-h-full custom-scrollbar border border-slate-100 hover:border-slate-200 rounded-xl bg-white">
+                <div className="lg:m-0 rounded-lg flex-1 min-h-0 overflow-y-auto max-h-full custom-scrollbar border-t lg:border border-slate-100 hover:border-slate-200 lg:rounded-xl ">
                     <Outlet />
                 </div>
             </main>

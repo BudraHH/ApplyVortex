@@ -24,6 +24,7 @@ import {
     RefreshCw,
 } from "lucide-react";
 import { Input } from "@/components/ui/Input.jsx";
+import { SearchBar } from "@/components/ui/SearchBar.jsx";
 import {
     Select,
     SelectContent,
@@ -284,12 +285,10 @@ export default function ApplicationsPage() {
                         <div className="flex flex-col md:flex-row gap-4">
                             {/* Search */}
                             <div className="flex-1 relative">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-                                <Input
+                                <SearchBar
                                     placeholder="Search by job title or company..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="bg-white border-gray-200 h-10 focus:ring-gray-900 focus:border-gray-900 rounded-lg text-sm pl-10"
                                 />
                             </div>
 

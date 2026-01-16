@@ -63,24 +63,7 @@ const INITIAL_ITEM = {
     description: '',
 };
 
-// Mock Data
-const MOCK_ACCOMPLISHMENTS = [
-    {
-        title: 'Best Innovator Award',
-        category: 'award',
-        description: 'Received the Best Innovator Award at the Annual Tech Summit for developing a novel solution for renewable energy tracking.',
-    },
-    {
-        title: 'President of Computer Science Society',
-        category: 'leadership',
-        description: 'Led a student organization of 500+ members, organizing weekly workshops and an annual hackathon with 200+ participants.',
-    },
-    {
-        title: 'Open Source Contributor of the Month',
-        category: 'achievement',
-        description: 'Recognized by the React community for significant contributions to the core documentation and bug fixes.',
-    }
-];
+// Mock Data Removed
 
 export default function AccomplishmentForm() {
     const navigate = useNavigate();
@@ -117,22 +100,30 @@ export default function AccomplishmentForm() {
             const data = response?.accomplishments || response || [];
 
             if (Array.isArray(data) && data.length > 0) {
-                const formattedData = data.map(item => ({
-                    title: item.title || '',
-                    category: ACCOMPLISHMENT_CATEGORY_REVERSE_MAP[item.category] || 'other',
-                    description: item.description || '',
-                }));
+                // Filter out empty entries from API to prevent "empty cards"
+                const validItems = data.filter(item => item.title && item.title.trim().length > 0);
 
-                replace(formattedData);
-                setOriginalData(formattedData);
-                setHasData(true);
-                setIsEdit(false);
+                if (validItems.length > 0) {
+                    const formattedData = validItems.map(item => ({
+                        title: item.title || '',
+                        category: ACCOMPLISHMENT_CATEGORY_REVERSE_MAP[item.category] || 'other',
+                        description: item.description || '',
+                    }));
+
+                    replace(formattedData);
+                    setOriginalData(formattedData);
+                    setHasData(true);
+                    setIsEdit(false);
+                } else {
+                    setHasData(false);
+                    setOriginalData([]);
+                    replace([]);
+                    setIsEdit(false);
+                }
             } else {
-                // Fallback to Mock Data
-                console.log("Using Mock Accomplishment Data");
-                replace(MOCK_ACCOMPLISHMENTS);
-                setOriginalData(MOCK_ACCOMPLISHMENTS);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } catch (error) {
@@ -144,11 +135,9 @@ export default function AccomplishmentForm() {
                     variant: 'destructive',
                 });
             } else {
-                // Fallback on Error
-                console.log("Falling back to Mock Accomplishment Data");
-                replace(MOCK_ACCOMPLISHMENTS);
-                setOriginalData(MOCK_ACCOMPLISHMENTS);
-                setHasData(true);
+                setHasData(false);
+                setOriginalData([]);
+                replace([]);
                 setIsEdit(false);
             }
         } finally {
@@ -160,6 +149,15 @@ export default function AccomplishmentForm() {
     useEffect(() => {
         loadData();
     }, [loadData]);
+
+    const onError = (errors) => {
+        console.error("Form Validation Errors:", errors);
+        toast({
+            title: 'Validation Error',
+            description: 'Please fix the errors highlighted in the form.',
+            variant: 'destructive',
+        });
+    };
 
     const onSubmit = async (data) => {
         // 1. Prepare the Payload
@@ -259,125 +257,180 @@ export default function AccomplishmentForm() {
     };
 
     return (
-        <div className="w-full mx-auto bg-white p-4">
-            {/* Header */}
-            <div className="flex flex-row items-center justify-between">
-                <div className="flex-1">
-                    <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-                        Leadership & Accomplishments
-                    </h2>
-                    <p className="text-slate-500 text-sm">
-                        Highlight awards, volunteering, and other achievements
-                    </p>
-                </div>
-                <Button variant="outline" onClick={handleRefresh} disabled={isLoading || isSaving || isRefreshing} className="gap-4">
-                    <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
-                    {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
-                </Button>
-            </div>
+        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4 flex flex-col justify-between gap-4">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
+                {/* Header */}
+                <section className="space-y-3 lg:space-y-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0 ">
+                        <div className="flex-1">
+                            <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">
+                                Leadership & Accomplishments
+                            </h2>
+                            <p className="text-slate-500 text-xs lg:text-sm">
+                                Highlight awards, volunteering, and other achievements
+                            </p>
+                        </div>
+                       <Button
+                            variant="outline"
+                            onClick={handleRefresh}
+                            size="responsive"
+                            disabled={isLoading || isSaving || isRefreshing}
+                            className="gap-2  w-full md:w-auto "
+                        >
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
+                        </Button>
+                    </div>
 
-            {isLoading || isRefreshing ? (
-                <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
-                    {/* Header */}
-                    <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between">
-                        <div className="gap-1 flex flex-col items-start justify-start">
-                            <h3 className="text-lg font-medium leading-none tracking-tight">
-                                {`Accomplishment `}
-                            </h3>
-                            <Skeleton className="h-6 w-96 bg-slate-100/90" />
-                        </div>
-                    </div>
-                    {/* Body */}
-                    <div className="p-4 space-y-4">
-                        {/* Title + Category */}
-                        <div className="grid md:grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                                <Skeleton className="h-4 w-24" />
-                                <Skeleton className="h-10 w-full" />
+                    {isLoading || isRefreshing ? (
+                        <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
+                            {/* Header */}
+                            <div className="w-full bg-slate-50 rounded-xl flex items-center justify-between p-3 lg:p-4">
+                                <div className="flex flex-col items-start justify-start gap-3 lg:gap-4">
+                                    <h3 className="text-lg font-medium leading-none tracking-tight">
+                                        {`Accomplishment `}
+                                    </h3>
+                                    <Skeleton className="h-6 w-96 bg-slate-100/90" />
+                                </div>
                             </div>
-                            <div className="space-y-2">
-                                <Skeleton className="h-4 w-28" />
-                                <Skeleton className="h-10 w-full" />
+                            {/* Body */}
+                            <div className="p-3 lg:p-4 space-y-3 lg:space-y-4">
+                                {/* Title + Category */}
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    <div className="space-y-3 lg:space-y-4">
+                                        <Skeleton className="h-4 w-24" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
+                                    </div>
+                                    <div className="space-y-3 lg:space-y-4">
+                                        <Skeleton className="h-4 w-28" />
+                                        <Skeleton className="h-8 lg:h-10 w-full" />
+                                    </div>
+                                </div>
+                                {/* Description */}
+                                <div className="space-y-3 lg:space-y-4">
+                                    <Skeleton className="h-4 w-28" />
+                                    <Skeleton className="h-24 w-full" />
+                                    <div className="flex justify-end">
+                                        <Skeleton className="h-3 w-20" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {/* Description */}
-                        <div className="space-y-2">
-                            <Skeleton className="h-4 w-28" />
-                            <Skeleton className="h-24 w-full" />
-                            <div className="flex justify-end">
-                                <Skeleton className="h-3 w-20" />
+                    ) : (
+                        !hasData && !isEdit ? (
+                            <div className="border-2 border-dashed border-slate-300 rounded-lg text-center p-3 lg:p-4 gap-4 min-h-[300px] lg:min-h-[500px] flex flex-col items-center justify-center">
+                                <AlertCircle className="h-12 w-12 text-slate-500 mx-auto" />
+                                <h3 className="text-lg font-semibold text-slate-900">Oops, seems like your accomplishments are not updated</h3>
+                                <p className="text-slate-500 text-sm">Add your key achievements</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                !hasData && !isEdit ? (
-                    <div className="border-2 border-dashed border-slate-300 rounded-lg text-center">
-                        <AlertCircle className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-slate-900 mb-4">Oh, quiet here</h3>
-                        <p className="text-slate-500 text-sm mb-4">Add your key achievements</p>
-                    </div>
-                ) : (
-                    <div className="space-y-4">
-                        {fields.map((field, index) => (
-                            <AccomplishmentCard
-                                key={field.id}
-                                form={form}
-                                index={index}
-                                onRemove={() => remove(index)}
-                                canRemove={isEdit}
-                                isReadOnly={!isEdit}
-                            />
-                        ))}
-                        {isEdit && (
-                            <Button
-                                type="button"
-                                onClick={() => append(INITIAL_ITEM)}
-                                variant="outline"
-                                className="gap-4"
-                                disabled={isSaving}
-                            >
-                                <Plus className="h-4 w-4" /> Add Another
-                            </Button>
+                        ) : (
+                            <div className="space-y-4">
+                                {fields.map((field, index) => (
+                                    <AccomplishmentCard
+                                        key={field.id}
+                                        form={form}
+                                        index={index}
+                                        onRemove={() => remove(index)}
+                                        canRemove={isEdit}
+                                        isReadOnly={!isEdit}
+                                    />
+                                ))}
+                                {isEdit && (
+                                    <Button
+                                        type="button"
+                                        onClick={() => append(INITIAL_ITEM)}
+                                        variant="outline"
+                                        className="gap-4"
+                                        disabled={isSaving}
+                                    >
+                                        <Plus className="h-4 w-4" /> Add Another
+                                    </Button>
+                                )}
+                            </div>
+                        )
+                    )}
+                </section>
+               <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                    <Button
+                        type="button"
+                        onClick={handlePrevious}
+                        disabled={isSaving}
+                        variant="outline"
+                        className="col-start-1 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                    >
+                        <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
+                        Previous
+                    </Button>
+
+                    <div className="contents md:flex md:items-center md:gap-2">
+                        {!isLoading && isEdit ? (
+                            <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full md:flex md:items-center md:w-auto md:gap-2">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickCancel}
+                                    disabled={isSaving}
+                                    variant="outline"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    <X className="h-3 w-3 md:h-4 md:w-4" />
+                                    Cancel
+                                </Button>
+                                <Button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    variant="primary"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                    aria-label="Save profile"
+                                >
+                                    {isSaving ? (
+                                        <>
+                                            <Loader2 className="h-3 w-3 md:h-4 md:w-4 animate-spin" />
+                                            Saving...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Save className="h-3 w-3 md:h-4 md:w-4" />
+                                            Save
+                                        </>
+                                    )}
+                                </Button>
+                            </div>
+                        ) : (
+                            <>
+                                <Button
+                                    type="button"
+                                    onClick={handleClickEdit}
+                                    disabled={isSaving}
+                                    variant={`${isLoading ? "disabled" : "primary"}`}
+                                    className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    {isLoading || hasData ? (
+                                        <>
+                                            <Edit3 className="h-3 w-3 md:h-4 md:w-4" />
+                                            Edit
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Plus className="h-3 w-3 md:h-4 md:w-4" />
+                                            Add
+                                        </>
+                                    )}
+                                </Button>
+                                <Button
+                                    type="button"
+                                    disabled={isSaving}
+                                    onClick={handleNext}
+                                    variant="outline"
+                                    className="col-start-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    Next
+                                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
+                                </Button>
+                            </>
                         )}
                     </div>
-                )
-            )}
-            {/* Nav */}
-            <div className="flex justify-between items-center border-t border-slate-200 ">
-                <Button type="button" onClick={handlePrevious} disabled={isSaving} variant="outline" className="gap-4">
-                    <ArrowLeft className="h-4 w-4" /> Previous
-                </Button>
-                <div className="flex items-center">
-                    {isEdit ? (
-                        <>
-                            <Button type="button" onClick={handleClickCancel} disabled={isSaving} variant="outline" className="gap-4">
-                                <X className="h-4 w-4" /> Cancel
-                            </Button>
-                            <Button type="button" onClick={handleSave} disabled={isSaving} variant="primary" className="gap-4">
-                                {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />} Save
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button type="button" onClick={handleClickEdit} disabled={isSaving} variant={`${isLoading || isRefreshing ? "disabled" : "primary"}`} className="gap-4">
-                                {isLoading || hasData ? (
-                                    <>
-                                        <Edit3 className="h-4 w-4" /> Edit
-                                    </>
-                                ) : (
-                                    <>
-                                        <Plus className="h-4 w-4" /> Add
-                                    </>
-                                )}
-                            </Button>
-                            <Button type="button" onClick={handleNext} variant="outline" disabled={isSaving} className="gap-4">
-                                Next <ArrowRight className="h-4 w-4" />
-                            </Button>
-                        </>
-                    )}
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

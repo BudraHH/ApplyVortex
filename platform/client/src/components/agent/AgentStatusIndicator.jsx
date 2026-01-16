@@ -20,7 +20,8 @@ export function AgentStatusIndicator({ variant = 'compact' }) {
         return (
             <Link
                 to={ROUTES.MY_AGENTS}
-                className="flex items-center rounded-lg border border-slate-200 bg-slate-50 group transition-all hover:bg-slate-100 hover:border-slate-300 shadow-sm gap-4 px-4 py-3"
+                className="flex items-center rounded-lg border border-slate-200 bg-slate-50 group transition-all hover:bg-slate-100 hover:border-slate-300 shadow-sm gap-3 px-4 py-2"
+
             >
                 <div className="relative">
                     <Monitor className="h-4 w-4 text-slate-400 group-hover:text-brand-500 transition-colors" />
@@ -29,10 +30,10 @@ export function AgentStatusIndicator({ variant = 'compact' }) {
                         isOnline ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)] animate-pulse" : "bg-slate-300"
                     )} />
                 </div>
-                <div className="hidden sm:flex flex-row items-center gap-4">
-                    <span className="text-sm font-medium text-slate-500">Agent Forge:</span>
+                <div className="flex flex-row items-center gap-4">
+                    <span className="hidden sm:block text-sm font-medium text-slate-500">Agent Forge:</span>
                     <span className={cn(
-                        "text-sm font-bold",
+                        "text-xs sm:text-sm font-medium sm:font-bold",
                         isOnline ? "text-green-600" : "text-slate-400"
                     )}>
                         {isOnline ? `Online` : 'Offline'}
@@ -73,26 +74,17 @@ export function AgentStatusIndicator({ variant = 'compact' }) {
                     )}>
                         {isOnline
                             ? `${onlineCount} active worker(s) ready to engage.`
-                            : 'No active workers detected. Start an agent to begin.'}
+                            : 'No active workers detected. Start an agent to begin'}<span className="lg:hidden">,</span><span className="hidden lg:block">.</span> <span className="lg:hidden">in your</span> <span className="lg:hidden font-bold">Personal Computer</span><span className="lg:hidden">.</span>
                     </p>
                 </div>
             </div>
 
-            {isOnline ? (
-                <Link
-                    to={ROUTES.MY_AGENTS}
-                    className="flex items-center text-xs font-bold text-green-600 hover:text-green-700 hover:underline bg-white rounded-lg border border-green-100 transition-colors shadow-sm gap-3 px-4 py-3"
-                >
-                    View Fleet <ArrowRight className="h-3 w-3" />
-                </Link>
-            ) : (
-                <Link
-                    to={ROUTES.DOWNLOAD_AGENT}
-                    className="flex items-center text-xs font-bold text-amber-700 hover:text-amber-800 hover:underline bg-white rounded-lg border border-amber-100 transition-colors shadow-sm gap-3 px-4 py-3"
-                >
-                    Setup Agent <ArrowRight className="h-3 w-3" />
-                </Link>
-            )}
+            <Link
+                to={ROUTES.DOWNLOAD_AGENT}
+                className="hidden lg:block flex flex-row items-center text-xs font-bold text-amber-700 hover:text-amber-800 hover:underline bg-white rounded-lg border border-amber-100 transition-colors shadow-sm gap-3 px-4 py-3"
+            >
+                Setup Agent
+            </Link>
         </div>
     );
 }

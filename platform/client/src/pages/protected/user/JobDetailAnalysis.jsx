@@ -52,29 +52,93 @@ export default function JobDetailAnalysis() {
         if (jobId) fetchJob(true);
     }, [jobId, fetchJob]);
 
-    if (isLoading) {
+    if (isLoading || isRefreshing) {
         return (
-            <div className="mx-auto max-w-5xl p-6 space-y-6">
-                <div className="flex justify-between w-full">
-                    <div className="space-y-4 w-2/3">
-                        <Skeleton className="h-10 w-3/4 rounded-xl" />
-                        <Skeleton className="h-5 w-1/2 rounded-lg" />
+            <div className="mx-auto w-full h-full max-h-full p-4 lg:p-6  bg-white overflow-hidden rounded-lg lg:rounded-xl">
+                {/* Mobile Skeleton */}
+                {/* Mobile Skeleton */}
+                <div className="block lg:hidden flex flex-col gap-4">
+                    {/* Header Stack */}
+                    <div className="space-y-3">
+                        {/* Title */}
+                        <div className="space-y-2">
+                            <Skeleton className="h-8 w-full rounded-md" />
+                            {/* Meta Row: Company | Time | Salary */}
+                            <div className="flex flex-wrap items-center gap-2 pt-1">
+                                <Skeleton className="h-4 w-24" /> {/* Company */}
+                                <span className="text-gray-200">|</span>
+                                <Skeleton className="h-4 w-16" /> {/* Time */}
+                                <span className="text-gray-200">|</span>
+                                <Skeleton className="h-4 w-20" /> {/* Salary */}
+                            </div>
+                        </div>
+
+                        {/* Action Buttons Grid - mimics the 4 button layout */}
+                        <div className="grid grid-cols-2 gap-2 w-full pt-2">
+                            <Skeleton className="h-9 w-full rounded-md col-span-2" />
+                            <Skeleton className="h-9 w-full rounded-md col-span-2" />
+                            <Skeleton className="h-9 w-full rounded-md" />
+                            <Skeleton className="h-9 w-full rounded-md" />
+                        </div>
                     </div>
-                    <div className="flex gap-2">
-                        <Skeleton className="h-10 w-24 rounded-lg" />
-                        <Skeleton className="h-10 w-20 rounded-lg" />
+
+                    {/* Job Meta Grid Mobile - Matches grid-cols-2 */}
+                    <div className="grid grid-cols-2 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden divide-x divide-y divide-slate-100">
+                        <div className="p-4 space-y-2"><Skeleton className="h-3 w-12" /><Skeleton className="h-4 w-20" /></div>
+                        <div className="p-4 space-y-2"><Skeleton className="h-3 w-12" /><Skeleton className="h-4 w-20" /></div>
+                        <div className="p-4 space-y-2"><Skeleton className="h-3 w-12" /><Skeleton className="h-4 w-20" /></div>
+                        <div className="p-4 space-y-2"><Skeleton className="h-3 w-12" /><Skeleton className="h-4 w-20" /></div>
+                    </div>
+
+                    {/* Content Mobile */}
+                    <div className="space-y-4 pt-2">
+                        <Skeleton className="h-40 w-full rounded-xl" />
+                        <div className="space-y-4">
+                            <Skeleton className="h-24 w-full rounded-xl" />
+                            <Skeleton className="h-24 w-full rounded-xl" />
+                        </div>
                     </div>
                 </div>
-                <div className="flex gap-4">
-                    <Skeleton className="h-8 w-24 rounded-full" />
-                    <Skeleton className="h-8 w-24 rounded-full" />
-                    <Skeleton className="h-8 w-24 rounded-full" />
-                </div>
-                <div className="space-y-4 pt-4">
-                    <Skeleton className="h-6 w-48 rounded-lg" />
-                    <Skeleton className="h-4 w-full rounded-md" />
-                    <Skeleton className="h-4 w-full rounded-md" />
-                    <Skeleton className="h-4 w-3/4 rounded-md" />
+
+                {/* Desktop Skeleton */}
+                <div className="hidden lg:block flex flex-col space-y-6 ">
+                    <div className="flex justify-between items-start">
+                        <div className="space-y-3 w-2/3">
+                            <Skeleton className="h-10 w-1/2 rounded-lg" />
+                            <div className="flex gap-4">
+                                <Skeleton className="h-5 w-32" />
+                                <Skeleton className="h-5 w-24" />
+                                <Skeleton className="h-5 w-24" />
+                            </div>
+                        </div>
+                        <div className="flex gap-3">
+                            <Skeleton className="h-10 w-24 rounded-lg" />
+                            <Skeleton className="h-10 w-24 rounded-lg" />
+                            <Skeleton className="h-10 w-24 rounded-lg" />
+                            <Skeleton className="h-10 w-24 rounded-lg" />
+                        </div>
+                    </div>
+
+                    {/* Job Meta Grid Desktop */}
+                    <div className="grid grid-cols-4 divide-x divide-slate-100 border border-slate-100 rounded-xl overflow-hidden">
+                        {[1, 2, 3, 4].map(i => (
+                            <div key={i} className="bg-white p-3 space-y-2">
+                                <Skeleton className="h-4 w-20" />
+                                <Skeleton className="h-6 w-32 " />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Content Desktop */}
+                    <div className="grid grid-cols-3 gap-6">
+                        <div className="col-span-2 space-y-6">
+                            <Skeleton className="h-64 w-full rounded-xl" />
+                            <Skeleton className="h-40 w-full rounded-xl" />
+                        </div>
+                        <div className="col-span-1 space-y-6">
+                            <Skeleton className="h-80 w-full rounded-xl" />
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -129,17 +193,17 @@ export default function JobDetailAnalysis() {
     };
 
     return (
-        <div className="bg-white mx-auto overflow-y-auto h-full max-h-full custom-scrollbar p-6 space-y-6">
+        <div className="bg-white mx-auto w-full rounded-lg lg:rounded-xl overflow-y-auto h-full max-h-full custom-scrollbar p-4 lg:p-6 space-y-4 lg:space-y-6">
 
             {/* Header Section */}
-            <div className="flex flex-row justify-between items-start gap-4">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-4">
                 <div className="flex-1 space-y-2">
-                    <h1 className="text-3xl font-bold text-brand-500 tracking-tight leading-tight">
+                    <h1 className="text-2xl lg:text-3xl font-bold text-brand-500 tracking-tight leading-tight">
                         {job.title}
                     </h1>
-                    <div className="flex items-center text-gray-500 gap-3">
+                    <div className="flex flex-wrap items-center text-gray-500 gap-2 lg:gap-3">
                         <div className="flex items-center gap-2">
-                            <span className="font-semibold text-lg text-black">{job.company_name || <Skeleton className="h-4 w-20 inline-block" />}</span>
+                            <span className="font-semibold text-base lg:text-lg text-black">{job.company_name || <Skeleton className="h-4 w-20 inline-block" />}</span>
                         </div>
                         <span className="text-gray-300">|</span>
                         <div className="flex items-center gap-1.5">
@@ -160,22 +224,22 @@ export default function JobDetailAnalysis() {
                     </div>
                 </div>
 
-                <div className="flex flex-row gap-3">
+                <div className="grid grid-cols-2 gap-2 w-full lg:w-auto lg:flex lg:flex-row lg:gap-3">
                     {job.external_apply_url && (
                         <Button
                             onClick={() => window.open(job.external_apply_url, '_blank')}
-                            className="bg-brand-700 hover:bg-brand-600 text-white gap-2"
+                            className="bg-brand-700 hover:bg-brand-600 text-white gap-2 text-xs lg:text-sm h-9 lg:h-10 col-span-2 sm:col-span-1 lg:col-span-auto"
                         >
-                            <ExternalLink className="w-4 h-4 " />
+                            <ExternalLink className="w-3 h-3 lg:w-4 lg:h-4 " />
                             Direct Apply
                         </Button>
                     )}
                     {job.job_post_url && (
                         <Button
                             onClick={() => window.open(job.job_post_url, '_blank')}
-                            className="bg-brand-500 hover:bg-brand-600 text-white gap-2"
+                            className="bg-brand-500 hover:bg-brand-600 text-white gap-2 text-xs lg:text-sm h-9 lg:h-10 col-span-2 sm:col-span-1 lg:col-span-auto"
                         >
-                            <LinkIcon className="w-4 h-4 " />
+                            <LinkIcon className="w-3 h-3 lg:w-4 lg:h-4 " />
                             {getPortalName(job.portal)}
                         </Button>
                     )}
@@ -183,41 +247,41 @@ export default function JobDetailAnalysis() {
                         variant="outline"
                         onClick={handleRefresh}
                         disabled={isRefreshing}
-                        className="gap-2"
+                        className="gap-2 text-xs lg:text-sm h-9 lg:h-10"
                     >
-                        <RefreshCw className={cn("h-4 w-4", isRefreshing && "animate-spin")} />
-                        {isRefreshing ? 'Refreshing...' : 'Refresh Intel'}
+                        <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", isRefreshing && "animate-spin")} />
+                        {isRefreshing ? 'Refreshing...' : 'Refresh'}
                     </Button>
-                    <Button onClick={handleBack} variant="outline" className="border-gray-200 text-gray-600 hover:bg-gray-50 bg-white gap-1.5" >
-                        <ChevronLeft className="w-4 h-4" /> Back
+                    <Button onClick={handleBack} variant="outline" className="border-gray-200 text-gray-600 hover:bg-gray-50 bg-white gap-1.5 text-xs lg:text-sm h-9 lg:h-10" >
+                        <ChevronLeft className="w-3 h-3 lg:w-4 lg:h-4" /> Back
                     </Button>
                 </div>
             </div>
 
             {/* Job Meta Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 border-y border-gray-100/50 bg-gray-50 rounded-xl">
-                <div className="space-y-1 border-r border-gray-200 py-4 px-6 md:col-span-1">
+            <div className="grid grid-cols-2 lg:grid-cols-4 border-y border-gray-100/50 bg-gray-50 rounded-xl">
+                <div className="space-y-1 border-r border-gray-200 p-4 lg:py-4 lg:px-6 col-span-1">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Job Type</p>
                     <p className="text-sm font-semibold text-gray-900 capitalize">
-                        {job.job_type ? job.job_type.replace(/_/g, ' ') : '-'}
+                        {typeof job.job_type === 'string' ? job.job_type.replace(/_/g, ' ') : '-'}
                     </p>
                 </div>
 
-                <div className="space-y-1 border-r border-gray-200 py-4 px-6 md:col-span-1">
+                <div className="space-y-1 lg:border-r border-gray-200 p-4 lg:py-4 lg:px-6 col-span-1">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Experience</p>
                     <p className="text-sm font-semibold text-gray-900">
                         {job.experience_level || '-'}
                     </p>
                 </div>
 
-                <div className="space-y-1 border-r border-gray-200 py-4 px-6 md:col-span-1">
+                <div className="space-y-1 border-r border-gray-200 p-4 lg:py-4 lg:px-6 col-span-1">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Work Mode</p>
                     <p className="text-sm font-semibold text-gray-900 capitalize">
                         {job.work_mode || 'N/A'}
                     </p>
                 </div>
 
-                <div className="space-y-1 col-span-1 md:col-span-1 py-4 px-6">
+                <div className="space-y-1 col-span-1 p-4 lg:py-4 lg:px-6">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">Location</p>
                     <p className="text-sm font-semibold text-gray-900 capitalize">
                         {job.work_mode === WorkMode.REMOTE
@@ -227,106 +291,114 @@ export default function JobDetailAnalysis() {
                 </div>
             </div>
 
-            {/* Description Section */}
-            <div className="bg-white rounded-xl border border-gray-100 p-6">
-                <div className="flex items-center border-b border-gray-100 pb-4 mb-4">
-                    <h2 className=" font-semibold text-gray-800">Job Description</h2>
-                </div>
-                <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-brand-600 prose-strong:text-gray-900 text-gray-600 leading-relaxed font-normal">
-                    {job.description ? (
-                        <div className="whitespace-pre-wrap">{job.description}</div>
-                    ) : (
-                        <div className="text-gray-400 italic">No description available.</div>
-                    )}
-                </article>
-            </div>
-
-            {/* AI Analysis Section */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                {/* Match Score Card */}
-                <div className="bg-white rounded-xl border border-gray-100 flex flex-col justify-between p-6">
-                    <div className="flex items-center justify-between mb-6">
-                        <div className="flex items-center gap-2">
-                            <h3 className="text-lg font-semibold text-gray-900">Analysis</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+                {/* Left Column: Description & Skills */}
+                <div className="lg:col-span-2 space-y-4 lg:space-y-6">
+                    {/* Description Section */}
+                    <div className="bg-white rounded-xl border border-gray-100 p-4 lg:p-6">
+                        <div className="flex items-center border-b border-gray-100 pb-4 mb-4">
+                            <h2 className=" font-semibold text-gray-800">Job Description</h2>
                         </div>
-                        <span className="text-xl font-semibold text-brand-600">
-                            {Math.round(job.overall_match * 100)}%
-                        </span>
+                        <article className="prose prose-slate max-w-none prose-headings:font-bold prose-a:text-brand-600 prose-strong:text-gray-900 text-gray-600 leading-relaxed font-normal">
+                            {job.description ? (
+                                <div className="whitespace-pre-wrap">{job.description}</div>
+                            ) : (
+                                <div className="text-gray-400 italic">No description available.</div>
+                            )}
+                        </article>
                     </div>
 
-                    <Progress value={job.overall_match * 100} className="h-2 bg-gray-100 mb-8" indicatorClassName="bg-brand-500 rounded-full" />
+                    {/* Skills Section */}
+                    <div className="space-y-6 border border-gray-100 rounded-xl p-4 lg:p-6 bg-white">
+                        <div>
+                            <div className="flex items-center mb-3">
+                                <h4 className="font-bold text-emerald-800 text-sm">Matched Proficiencies</h4>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {job.matched_skills?.length > 0 ? (
+                                    job.matched_skills.map((skill, i) => (
+                                        <Badge key={i} variant="secondary" className="bg-green-50 text-green-700 border-green-100">
+                                            {skill}
+                                        </Badge>
+                                    ))
+                                ) : (
+                                    <span className="text-gray-400 text-sm italic">No direct skill matches found.</span>
+                                )}
+                            </div>
+                        </div>
 
+                        <hr className="border border-slate-100" />
+
+                        {/* Matched Skills */}
+                        <div>
+                            <div className="flex items-center mb-3">
+                                <h4 className="font-bold text-red-800 text-sm">Missing Capabilities</h4>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {job.missing_skills?.length > 0 ? (
+                                    job.missing_skills.map((skill, i) => (
+                                        <Badge key={i} variant="outline" className="border-red-100 text-red-600 bg-red-50/30">
+                                            {skill}
+                                        </Badge>
+                                    ))
+                                ) : (
+                                    <span className="text-gray-400 text-sm italic">No critical gaps identified.</span>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right Column: Analysis Sidebar */}
+                <div className="col-span-1 space-y-4 lg:space-y-6">
+                    {/* Match Score Card */}
+                    <div className="bg-white rounded-xl border border-gray-100 flex flex-col justify-between p-4 lg:p-6">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-2">
+                                <h3 className="text-lg font-semibold text-gray-900">Analysis</h3>
+                            </div>
+                            <span className="text-xl font-semibold text-brand-600">
+                                {Math.round(job.overall_match * 100)}%
+                            </span>
+                        </div>
+
+                        <Progress value={job.overall_match * 100} className="h-2 bg-gray-100 mb-8" indicatorClassName="bg-brand-500 rounded-full" />
+
+                        {job.match_score && (
+                            <div className="grid grid-cols-3 gap-3">
+                                <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
+                                    <div className="text-lg font-bold text-gray-900">
+                                        {Math.round(job.match_score.skill_match * 100)}%
+                                    </div>
+                                    <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Skills</div>
+                                </div>
+                                <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
+                                    <div className="text-lg font-bold text-gray-900">
+                                        {Math.round(job.match_score.experience_match * 100)}%
+                                    </div>
+                                    <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Experience</div>
+                                </div>
+                                <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
+                                    <div className="text-lg font-bold text-gray-900">
+                                        {Math.round(job.match_score.location_match * 100)}%
+                                    </div>
+                                    <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Location</div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Recommendation Basis */}
                     {job.match_score && (
-                        <div className="grid grid-cols-3 gap-3">
-                            <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
-                                <div className="text-lg font-bold text-gray-900">
-                                    {Math.round(job.match_score.skill_match * 100)}%
-                                </div>
-                                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Skills</div>
+                        <div className="bg-white rounded-xl border border-gray-100 flex flex-col p-4 lg:p-6 space-y-4 lg:space-y-6">
+                            <div className="flex items-center border-b border-gray-100 pb-3">
+                                <h2 className="font-semibold text-gray-900">Recommendation Basis <span className="ml-1 text-slate-500 font-light text-xs ">( Fit Reasoning )</span></h2>
                             </div>
-                            <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
-                                <div className="text-lg font-bold text-gray-900">
-                                    {Math.round(job.match_score.experience_match * 100)}%
-                                </div>
-                                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Experience</div>
-                            </div>
-                            <div className="text-center bg-gray-50 rounded-lg border border-gray-100/50 p-3">
-                                <div className="text-lg font-bold text-gray-900">
-                                    {Math.round(job.match_score.location_match * 100)}%
-                                </div>
-                                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-0.5">Location</div>
-                            </div>
+                            <p className="text-sm text-gray-600 leading-relaxed italic">
+                                "{job.match_score.analysis_notes}"
+                            </p>
                         </div>
                     )}
-                </div>
-
-                <div className="bg-white rounded-xl border border-gray-100 flex flex-col p-6 space-y-6">
-                    <div className="flex items-center border-b border-gray-100 pb-3">
-                        <h2 className="font-semibold text-gray-900">Recommendation Basis <span className="ml-1 text-slate-500 font-light text-xs ">( Fit Reasoning )</span></h2>
-                    </div>
-                    <p className="text-sm text-gray-600 leading-relaxed italic">
-                        "{job.match_score.analysis_notes}"
-                    </p>
-                </div>
-            </div>
-
-            <div className="space-y-6 border border-gray-100 rounded-xl p-6">
-                <div>
-                    <div className="flex items-center mb-3">
-                        <h4 className="font-bold text-emerald-800 text-sm">Matched Proficiencies</h4>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {job.matched_skills?.length > 0 ? (
-                            job.matched_skills.map((skill, i) => (
-                                <Badge key={i} variant="secondary" className="bg-green-50 text-green-700 border-green-100">
-                                    {skill}
-                                </Badge>
-                            ))
-                        ) : (
-                            <span className="text-gray-400 text-sm italic">No direct skill matches found.</span>
-                        )}
-                    </div>
-                </div>
-
-                <hr className="border border-slate-100" />
-
-                {/* Matched Skills */}
-                <div>
-                    <div className="flex items-center mb-3">
-                        <h4 className="font-bold text-red-800 text-sm">Missing Capabilities</h4>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {job.missing_skills?.length > 0 ? (
-                            job.missing_skills.map((skill, i) => (
-                                <Badge key={i} variant="outline" className="border-red-100 text-red-600 bg-red-50/30">
-                                    {skill}
-                                </Badge>
-                            ))
-                        ) : (
-                            <span className="text-gray-400 text-sm italic">No critical gaps identified.</span>
-                        )}
-                    </div>
                 </div>
             </div>
         </div>

@@ -3,11 +3,10 @@ import { Input } from "@/components/ui/Input";
 
 export const PasswordInput = ({ id, show, setShow, ...props }) => (
     <div className="relative">
-        <KeyRound className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-        <Input
+       <Input
             id={id}
             type={show ? "text" : "password"}
-            className="pl-10 pr-10"
+            className="pr-5"
             {...props}
         />
         <button

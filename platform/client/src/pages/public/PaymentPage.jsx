@@ -42,9 +42,10 @@ const PaymentPage = () => {
             price: billingCycle === 'monthly' ? 99 : 79,
             period: 'mo',
             popular: false,
+            suggested: true,
             icon: Crown,
-            color: 'violet',
-            gradient: 'from-violet-600 to-violet-500',
+            color: 'brand',
+            gradient: 'from-brand-600 to-brand-400',
             features: [
                 'Unlimited Everything',
                 'Dedicated Account Manager',
@@ -148,6 +149,11 @@ const PaymentPage = () => {
                                                 {plan.popular && (
                                                     <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
                                                         Popular
+                                                    </span>
+                                                )}
+                                                {plan.suggested && (
+                                                    <span className="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-brand-600 to-brand-400 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                                                        Suggested
                                                     </span>
                                                 )}
 

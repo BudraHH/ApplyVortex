@@ -282,18 +282,24 @@ export default function ProjectForm() {
     };
 
     return (
-        <div className="w-full mx-auto bg-white p-4">
-            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
-                <section className="space-y-4">
-                    <div className="flex flex-row items-center justify-between">
+        <div className="h-full w-full mx-auto bg-white p-3 lg:p-4">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between gap-4">
+                <section className="space-y-3 lg:space-y-4">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-0">
                         <div className="flex-1">
-                            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Projects</h2>
-                            <p className="text-slate-500 text-sm">
+                            <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">Projects</h2>
+                            <p className="text-slate-500 text-xs lg:text-sm">
                                 Showcase your best projects (GitHub repos, live demos)
                             </p>
                         </div>
-                        <Button variant="outline" onClick={handleRefresh} disabled={isLoading || isSaving || isRefreshing} className="gap-4">
-                            <RefreshCw className={cn("h-4 w-4", (isLoading || isRefreshing) && "animate-spin")} />
+                       <Button
+                            variant="outline"
+                            onClick={handleRefresh}
+                            size="responsive"
+                            disabled={isLoading || isSaving || isRefreshing}
+                            className="gap-2  w-full md:w-auto "
+                        >
+                            <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
                             {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
                         </Button>
                     </div>
@@ -302,16 +308,16 @@ export default function ProjectForm() {
                         <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm">
                             {/* Header */}
                             <div className="flex items-center justify-between">
-                                <div className="p-4 bg-slate-50 flex flex-col items-start justify-start">
+                                <div className="p-4 bg-slate-50 flex flex-col items-start justify-start gap-3 lg:gap-4">
                                     <h3 className="text-lg text-slate-500 font-medium leading-none tracking-tight">
                                         {`Project`}
                                     </h3>
                                     <Skeleton className="h-6 w-96" />
                                 </div>
                             </div>
-                            <div className="p-4 space-y-4">
+                            <div className="p-4 space-y-3 lg:space-y-4">
                                 {/* Project Title */}
-                                <div className="space-y-4">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-40" />
                                     <Skeleton className="h-10 w-full" />
                                 </div>
@@ -320,7 +326,7 @@ export default function ProjectForm() {
                                     {[1, 2, 3].map((i) => (
                                         <div key={i} className="space-y-2">
                                             <Skeleton className="h-4 w-32" />
-                                            <Skeleton className="h-10 w-full" />
+                                            <Skeleton className="h-8 lg:h-10 w-full" />
                                         </div>
                                     ))}
                                 </div>
@@ -334,14 +340,14 @@ export default function ProjectForm() {
                                     ))}
                                 </div>
                                 {/* Tech Stack */}
-                                <div className="space-y-4">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-32" />
                                     <div className="flex flex-wrap gap-4">
                                         {[1, 2, 3, 4].map((i) => (
                                             <Skeleton key={i} className="h-7 w-24 rounded-lg" />
                                         ))}
                                     </div>
-                                    <Skeleton className="h-10 w-full" />
+                                    <Skeleton className="h-8 lg:h-10 w-full" />
                                     <Skeleton className="h-3 w-96" />
                                 </div>
                                 {/* Dates */}
@@ -349,7 +355,7 @@ export default function ProjectForm() {
                                     {[1, 2].map((i) => (
                                         <div key={i} className="space-y-2">
                                             <Skeleton className="h-4 w-28" />
-                                            <Skeleton className="h-10 w-full" />
+                                            <Skeleton className="h-8 lg:h-10 w-full" />
                                         </div>
                                     ))}
                                     <div className="flex items-end">
@@ -357,7 +363,7 @@ export default function ProjectForm() {
                                     </div>
                                 </div>
                                 {/* Short Description */}
-                                <div className="space-y-2">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-40" />
                                     <Skeleton className="h-24 w-full" />
                                     <div className="flex justify-between">
@@ -366,18 +372,18 @@ export default function ProjectForm() {
                                     </div>
                                 </div>
                                 {/* Detailed Description */}
-                                <div className="space-y-2">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-44" />
                                     <Skeleton className="h-32 w-full" />
                                 </div>
                                 {/* Key Features */}
-                                <div className="space-y-2">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-36" />
                                     <Skeleton className="h-24 w-full" />
                                     <Skeleton className="h-3 w-56" />
                                 </div>
                                 {/* Challenges */}
-                                <div className="space-y-2">
+                                <div className="space-y-3 lg:space-y-4">
                                     <Skeleton className="h-4 w-40" />
                                     <Skeleton className="h-24 w-full" />
                                 </div>
@@ -385,10 +391,10 @@ export default function ProjectForm() {
                         </div>
                     ) : (
                         !hasData && !isEdit ? (
-                            <div className="border-2 border-dashed border-slate-300 rounded-lg text-center">
-                                <AlertCircle className="h-12 w-12 text-slate-500 mx-auto mb-4" />
-                                <h3 className="text-lg font-semibold text-slate-900 mb-4">Oops, seems like your projects are not updated</h3>
-                                <p className="text-slate-500 text-sm mb-4">Add your projects to showcase your work</p>
+                            <div className="border-2 border-dashed border-slate-300 rounded-lg text-center p-3 lg:p-4 gap-4 min-h-[300px] lg:min-h-[500px] flex flex-col items-center justify-center">
+                                <AlertCircle className="h-12 w-12 text-slate-500 mx-auto" />
+                                <h3 className="text-lg font-semibold text-slate-900 ">Oops, seems like your projects are not updated</h3>
+                                <p className="text-slate-500 text-sm ">Add your projects to showcase your work</p>
                             </div>
                         ) : (
                             <div className="space-y-4">
@@ -412,43 +418,81 @@ export default function ProjectForm() {
                         )
                     )}
                 </section>
-                <div className="flex justify-between items-center border-t border-slate-200 ">
-                    <Button type="button" onClick={handlePrevious} disabled={isSaving} variant="outline" className="gap-4">
-                        <ArrowRight className="h-4 w-4 rotate-180" /> Previous
+                <div className="grid grid-cols-2 gap-3 border-t border-slate-200 pt-3 md:flex md:flex-row md:justify-between md:items-center md:pt-4">
+                    <Button
+                        type="button"
+                        onClick={handlePrevious}
+                        disabled={isSaving}
+                        variant="outline"
+                        className="col-start-1 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                    >
+                        <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
+                        Previous
                     </Button>
-                    <div className="flex items-center">
-                        {isEdit ? (
-                            <div className="flex items-center gap-4">
-                                <Button type="button" onClick={handleClickCancel} disabled={isSaving} variant="outline" className="gap-4">
-                                    <X className="h-4 w-4" /> Cancel
+
+                    <div className="contents md:flex md:items-center md:gap-2">
+                        {!isLoading && isEdit ? (
+                            <div className="col-span-2 row-start-1 grid grid-cols-2 gap-3 w-full md:flex md:items-center md:w-auto md:gap-2">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickCancel}
+                                    disabled={isSaving}
+                                    variant="outline"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    <X className="h-3 w-3 md:h-4 md:w-4" />
+                                    Cancel
                                 </Button>
-                                <Button type="submit" disabled={isSaving} variant="primary" className="gap-4">
+                                <Button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    variant="primary"
+                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                    aria-label="Save profile"
+                                >
                                     {isSaving ? (
                                         <>
-                                            <Loader2 className="h-4 w-4 animate-spin" /> Saving...
+                                            <Loader2 className="h-3 w-3 md:h-4 md:w-4 animate-spin" />
+                                            Saving...
                                         </>
                                     ) : (
                                         <>
-                                            <Save className="h-4 w-4" /> Save
+                                            <Save className="h-3 w-3 md:h-4 md:w-4" />
+                                            Save
                                         </>
                                     )}
                                 </Button>
                             </div>
                         ) : (
                             <>
-                                <Button type="button" onClick={handleClickEdit} disabled={isSaving} variant={`${isLoading ? "disabled" : "primary"}`} className="gap-4">
+                                <Button
+                                    type="button"
+                                    onClick={handleClickEdit}
+                                    disabled={isSaving}
+                                    variant={`${isLoading ? "disabled" : "primary"}`}
+                                    className="col-span-2 row-start-1 w-full gap-2 md:w-auto md:gap-4"
+                                >
                                     {isLoading || hasData ? (
                                         <>
-                                            <Edit3 className="h-4 w-4" /> Edit
+                                            <Edit3 className="h-3 w-3 md:h-4 md:w-4" />
+                                            Edit
                                         </>
                                     ) : (
                                         <>
-                                            <Plus className="h-4 w-4" /> Add
+                                            <Plus className="h-3 w-3 md:h-4 md:w-4" />
+                                            Add
                                         </>
                                     )}
                                 </Button>
-                                <Button type="button" disabled={isSaving} onClick={handleNext} variant="outline" className="gap-4">
-                                    Next <ArrowRight className="h-4 w-4" />
+                                <Button
+                                    type="button"
+                                    disabled={isSaving}
+                                    onClick={handleNext}
+                                    variant="outline"
+                                    className="col-start-2 row-start-2 w-full gap-2 md:w-auto md:gap-4"
+                                >
+                                    Next
+                                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
                                 </Button>
                             </>
                         )}

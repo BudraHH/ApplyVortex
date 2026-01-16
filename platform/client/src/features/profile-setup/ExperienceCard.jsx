@@ -269,8 +269,8 @@ export default function ExperienceCard({
                 : 'border-slate-200 hover:border-blue-500/50 transition-colors'
                 }`}
         >
-            <div className="w-full bg-slate-50 rounded-t-xl flex items-center justify-between p-2 md:p-3 lg:p-4">
-                <div className="flex flex-col items-start justify-start gap-2 md:gap-3 lg:gap-4">
+            <div className="w-full bg-slate-50 rounded-t-xl flex items-center justify-between p-3 lg:p-4">
+                <div className="flex flex-col items-start justify-start gap-3 lg:gap-4">
                     <h3 className="text-lg font-medium leading-none tracking-tight text-slate-900 ">
                         {`Experience ${index + 1}`}
                     </h3>
@@ -291,7 +291,7 @@ export default function ExperienceCard({
                 )}
             </div>
 
-            <div className="p-2 md:p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
+            <div className="p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
 
                 {/* Company + Job title */}
                 <div className="grid md:grid-cols-2 gap-2 md:gap-3 lg:gap-4">

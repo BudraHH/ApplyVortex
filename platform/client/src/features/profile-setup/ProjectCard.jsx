@@ -94,8 +94,8 @@ export default function ProjectCard({
 
     return (
         <div className={`w-full rounded-xl border bg-white shadow-sm ${isReadOnly ? 'bg-slate-50 border-slate-200' : 'border-slate-200 hover:border-blue-500/50 transition-colors'}`}>
-            <div className="w-full bg-slate-50 rounded-t-xl flex items-center justify-between p-2 md:p-3 lg:p-4">
-                <div className="flex flex-col items-start justify-start gap-2 md:gap-3 lg:gap-4">
+            <div className="w-full bg-slate-50 rounded-t-xl flex items-center justify-between p-3 lg:p-4">
+                <div className="flex flex-col items-start justify-start gap-3 lg:gap-4">
                     <h3 className="text-lg font-medium leading-none tracking-tight text-slate-900 ">
                         {`Project ${index + 1}`}
                     </h3>
@@ -113,7 +113,7 @@ export default function ProjectCard({
                     </Button>
                 )}
             </div>
-            <div className="p-2 md:p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
+            <div className="p-3 lg:p-4 space-y-2 md:space-y-3 lg:space-y-4">
                 {/* Title */}
                 <div className="space-y-2 md:space-y-3 lg:space-y-4">
                     <Label htmlFor={`project-title-${index}`} className="text-sm font-medium leading-none flex items-center gap-2 md:gap-3 lg:gap-4">
