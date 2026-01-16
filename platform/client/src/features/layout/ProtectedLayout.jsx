@@ -237,7 +237,7 @@ export default function ProtectedLayout() {
         : 'U';
 
     return (
-        <div className="h-screen max-h-screen overflow-hidden flex bg-slate-50 transition-colors duration-300 p-0 lg:p-4 gap-0 lg:gap-4">
+        <div className="h-screen overflow-hidden flex bg-slate-50 transition-colors duration-300 p-0 lg:p-4 gap-0 lg:gap-4">
             {/* Mobile Sidebar */}
             <aside
                 className={`fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-slate-100 rounded-r-xl my-2  shadow-xl transform transition-transform duration-300 ease-in-out lg:hidden
@@ -463,7 +463,7 @@ export default function ProtectedLayout() {
 
 
                 {/* Page Content */}
-                <main className=" flex-1 overflow-hidden bg-transparent shadow-none lg:shadow-sm relative flex flex-col">
+                <main className=" flex-1 overflow-hidden shadow-none lg:shadow-sm relative flex flex-col">
                     <Outlet />
                 </main>
             </div>

@@ -194,13 +194,13 @@ export default function ProfileSetupPage() {
                     >
                         <Menu className="h-5 w-5" />
                     </Button>
-                     <h1 className="text-base font-bold text-slate-800 truncate max-w-[160px]">
-                            {STEPS.find(s => s.path === location.pathname)?.title || 'Profile Setup'}
+                    <h1 className="text-base font-bold text-slate-800 truncate max-w-[160px]">
+                        {STEPS.find(s => s.path === location.pathname)?.title || 'Profile Setup'}
                     </h1>
                 </div>
 
                 {/* Page Content */}
-                <div className="lg:m-0 rounded-lg flex-1 min-h-0 overflow-y-auto max-h-full custom-scrollbar border-t lg:border border-slate-100 hover:border-slate-200 lg:rounded-xl ">
+                <div className="lg:m-0 rounded-lg  overflow-y-auto max-h-full custom-scrollbar border-t lg:border border-slate-100 hover:border-slate-200 lg:rounded-xl ">
                     <Outlet />
                 </div>
             </main>

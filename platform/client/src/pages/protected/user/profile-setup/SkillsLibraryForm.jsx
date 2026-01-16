@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast.js";
 import {
     ArrowLeft,
     ArrowRight,
+    ChevronRight,
     Plus,
     X,
     Sparkles,

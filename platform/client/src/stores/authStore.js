@@ -24,6 +24,7 @@ export const useAuthStore = create((set, get) => ({
     login: (user) => {
         // Tokens are in HttpOnly cookies (set by backend)
         // No need to store them in frontend
+        localStorage.setItem('logged_in', 'true');
         set({
             user,
             isAuthenticated: true,
@@ -43,6 +44,7 @@ export const useAuthStore = create((set, get) => ({
         }
 
         // Backend clears HttpOnly cookies
+        localStorage.removeItem('logged_in');
         set({
             user: null,
             isAuthenticated: false,
@@ -72,11 +74,9 @@ export const useAuthStore = create((set, get) => ({
     },
 
     initAuth: async () => {
-        const hasLoginCookie = document.cookie
-            .split('; ')
-            .find(row => row.trim().startsWith('logged_in=true'));
+        const hasLoginInfo = localStorage.getItem('logged_in') === 'true';
 
-        if (hasLoginCookie) {
+        if (hasLoginInfo) {
             try {
                 const user = await userAPI.getProfile();
                 set({
@@ -86,6 +86,8 @@ export const useAuthStore = create((set, get) => ({
                 });
             } catch (error) {
                 console.error("Init auth failed:", error);
+                // If fetch fails (401), clear the flag
+                localStorage.removeItem('logged_in');
                 set({
                     isAuthenticated: false,
                     isLoading: false,
