@@ -186,7 +186,7 @@ class AuthService:
         # Calculate expiry
         # If remember_me is True: 30 days
         # If False: 1 day (or default setting)
-        expire_days = 30 if remember_me else settings.REFRESH_TOKEN_EXPIRE_DAYS
+        expire_days = 20 if remember_me else 1
         expires_at = datetime.now(timezone.utc) + timedelta(days=expire_days)
 
         # Parse user agent to get device info

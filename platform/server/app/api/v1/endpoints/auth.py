@@ -32,8 +32,8 @@ async def register(
         key="refresh_token",
         value=token_response.token.refresh_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True, # Required for SameSite=None
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     
@@ -42,8 +42,8 @@ async def register(
         key="access_token",
         value=token_response.token.access_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60
     )
 
@@ -52,8 +52,8 @@ async def register(
         key="logged_in",
         value="true",
         httponly=False, # Readable by JS
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     
@@ -85,20 +85,19 @@ async def login(
     
     # Expiry Logic
     if remember_me:
-        # 30 Days
-        MAX_AGE_SECONDS = 30 * 24 * 60 * 60
+        # 20 Days (User Request)
+        MAX_AGE_SECONDS = 20 * 24 * 60 * 60
     else:
-        # Session Cookie (expires when browser closes)
-        # Note: Some browsers might persist session cookies if "Continue where you left off" is enabled.
-        MAX_AGE_SECONDS = None
+        # 24 Hours (User Request: Minimum time should be 24h)
+        MAX_AGE_SECONDS = 24 * 60 * 60
 
     # Set Refresh Token Cookie
     response.set_cookie(
         key="refresh_token",
         value=token_response.token.refresh_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
 
@@ -111,8 +110,8 @@ async def login(
         key="access_token",
         value=token_response.token.access_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60
     )
 
@@ -122,8 +121,8 @@ async def login(
         key="logged_in",
         value="true",
         httponly=False,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     
@@ -159,8 +158,8 @@ async def refresh_token(
         key="refresh_token",
         value=token_response.token.refresh_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
 
@@ -169,8 +168,8 @@ async def refresh_token(
         key="access_token",
         value=token_response.token.access_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60
     )
 
@@ -179,8 +178,8 @@ async def refresh_token(
         key="logged_in",
         value="true",
         httponly=False,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     
@@ -199,9 +198,9 @@ async def logout(
         auth_service = AuthService(db)
         await auth_service.logout(refresh_token)
     
-    response.delete_cookie(key="refresh_token")
-    response.delete_cookie(key="access_token")
-    response.delete_cookie(key="logged_in")
+    response.delete_cookie(key="refresh_token", secure=True, samesite="none")
+    response.delete_cookie(key="access_token", secure=True, samesite="none")
+    response.delete_cookie(key="logged_in", secure=True, samesite="none")
     return {"message": "Successfully logged out"}
 
 @router.post("/verify-email", response_model=dict)
@@ -247,8 +246,8 @@ async def restore(
         key="refresh_token",
         value=token_response.token.refresh_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     
@@ -256,8 +255,8 @@ async def restore(
         key="access_token",
         value=token_response.token.access_token,
         httponly=True,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60
     )
 
@@ -265,8 +264,8 @@ async def restore(
         key="logged_in",
         value="true",
         httponly=False,
-        secure=settings.ENVIRONMENT not in ["local", "development"],
-        samesite="lax",
+        secure=True,
+        samesite="none",
         max_age=MAX_AGE_SECONDS
     )
     

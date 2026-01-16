@@ -36,21 +36,20 @@ class Settings(BaseSettings):
     
     # Used by CORSMiddleware
     BACKEND_CORS_ORIGINS: List[str] = Field(
-        ["http://localhost:3000", "http://localhost:8000", "http://127.0.0.1:3000", "http://127.0.0.1:8000"],
+        [
+            "http://localhost:3000",
+            "http://localhost:8000",
+            "http://127.0.0.1:3000", 
+            "http://127.0.0.1:8000",
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+            "https://apply-vortex.vercel.app"
+        ],
         description="List of allowed CORS origins"
     )
     
     # Used by TrustedHostMiddleware
-    ALLOWED_HOSTS: List[str] = Field(["*"], description="Allowed hosts")
-
-    # Used by CORSMiddleware - Override to allow all for dev
-    # Used by CORSMiddleware
-    BACKEND_CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173"
-    ]
+    ALLOWED_HOSTS: List[str] = Field(["https://apply-vortex.vercel.app", "http://localhost:3000", "http://localhost:8000"], description="Allowed hosts")
 
     # --------------------------------------------------------------------------
     # Database
@@ -63,7 +62,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str = Field(..., min_length=32, description="JWT Secret Key")
     ALGORITHM: str = Field("HS256", description="Encryption algorithm")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = Field(1440, description="Access token expiry in minutes (1 day)")
-    REFRESH_TOKEN_EXPIRE_DAYS: int = Field(7, description="Refresh token expiry in days")
+    REFRESH_TOKEN_EXPIRE_DAYS: int = Field(20, description="Refresh token expiry in days")
 
     # --------------------------------------------------------------------------
     # Security - Account Protection
@@ -119,18 +118,7 @@ class Settings(BaseSettings):
     # --------------------------------------------------------------------------
     REDIS_URL: str = Field("redis://redis:6379/0", description="Redis connection URL")
 
-    # --------------------------------------------------------------------------
-    # AI Services
-    # --------------------------------------------------------------------------
-    AI_API_KEY: Optional[str] = Field(None, description="Primary AI API key fallback")
-    AI_API_KEY_RESUME: Optional[str] = Field(None, description="Legacy key (deprecated)")
-    AI_API_KEY_RESUME_PARSING: Optional[str] = Field(None, description="AI key for resume parsing")
-    AI_API_KEY_RESUME_SCORING: Optional[str] = Field(None, description="AI key for resume scoring")
-    AI_API_KEY_RESUME_GENERATION: Optional[str] = Field(None, description="AI key for resume generation")
-    PERPLEXITY_API_KEY: Optional[str] = Field(None, description="Perplexity API key")
-    AI_PROVIDER: str = Field("gemini", description="AI provider to use: gemini, perplexity")
-    OLLAMA_HOST: str = Field("http://ollama:11434", description="Ollama API host")
-    OLLAMA_DEFAULT_MODEL: str = Field("llama3", description="Default Ollama model")
+
 
     # --------------------------------------------------------------------------
     # Computed Properties

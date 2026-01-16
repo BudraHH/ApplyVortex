@@ -148,7 +148,7 @@ class JobListItem(BaseModel):
     company_name: str
     portal: Optional[int]
     location: Optional[str] = Field(None, validation_alias="location_raw") # Map raw location
-    job_type: Optional[str] = None # Converted to str for display logic if needed or int
+    job_type: Optional[int] = None # Converted to str for display logic if needed or int
     posted_at: Optional[datetime] = None
     application_status: int = ApplicationStatus.NOT_APPLIED.value # Application status for this user
     match_score: Optional[Decimal] = None # NEW: Expose score for list view
