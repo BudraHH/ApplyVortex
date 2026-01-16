@@ -1,7 +1,7 @@
 // src/lib/constants.js
 
 // API Configuration
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API__URL;
 export const API_BASE_URL = BASE_URL.endsWith('/api/v1') ? BASE_URL : `${BASE_URL.replace(/\/$/, '')}/api/v1`;
 export const WS_BASE_URL = API_BASE_URL.replace(/^http/, 'ws');
 export const API_TIMEOUT = parseInt(import.meta.env.VITE_API_TIMEOUT) || 30000;
