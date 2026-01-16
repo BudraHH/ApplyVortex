@@ -91,7 +91,7 @@ export default function ProfileSetupPage() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <div className="h-full overflow-hidden flex bg-transparent gap-0 lg:gap-4">
+        <div className="h-full overflow-hidden flex bg-transparent gap-0 lg:gap-4 ">
             {/* Mobile Sidebar (Drawer) */}
             <aside
                 className={`fixed rounded-r-xl left-0 z-50 w-64 bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -183,9 +183,9 @@ export default function ProfileSetupPage() {
             )}
 
             {/* Main Content */}
-            <main className="flex-1 min-h-0 h-full max-h-full overflow-hidden flex flex-col gap-2">
+            <main className="flex-1 h-full flex flex-col gap-2 pb-2">
                 {/* Mobile Top Bar (Toggle for Steps) */}
-                <div className="rounded-lg lg:hidden flex items-center bg-white  border-b border-slate-200  py-2">
+                <div className="rounded-lg lg:hidden flex items-center bg-white border border-slate-100 hover:border-slate-200 pb-2">
                     <Button
                         variant="ghost"
                         size="icon"
@@ -200,7 +200,7 @@ export default function ProfileSetupPage() {
                 </div>
 
                 {/* Page Content */}
-                <div className="lg:m-0 rounded-lg  overflow-y-auto max-h-full custom-scrollbar border-t lg:border border-slate-100 hover:border-slate-200 lg:rounded-xl ">
+                <div className=" rounded-lg h-full overflow-y-auto max-h-full custom-scrollbar border border-slate-100 hover:border-slate-200 bg-white lg:rounded-xl ">
                     <Outlet />
                 </div>
             </main>

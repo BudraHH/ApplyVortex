@@ -404,7 +404,7 @@ export default function ProtectedLayout() {
             {/* Main Content */}
             <div className="m-2 lg:m-0 flex-1 w-full flex flex-col rounded-none lg:rounded-xl overflow-hidden h-full relative transition-all duration-300 gap-2 lg:gap-4">
                 {/* Mobile Header */}
-                <header className="lg:hidden h-14 flex-none bg-white border-b border-slate-200 flex items-center justify-between z-30 py-2 rounded-lg ">
+                <header className="lg:hidden h-14 flex-none bg-white border border-slate-100 hover:border-slate-200 flex items-center justify-between z-30 py-2 rounded-lg ">
                     <div className="flex items-center ">
                         <Button
                             variant="ghost"
@@ -463,7 +463,7 @@ export default function ProtectedLayout() {
 
 
                 {/* Page Content */}
-                <main className=" flex-1 overflow-hidden shadow-none lg:shadow-sm relative flex flex-col">
+                <main className="lg:mb-0 mb-2 flex-1 overflow-hidden  shadow-none lg:shadow-sm relative flex flex-col">
                     <Outlet />
                 </main>
             </div>

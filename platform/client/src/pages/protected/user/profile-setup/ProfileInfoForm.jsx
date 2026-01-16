@@ -1068,12 +1068,12 @@ export default function ProfileInfoForm() {
     };
 
     return (
-        <div className="w-full mx-auto  p-3 space-y-3 lg:space-y-4">
+        <div className="w-full h-auto p-3 space-y-3 lg:space-y-4">
 
 
-            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="h-full flex flex-col justify-between w-full ">
 
-                <section className="space-y-3 lg:space-y-4">
+                <section className="space-y-3 lg:space-y-4 h-full">
                     <div className="flex flex-row items-center justify-between ">
                         <div className="flex-1">
                             <h2 className="text-lg lg:text-2xl font-bold tracking-tight text-slate-900">Your Personal Information</h2>
@@ -1089,7 +1089,7 @@ export default function ProfileInfoForm() {
                             className="gap-2 "
                         >
                             <RefreshCw className={cn("h-3 w-3 lg:h-4 lg:w-4", (isLoading || isRefreshing) && "animate-spin")} />
-                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : 'Refresh Intel'}
+                            {isLoading ? "Loading..." : isRefreshing ? 'Refreshing...' : isSaving ? 'Saving...' : <span>Refresh <span className="hidden md:inline">Intel</span></span>}
                         </Button>
                     </div>
 
@@ -1098,14 +1098,14 @@ export default function ProfileInfoForm() {
                         <button
                             type="button"
                             onClick={() => toggleSection('basic')}
-                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
+                        className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
                         >
                             <div className="flex items-center gap-3 lg:gap-4">
-                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 lg:p-4">
-                                    <User className="h-4 w-4 lg:h-5 lg:w-5 text-brand-600" />
+                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 :p-4">
+                                    <User className="h-5 w-5 text-brand-600" />
                                 </div>
                                 <div className="text-left">
-                                    <h3 className="font-semibold text-sm lg:text-base text-slate-900">Basic Details</h3>
+                                    <h3 className="font-semibold text-sm md:text-base text-slate-900">Basic Details</h3>
                                     <p className="text-[10px] lg:text-xs text-slate-500">Contact information and personal identifiers</p>
                                 </div>
                             </div>
@@ -1312,14 +1312,14 @@ export default function ProfileInfoForm() {
                             type="button"
                             disabled={isLoading}
                             onClick={() => toggleSection('location')}
-                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-4"
+                          className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="bg-brand-100 rounded-lg p-4">
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 :p-4">
                                     <MapPin className="h-5 w-5 text-brand-600" />
                                 </div>
                                 <div className="text-left">
-                                    <h3 className="font-semibold text-slate-900">Location & Mobility</h3>
+                                    <h3 className="font-semibold text-sm md:text-base text-slate-900">Location & Mobility</h3>
                                     <p className="text-xs text-slate-500">Address, city, and relocation preferences</p>
                                 </div>
                             </div>
@@ -1577,14 +1577,14 @@ export default function ProfileInfoForm() {
                             type="button"
                             disabled={isLoading}
                             onClick={() => toggleSection('links')}
-                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-4"
+                     className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="bg-brand-100 rounded-lg p-4">
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 :p-4">
                                     <LinkIcon className="h-5 w-5 text-brand-600" />
                                 </div>
                                 <div className="text-left">
-                                    <h3 className="font-semibold text-slate-900">Social & Professional Links</h3>
+                                    <h3 className="font-semibold text-sm md:text-base text-slate-900">Social & Professional Links</h3>
                                     <p className="text-xs text-slate-500">Portfolio, GitHub, LinkedIn, and more</p>
                                 </div>
                             </div>
@@ -1628,14 +1628,14 @@ export default function ProfileInfoForm() {
                             type="button"
                             disabled={isLoading}
                             onClick={() => toggleSection('professional')}
-                            className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-4"
+                          className="w-full flex items-center justify-between bg-slate-50 hover:bg-slate-100 transition-colors p-3 lg:p-4"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="bg-brand-100 rounded-lg p-4">
+                            <div className="flex items-center gap-3 lg:gap-4">
+                                <div className="bg-brand-100 rounded-md lg:rounded-lg p-2 :p-4">
                                     <Briefcase className="h-5 w-5 text-brand-600" />
                                 </div>
                                 <div className="text-left">
-                                    <h3 className="font-semibold text-slate-900">Professional Summary</h3>
+                                    <h3 className="font-semibold text-sm md:text-base text-slate-900">Professional Summary</h3>
                                     <p className="text-xs text-slate-500">Headlines, salary expectations, and languages</p>
                                 </div>
                             </div>
@@ -1648,13 +1648,14 @@ export default function ProfileInfoForm() {
 
                 </section>
 
-                <div className="w-full border-t border-slate-200 pt-3 flex flex-row justify-between items-center pt-4">
+                <div className="w-full border-t border-slate-200 flex flex-row justify-between items-center mt-4 pt-4">
                     <Button
                         type="button"
                         onClick={handlePrevious}
                         disabled={isSaving}
                         variant="outline"
-                        className="gap-4"
+                        size="responsive"
+                        className="gap-2 md:gap-4"
                     >
                         <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
                         Previous
@@ -1668,7 +1669,8 @@ export default function ProfileInfoForm() {
                                     onClick={handleClickCancel}
                                     disabled={isSaving}
                                     variant="outline"
-                                    className="gap-4"
+                                    size="responsive"
+                                    className="gap-2 md:gap-4"
                                 >
                                     <X className="h-3 w-3 md:h-4 md:w-4" />
                                     Cancel
@@ -1677,7 +1679,8 @@ export default function ProfileInfoForm() {
                                     type="submit"
                                     disabled={isSaving}
                                     variant="primary"
-                                    className="w-full gap-2 md:w-auto md:gap-4"
+                                    size="responsive"
+                                    className="gap-2 md:gap-4"
                                     aria-label="Save profile"
                                 >
                                     {isSaving ? (
@@ -1700,7 +1703,8 @@ export default function ProfileInfoForm() {
                                     onClick={handleClickEdit}
                                     disabled={isSaving}
                                     variant={`${isLoading ? "disabled" : "primary"}`}
-                                    className="gap-4"
+                                    size="responsive"
+                                    className="gap-2 md:gap-4"
                                 >
                                     {isLoading || hasData ? (
                                         <>
@@ -1719,7 +1723,8 @@ export default function ProfileInfoForm() {
                                     disabled={isSaving}
                                     onClick={handleNext}
                                     variant="outline"
-                                    className="gap-4"
+                                    size="responsive"
+                                    className="gap-2 md:gap-4"
                                 >
                                     Next
                                     <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
