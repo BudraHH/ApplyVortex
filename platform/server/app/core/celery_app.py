@@ -6,7 +6,7 @@ def create_celery_app() -> Celery:
         "applyvortex",
         broker=settings.REDIS_URL,
         backend=settings.REDIS_URL,
-        include=['app.worker', 'app.tasks.resume_tasks', 'app.tasks.scraping_tasks']
+        include=['app.worker', 'app.tasks.scraping_tasks']
     )
 
     celery_app.conf.update(

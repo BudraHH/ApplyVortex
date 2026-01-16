@@ -9,7 +9,7 @@ from app.services.profile.resume_service import ResumeService
 from app.services.profile.tailor_service import ResumeTailorService
 from app.services.storage.resume_storage import storage_service
 from app.services.storage.resume_storage import storage_service
-# REMOVED: from app.tasks.resume_tasks import parse_resume_task (Moving to Agent)
+
 from app.models.user.user import User
 from app.models.agent_forge_task import AgentForgeTask
 from app.constants.constants import AgentTaskType, TaskStatus
